@@ -12,7 +12,7 @@ class App extends Component {
     componentDidMount() {
         fetch(`https://heroku-service-hello-world.herokuapp.com/api/helloworld`)
             .then(result=> {
-                this.state.items.push(result);
+                this.state.items.push(result.json());
                 console.log('JSON result:' + result.toString());
                 console.log('State items:' + this.state.items.map(item=> {item.value}));
             });
