@@ -10,11 +10,18 @@ class App extends Component {
     }
 
     componentDidMount() {
-        fetch(`https://heroku-service-hello-world.herokuapp.com/api/helloworld`)
-            .then(result=> {
-                this.state.items.push(result.json());
-                console.log('JSON result:' + result.toString());
-                console.log('State items:' + this.state.items.map(item=> {item.value}));
+        var that = this;
+        var url = `https://heroku-service-hello-world.herokuapp.com/api/helloworld`;
+
+        fetch(url)
+            .then(function(response) {
+                if (response.status >= 400) {
+                    throw new Error("Bad response from server");
+                }
+                return response.json();
+            })
+            .then(function(data) {
+                that.setState({ items: data.rows });
             });
     }
 
