@@ -12,8 +12,8 @@ class App extends Component {
     componentDidMount() {
         fetch(`https://heroku-service-hello-world.herokuapp.com/api/helloworld`)
             .then(result=> {
-                this.setState({items:result.json()});
-                console.log('JSON result:' + result.json());
+                this.state.items.push(result);
+                console.log('JSON result:' + result);
                 console.log('State: ' + this.state);
                 console.log('State items:' + this.state.items);
             });
