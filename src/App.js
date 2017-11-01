@@ -13,6 +13,9 @@ class App extends Component {
         fetch(`https://heroku-service-hello-world.herokuapp.com/api/helloworld`)
             .then(result=> {
                 this.setState({items:result.json()});
+                console.log('JSON result:' + result.json());
+                console.log('State: ' + this.state);
+                console.log('State items:' + this.state.items);
             });
     }
 
@@ -26,7 +29,7 @@ class App extends Component {
                 <p className="App-intro">
                     <div>
                         <div>Items of hello_world table:</div>
-                        { this.state.items(item=> { return <div>{item.value}</div>}) }
+                        { this.state.items.map(item=> { return <div>{item.value}</div>}) }
                     </div>
                 </p>
 
