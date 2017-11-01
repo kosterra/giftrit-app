@@ -4,6 +4,18 @@ import './App.css';
 import SimpleCounter from './components/SimpleCounter';
 
 class App extends Component {
+    constructor() {
+        super();
+        this.state = { items: [] };
+    }
+
+    componentDidMount() {
+        fetch(`https://heroku-service-hello-world.herokuapp.com/api/helloworld`)
+            .then(result=> {
+                this.setState({items:result.json()});
+            });
+    }
+
     render() {
         return (
             <div className="App">
@@ -12,7 +24,10 @@ class App extends Component {
                     <h1 className="App-title">Welcome to React</h1>
                 </header>
                 <p className="App-intro">
-                    Hello World!
+                    <div>
+                        <div>Items of hello_world table:</div>
+                        { this.state.items.map(item=> { return <div>{item.value}</div>}) }
+                    </div>
                 </p>
 
                 <SimpleCounter />
