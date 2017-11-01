@@ -26,7 +26,7 @@ class App extends Component {
                 <p className="App-intro">
                     <div>
                         <div>Items of hello_world table:</div>
-                        { this.state.items.map(item=> { return <div>{item.value}</div>}) }
+                        { this.state.items(item=> { return <div>{item.value}</div>}) }
                     </div>
                 </p>
 
