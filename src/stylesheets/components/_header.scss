@@ -1,0 +1,35 @@
+.header-distributed {
+  background-color: $secondary-color;
+  box-shadow:0 1px 1px #ccc;
+  padding: 20px 40px;
+  color: #fff;
+  box-sizing: border-box;
+  margin-bottom: 60px;
+
+  .header-limiter {
+    width: 100%;
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+
+    .company-logo {
+      display: flex;
+      align-items: center;
+
+      .logo-img {
+        height: 50px;
+      }
+
+      .logo-text {
+        font-size: 32px;
+        font-weight: 700;
+        margin-left: 20px;
+      }
+    }
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+}

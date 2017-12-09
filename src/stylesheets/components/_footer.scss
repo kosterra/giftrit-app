@@ -1,0 +1,143 @@
+.footer-distributed {
+    background-color: $secondary-color;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    font: bold 16px sans-serif;
+    text-align: left;
+
+    padding: 50px 60px 40px;
+    margin-top: 80px;
+    overflow: hidden;
+
+
+    .footer-left {
+        float: left;
+    }
+
+    .footer-right {
+      float: right;
+    }
+
+    .footer-links {
+        color:  #fff;
+        margin: 0 0 10px;
+        padding: 0;
+
+        a {
+            display:inline-block;
+            line-height: 1.8;
+            text-decoration: none;
+            color:  inherit;
+            margin-right: 2em;
+        }
+    }
+
+    .footer-company-name {
+        color:  #8f9296;
+        font-size: 14px;
+        font-weight: normal;
+        margin: 0;
+    }
+
+    .footer-icons {
+        margin-top: 40px;
+
+        a {
+            display: inline-block;
+            width: 35px;
+            height: 35px;
+            cursor: pointer;
+            background-color:  $third-color;
+            border-radius: 2px;
+
+            font-size: 20px;
+            color: #fff;
+            text-align: center;
+            line-height: 35px;
+
+            margin-right: 3px;
+            margin-bottom: 5px;
+        }
+    }
+
+    .footer-company {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 40px;
+
+      .logo-img {
+        width: 50px;
+      }
+
+      .logo-text {
+        font-size: 32px;
+        color: #fff;
+        font-family: inherit;
+        margin-left: 18px;
+      }
+    }
+}
+
+.footer-distributed ::-webkit-input-placeholder {
+    color:  #5c666b;
+}
+
+.footer-distributed ::-moz-placeholder {
+    color:  #5c666b;
+    opacity: 1;
+}
+
+.footer-distributed :-ms-input-placeholder{
+    color:  #5c666b;
+}
+
+/* If you don't want the footer to be responsive, remove these media queries */
+
+@media (max-width: 1000px) {
+
+    .footer-distributed {
+        font: bold 14px sans-serif;
+    }
+
+    .footer-distributed .footer-company-name{
+        font-size: 12px;
+    }
+
+    .footer-distributed form input,
+    .footer-distributed form textarea{
+        width: 250px;
+    }
+
+    .footer-distributed form button{
+        padding: 10px 35px;
+    }
+
+}
+
+@media (max-width: 800px) {
+
+    .footer-distributed {
+        padding: 30px;
+
+        .footer-left,
+        .footer-right{
+            float: none;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .footer-left{
+            margin-bottom: 40px;
+        }
+
+        form {
+            margin-top: 30px;
+            display: block;
+
+            button {
+                float: none;
+            }
+        }
+    }
+}

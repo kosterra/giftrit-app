@@ -1,0 +1,28 @@
+.login-buttons {
+  display: flex;
+  align-items: center;
+
+  ul {
+    font: 14px Arial, Helvetica, sans-serif;
+    list-style: none;
+    line-height: 1;
+    float: right;
+
+    li {
+      display: inline-block;
+      margin-left: 15px;
+      opacity:0.9;
+
+      &:hover{
+        opacity: 1;
+      }
+
+      &:last-child a {
+        font-weight: bold;
+        background-color: #3a3c3e;
+        padding: 10px 15px;
+        border-radius: 3px;
+      }
+    }
+  }
+}

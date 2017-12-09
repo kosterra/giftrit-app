@@ -1,0 +1,51 @@
+.contactform {
+  p {
+    display: inline-block;
+    vertical-align: top;
+    margin: 15px 42px 0 0;
+    color: #ffffff;
+  }
+
+  form {
+    display: inline-block;
+
+    input,
+    textarea {
+      display: block;
+      border-radius: 3px;
+      box-sizing: border-box;
+      background-color:  $third-color;
+      box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.1);
+      border: none;
+      resize: none;
+
+      font: inherit;
+      font-size: 14px;
+      font-weight: normal;
+      color:  #d1d2d2;
+
+      width: 400px;
+      padding: 18px;
+    }
+
+    input {
+      height: 55px;
+      margin-bottom: 15px;
+    }
+
+    textarea {
+      height: 100px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      border-radius: 3px;
+      background-color:  $third-color;
+      color: #fff;
+      border: 0;
+      padding: 15px 50px;
+      font-weight: bold;
+      float: right;
+    }
+  }
+}
