@@ -1,16 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './components/app';
 import registerServiceWorker from './registerServiceWorker';
 import app from 'ampersand-app';
 import Router from './router';
 import Me from './models/me';
+import Auth from './helpers/auth/auth';
 
 window.app = app;
 
 app.extend({
   init() {
+    this.auth = new Auth();
     this.me = new Me();
     this.me.fetchInitialData()
     this.Router = new Router();
