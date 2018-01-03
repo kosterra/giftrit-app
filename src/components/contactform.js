@@ -7,7 +7,17 @@ export default class ContactForm extends React.Component {
         this.state = { email: "", message: "" };
     }
 
+    handleSubmit = e => {
+        fetch("/", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: this.state
+        })
+            .then(() => alert("Success!"))
+            .catch(error => alert(error));
 
+        e.preventDefault();
+    }
 
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
