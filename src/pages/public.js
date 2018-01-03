@@ -7,7 +7,7 @@ import GiftList from '../components/giftlist'
 export default class PublicPage extends React.Component {
   render() {
     return (
-      <NavHelper className='container'>
+      <NavHelper>
         <Header />
         <GiftList />
         <Footer />
