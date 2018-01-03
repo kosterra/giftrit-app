@@ -30,8 +30,8 @@ export default class ContactForm extends React.Component {
 
                 <form onSubmit={this.handleSubmit}>
 
-                    <input type="email" name="email" value={email} onChange={this.handleChange} placeholder="Email" />
-                    <textarea name="message" value={message} onChange={this.handleChange} placeholder="Mitteilungg" />
+                    <input type="email" name="email" value={email} onChange={this.handleChange} placeholder="E-Mail Adresse" />
+                    <textarea name="message" value={message} onChange={this.handleChange} placeholder="Mitteilung" />
                     <button>Senden</button>
 
                 </form>
