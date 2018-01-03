@@ -6,7 +6,7 @@ const ContactForm = () => (
 
         <p>Kontaktiere uns</p>
 
-        <form action="#" method="post">
+        <form action="https://giftrit-service.herokuapp.com/api/contact" method="POST">
 
             <input type="text" name="email" placeholder="Email" />
             <textarea name="message" placeholder="Mitteilung"></textarea>

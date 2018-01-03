@@ -2,7 +2,7 @@ import React from 'react';
 import ContactForm from './contactform';
 import logo from '../images/logo.svg';
 
-const Header = () => (
+const Footer = () => (
     <footer className="footer-distributed">
 
         <div className="footer-left">
@@ -32,4 +32,4 @@ const Header = () => (
     </footer>
 );
 
-export default Header;
+export default Footer;

@@ -19,5 +19,4 @@ app.extend({
 
 app.init()
 
-// ReactDOM.render(<App />, document.getElementById('content'));
 registerServiceWorker();

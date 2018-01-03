@@ -35,7 +35,4 @@ export default Model.extend({
       // this.repos.fetch()
     }
   },
-
-
-
 });
