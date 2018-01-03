@@ -8,7 +8,7 @@ export default class ContactForm extends React.Component {
     };
 
     handleSubmit = e => {
-        fetch("https://giftrit-service.herokuapp.com/api/contact", {
+        fetch("/", {
             method: "POST",
             headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: encode({ "form-name": "contact", ...this.state })
