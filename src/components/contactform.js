@@ -1,19 +1,43 @@
 import React from 'react';
 import '../stylesheets/components/_contactform.scss';
 
-const ContactForm = () => (
-    <div className="contactform">
+export default class ContactForm extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = { email: "", message: "" };
+    };
 
-        <p>Kontaktiere uns</p>
+    handleSubmit = e => {
+        fetch("https://giftrit-service.herokuapp.com/api/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: encode({ "form-name": "contact", ...this.state })
+        })
+            .then(() => alert("Success!"))
+            .catch(error => alert(error));
 
-        <form action="https://giftrit-service.herokuapp.com/api/contact" method="POST">
+        e.preventDefault();
+    };
 
-            <input type="text" name="email" placeholder="Email" />
-            <textarea name="message" placeholder="Mitteilung"></textarea>
-            <button>Senden</button>
+    handleChange = e => this.setState({ [e.target.name]: e.target.value });
 
-        </form>
-    </div>
-);
+    render() {
+        const { email, message } = this.state;
+        return (
+            <div className="contactform">
+
+                <p>Kontaktiere uns</p>
+
+                <form onSubmit={this.handleSubmit}>
+
+                    <input type="email" name="email" value={email} onChange={this.handleChange} placeholder="Email" />
+                    <textarea name="message" value={message} onChange={this.handleChange} placeholder="Mitteilung" />
+                    <button>Senden</button>
+
+                </form>
+            </div>
+        )
+    };
+}
 
 export default ContactForm;
