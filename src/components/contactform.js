@@ -10,18 +10,36 @@ export default class ContactForm extends React.Component {
     handleSubmit = e => {
         fetch('https://giftrit-service.herokuapp.com/api/contact', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json', 'accept': 'application/json'},
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': 'application/json',
+                'Authorization': 'Bearer ' + localStorage.getItem('access_token')
+            },
             body: JSON.stringify({
                 from: this.state.from,
                 text: this.state.text
             })
-        });
-
-        this.setState({
-            from: "",
-            text: "",
-            type: 'success',
-            message: 'Vielen Dank für deine Kontaktanfrage'
+        }).then(response => {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            return response;
+        }).then(response => {
+            this.setState({
+                from: "",
+                text: "",
+                type: 'success',
+                message: 'Vielen Dank für deine Kontaktanfrage.'
+            });
+            console.log("Message sent successfully! " + response);
+        }).catch(error => {
+            this.setState({
+                from: this.state.from,
+                text: this.state.text,
+                type: 'danger',
+                message: 'Fehler beim Übermitteln der Kontaktanfrage. Bitte versuche es erneut.'
+            });
+            console.log("Failed to send message! " + error.message);
         });
 
         e.preventDefault();
