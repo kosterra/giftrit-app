@@ -15,9 +15,9 @@ const Footer = () => (
             </p>
 
             <p className="footer-links">
-                <a href="#">About Us</a>
+                <a href="https://github.com/ralphkoster/giftrit-app/wiki">About Us</a>
                 <a href="https://github.com/ralphkoster/giftrit-app/wiki">FAQ</a>
-                <a href="#">Impressum</a>
+                <a href="https://github.com/ralphkoster/giftrit-app/wiki">Impressum</a>
             </p>
 
             <p className="footer-company-name">FFHS &copy; 2017</p>

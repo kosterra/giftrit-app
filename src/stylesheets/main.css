@@ -12,6 +12,12 @@ h1 {
   font-size: 3em;
   color: #292c2f; }
 
+h2 {
+  margin: 0;
+  text-transform: none;
+  color: #292c2f;
+  font-size: 2em; }
+
 p {
   font-size: 1em;
   color: #10abbf; }
@@ -23,6 +29,21 @@ a {
   a:hover {
     color: #10abbf;
     text-decoration: none; }
+
+button {
+  background-color: #10abbf;
+  color: #fff;
+  border: none;
+  height: 35px;
+  border-radius: 5px;
+  margin-top: 15px;
+  padding: 0 10px; }
+
+input {
+  height: 45px;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  padding: 10px; }
 
 .header-distributed {
   background-color: #292c2f;
@@ -192,7 +213,8 @@ a {
     border: 0;
     padding: 15px 50px;
     font-weight: bold;
-    float: right; }
+    float: right;
+    height: 48px; }
 
 .login-buttons {
   display: flex;
@@ -211,11 +233,13 @@ a {
         background-color: #3a3c3e;
         padding: 10px 15px;
         border-radius: 3px; }
+    .login-buttons ul .loginbutton {
+      margin-right: 15px; }
 
 .gift-list {
   margin-top: -60px; }
   .gift-list .gift-list-search {
-    background: #e8e6e68c; }
+    background: #f3f1f18c; }
     .gift-list .gift-list-search .gift-list-search-title {
       text-align: center;
       padding-top: 40px;
@@ -231,10 +255,6 @@ a {
       justify-content: center; }
       .gift-list .gift-list-search .search-input input[type=search] {
         width: 80%;
-        height: 45px;
-        border: 1px solid lightgray;
-        border-radius: 6px;
-        padding: 10px;
         margin-left: auto;
         margin-right: auto;
         display: flex; }
@@ -288,3 +308,57 @@ a {
           text-align: left; }
           .gift-list .gift-container .gift-item .gift-info .userinfo .username {
             font-weight: 600; }
+
+.gift-form-container {
+  background-color: #f3f1f18c;
+  padding: 50px;
+  list-style: none;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  display: flex;
+  border-radius: 10px; }
+  .gift-form-container .gift-form {
+    width: 100%; }
+    .gift-form-container .gift-form .gift-form-inputs {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 80px; }
+      .gift-form-container .gift-form .gift-form-inputs .gift-form-images {
+        margin-right: 50px;
+        width: 30%; }
+        .gift-form-container .gift-form .gift-form-inputs .gift-form-images .dropzone div {
+          width: 100% !important;
+          height: 115px !important;
+          border: 2px dashed lightgray !important;
+          text-align: center;
+          padding-top: 45px; }
+      .gift-form-container .gift-form .gift-form-inputs .gift-form-data {
+        width: 100%; }
+        .gift-form-container .gift-form .gift-form-inputs .gift-form-data .gift-title input {
+          width: 80%;
+          height: 40px;
+          margin: 25px 0; }
+        .gift-form-container .gift-form .gift-form-inputs .gift-form-data .gift-amount input {
+          width: 34%;
+          height: 40px;
+          margin: 0 0 5px; }
+        .gift-form-container .gift-form .gift-form-inputs .gift-form-data .gift-amount span {
+          display: block;
+          margin: 5px 0 30px 5px; }
+        .gift-form-container .gift-form .gift-form-inputs .gift-form-data .gift-description textarea {
+          width: 100%;
+          height: 300px;
+          padding: 10px;
+          border: 1px solid lightgray;
+          border-radius: 6px;
+          resize: none; }
+    .gift-form-container .gift-form .gift-form-submit .cancel {
+      background-color: #fff;
+      border: 1px solid #10abbf;
+      color: #10abbf;
+      margin-left: 10px;
+      border-radius: 5px;
+      margin-top: 15px;
+      padding: 9px 45px; }

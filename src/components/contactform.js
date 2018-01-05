@@ -1,6 +1,8 @@
 import React from 'react';
 import '../stylesheets/components/_contactform.scss';
 
+const url = 'https://giftrit-service.herokuapp.com/api/contact';
+
 export default class ContactForm extends React.Component {
     constructor(props) {
         super(props);
@@ -8,7 +10,7 @@ export default class ContactForm extends React.Component {
     }
 
     handleSubmit = e => {
-        fetch('https://giftrit-service.herokuapp.com/api/contact', {
+        fetch(url, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

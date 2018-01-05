@@ -10,6 +10,13 @@ h1 {
   color: $secondary-color;
 }
 
+h2 {
+  margin: 0;
+  text-transform: none;
+  color: $secondary-color;
+  font-size: 2em;
+}
+
 p {
   font-size: 1em;
   color: $primary-color;
@@ -24,4 +31,21 @@ a {
     color: $primary-color;
     text-decoration: none;
   }
+}
+
+button {
+  background-color: #10abbf;
+  color: #fff;
+  border: none;
+  height: 35px;
+  border-radius: 5px;
+  margin-top: 15px;
+  padding: 0 10px;
+}
+
+input {
+  height: 45px;
+  border: 1px solid lightgray;
+  border-radius: 6px;
+  padding: 10px;
 }

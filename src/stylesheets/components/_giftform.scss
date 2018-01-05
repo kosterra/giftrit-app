@@ -1,0 +1,80 @@
+.gift-form-container {
+  background-color: #f3f1f18c;
+  padding: 50px;
+  list-style: none;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  display: flex;
+  border-radius: 10px;
+
+  .gift-form {
+    width: 100%;
+
+    .gift-form-inputs {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 80px;
+
+      .gift-form-images {
+        margin-right: 50px;
+        width: 30%;
+
+        .dropzone div {
+          width: 100% !important;
+          height: 115px !important;
+          border: 2px dashed lightgray !important;
+          text-align: center;
+          padding-top: 45px;
+        }
+      }
+
+      .gift-form-data {
+        width: 100%;
+
+        .gift-title {
+          input {
+            width: 80%;
+            height: 40px;
+            margin: 25px 0;
+          }
+        }
+
+        .gift-amount {
+          input {
+            width: 34%;
+            height: 40px;
+            margin: 0 0 5px;
+          }
+
+          span {
+            display: block;
+            margin: 5px 0 30px 5px;
+          }
+        }
+
+        .gift-description {
+          textarea {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            border: 1px solid lightgray;
+            border-radius: 6px;
+            resize: none;
+          }
+        }
+      }
+    }
+
+    .gift-form-submit .cancel {
+      background-color: #fff;
+      border: 1px solid $primary-color;
+      color: $primary-color;
+      margin-left: 10px;
+      border-radius: 5px;
+      margin-top: 15px;
+      padding: 9px 45px;
+    }
+  }
+}
