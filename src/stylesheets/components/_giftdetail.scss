@@ -1,0 +1,84 @@
+.gift-detail-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f3f1f18c;
+  padding: 50px;
+  border-radius: 10px;
+
+  .gift-detail {
+    .gift-info-donation {
+      display: flex;
+
+      .gift-images {
+        width: 40%;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .gift-donate-form {
+        width: 60%;
+        padding-left: 40px;
+
+        .gift-details {
+          height: 100%;
+          display: flex;
+          flex-flow: row wrap;
+
+          .name {
+            width: 100%;
+          }
+
+          .donation {
+            width: 100%;
+
+            .donate-input {
+              display: block;
+              margin-top: 15px;
+              width: 35%;
+            }
+
+            .donate-button {
+              padding: 0 35px;
+            }
+          }
+
+          .karma {
+            width: 100%;
+            align-self: flex-end;
+            margin-bottom: 10px;
+          }
+        }
+      }
+    }
+
+    .gift-description {
+      min-height: 200px;
+      margin: 40px 4px;
+      font-size: 1.3em;
+    }
+  }
+
+  .gift-user {
+
+    .user-info {
+      display: flex;
+
+      .user-image {
+        width: 8%;
+
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    .user-description {
+      min-height: 80px;
+      margin: 40px 4px 0;
+      font-size: 1.3em;
+    }
+  }
+}

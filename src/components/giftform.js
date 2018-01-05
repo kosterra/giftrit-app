@@ -11,7 +11,7 @@ export default class GiftForm extends React.Component {
         this.state = {
             files: [],
             title:'',
-            amount:0,
+            amount:'',
             description:'',
             created: new Date().toISOString().slice(0,10),
             modified: new Date().toISOString().slice(0,10),

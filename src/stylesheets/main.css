@@ -362,3 +362,52 @@ input {
       border-radius: 5px;
       margin-top: 15px;
       padding: 9px 45px; }
+
+.gift-detail-container {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #f3f1f18c;
+  padding: 50px;
+  border-radius: 10px; }
+  .gift-detail-container .gift-detail .gift-info-donation {
+    display: flex; }
+    .gift-detail-container .gift-detail .gift-info-donation .gift-images {
+      width: 40%; }
+      .gift-detail-container .gift-detail .gift-info-donation .gift-images img {
+        width: 100%; }
+    .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form {
+      width: 60%;
+      padding-left: 40px; }
+      .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details {
+        height: 100%;
+        display: flex;
+        flex-flow: row wrap; }
+        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .name {
+          width: 100%; }
+        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation {
+          width: 100%; }
+          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-input {
+            display: block;
+            margin-top: 15px;
+            width: 35%; }
+          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-button {
+            padding: 0 35px; }
+        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .karma {
+          width: 100%;
+          align-self: flex-end;
+          margin-bottom: 10px; }
+  .gift-detail-container .gift-detail .gift-description {
+    min-height: 200px;
+    margin: 40px 4px;
+    font-size: 1.3em; }
+  .gift-detail-container .gift-user .user-info {
+    display: flex; }
+    .gift-detail-container .gift-user .user-info .user-image {
+      width: 8%; }
+      .gift-detail-container .gift-user .user-info .user-image img {
+        width: 100%; }
+  .gift-detail-container .gift-user .user-description {
+    min-height: 80px;
+    margin: 40px 4px 0;
+    font-size: 1.3em; }
