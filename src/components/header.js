@@ -28,7 +28,7 @@ export default class Header extends React.Component {
                 )
             }
 
-            <a className="discover-button" href={'/'} title="Wünsche entdecken">
+            <a className="discover-button" href='/' title="Wünsche entdecken">
                 <i class="fa fa-globe" aria-hidden="true"></i>
             </a>
 
