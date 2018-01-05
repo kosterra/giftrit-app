@@ -4,6 +4,7 @@ import LoginPage from './pages/login'
 import LogoutPage from './pages/logout'
 import GiftDetailPage from './pages/giftdetail'
 import GiftFormPage from './pages/giftform'
+import UserDashboard from './pages/dashboard'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -18,7 +19,8 @@ export default Router.extend({
     'giftrs': 'giftrs',
     'callback': 'callback',
     'giftdetail':'giftdetail',
-    'giftform':'giftform'
+    'giftform':'giftform',
+    'dashboard':'dashboard'
   },
 
   public() {
@@ -50,5 +52,10 @@ export default Router.extend({
   giftform() {
       ReactDOM.render(<GiftFormPage/>,  document.getElementById('root'));
       console.log("on gift form page");
+  },
+
+  dashboard() {
+      ReactDOM.render(<UserDashboard/>,  document.getElementById('root'));
+      console.log("on user dashboard");
   }
 })

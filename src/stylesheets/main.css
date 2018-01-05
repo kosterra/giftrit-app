@@ -50,7 +50,7 @@ a {
       align-items: center; }
       .header-distributed .header-limiter .header-buttons .dashboard-button, .header-distributed .header-limiter .header-buttons .create-gift-button, .header-distributed .header-limiter .header-buttons .discover-button {
         display: flex;
-        margin-right: 20px; }
+        margin-right: 30px; }
       .header-distributed .header-limiter .header-buttons .create-gift-button {
         height: 45px;
         width: 45px;
@@ -203,7 +203,6 @@ a {
     margin: 0; }
     .login-buttons ul li {
       display: inline-block;
-      margin-left: 15px;
       opacity: 0.9; }
       .login-buttons ul li:hover {
         opacity: 1; }
