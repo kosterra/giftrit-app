@@ -3,44 +3,58 @@ import SearchInput, {createFilter} from 'react-search-input'
 import '../stylesheets/components/_giftlist.scss';
 
 const url = 'https://giftrit-service.herokuapp.com/api/gifts';
-let gifts = [];
-
-fetch(url)
-    .then(res => res.json())
-    .then(data => gifts = data.data);
 
 const KEYS_TO_FILTERS = ['title', 'description'];
 
 export default class GiftList extends React.Component {
     constructor (props) {
-        super(props)
+        super(props);
         this.state = {
-            searchTerm: ''
-        }
+            searchTerm: '',
+            giftItems: [],
+            numberOfGifts: 0
+        };
+
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                this.setState({ giftItems : data.data, numberOfGifts : data.data.length });
+            });
+
         this.searchUpdated = this.searchUpdated.bind(this)
     }
 
     render () {
-        const filteredGifts = gifts.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
+        const filteredGifts = this.state.giftItems.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
 
         let giftContainer = null;
         if (filteredGifts.length > 0) {
             giftContainer = <div className="gift-container">
                 {filteredGifts.map(gift => {
                     return (
-                        <div className="gift-item" key={gift.id}>
-                            <div className="gift-info">
-                                <div className="title">{gift.title}</div>
-                                <div className="description">{gift.description}</div>
+                        <a href={"giftdetail?id=" + gift.id} >
+                            <div className="gift-item" key={gift.id}>
+                                <div className="gift-info">
+                                    <div className="title">{gift.title}</div>
+                                    <div className="description" title={gift.description}>{this.shorten(gift.description, 45)}</div>
+                                    <div className="userinfo">by <span className="username">username</span></div>
+                                </div>
                             </div>
-                        </div>
+                        </a>
                     )
                 })}
             </div>;
         }
+
         return (
             <div className="gift-list">
-                <SearchInput className="search-input" onChange={this.searchUpdated} />
+                <div className="gift-list-search">
+                    <div className="gift-list-search-title">
+                        <h1>Erfülle jetzt einen Wunsch</h1>
+                        <p>{this.state.numberOfGifts} unerfüllte Wünsche entdecken</p>
+                    </div>
+                    <SearchInput className="search-input" onChange={this.searchUpdated} />
+                </div>
                 {giftContainer}
             </div>
         )
@@ -48,5 +62,13 @@ export default class GiftList extends React.Component {
 
     searchUpdated (term) {
         this.setState({searchTerm: term})
+    }
+
+    shorten(text, maxLength) {
+        let ret = text;
+        if (ret.length > maxLength) {
+            ret = ret.substr(0,maxLength-3) + '…';
+        }
+        return ret;
     }
 }

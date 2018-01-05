@@ -8,8 +8,10 @@ const Footer = () => (
         <div className="footer-left">
 
             <p className="footer-company">
-                <img alt="Giftr.it Logo" src={logo} className="logo-img" />
-                <span className="logo-text">Giftr.it</span>
+                <a href='/' >
+                    <img alt="Giftr.it Logo" src={logo} className="logo-img" />
+                    <span className="logo-text">Giftr.it</span>
+                </a>
             </p>
 
             <p className="footer-links">

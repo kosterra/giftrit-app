@@ -1,12 +1,29 @@
+/* lightblue */
+/* black */
+/* black 2*/
+/* gray */
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif; }
 
-/* lightblue */
-/* black */
-/* black 2*/
-/* gray */
+h1 {
+  text-transform: uppercase;
+  font-size: 3em;
+  color: #292c2f; }
+
+p {
+  font-size: 1em;
+  color: #10abbf; }
+
+a {
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer; }
+  a:hover {
+    color: #10abbf;
+    text-decoration: none; }
+
 .header-distributed {
   background-color: #292c2f;
   box-shadow: 0 1px 1px #ccc;
@@ -28,9 +45,25 @@ body {
         font-size: 32px;
         font-weight: 700;
         margin-left: 20px; }
-    .header-distributed .header-limiter a {
-      color: #fff;
-      text-decoration: none; }
+    .header-distributed .header-limiter .header-buttons {
+      display: flex;
+      align-items: center; }
+      .header-distributed .header-limiter .header-buttons .dashboard-button, .header-distributed .header-limiter .header-buttons .create-gift-button, .header-distributed .header-limiter .header-buttons .discover-button {
+        display: flex;
+        margin-right: 20px; }
+      .header-distributed .header-limiter .header-buttons .create-gift-button {
+        height: 45px;
+        width: 45px;
+        background-color: #10abbf;
+        border-radius: 6px; }
+      .header-distributed .header-limiter .header-buttons .dashboard-button i, .header-distributed .header-limiter .header-buttons .create-gift-button i, .header-distributed .header-limiter .header-buttons .discover-button i {
+        font-size: 1.7em;
+        display: flex;
+        align-self: center;
+        margin-left: auto;
+        margin-right: auto;
+        color: #fff;
+        text-decoration: none; }
 
 .footer-distributed {
   background-color: #292c2f;
@@ -53,8 +86,6 @@ body {
     .footer-distributed .footer-links a {
       display: inline-block;
       line-height: 1.8;
-      text-decoration: none;
-      color: inherit;
       margin-right: 2em; }
   .footer-distributed .footer-company-name {
     color: #8f9296;
@@ -67,11 +98,9 @@ body {
       display: inline-block;
       width: 35px;
       height: 35px;
-      cursor: pointer;
       background-color: #1f2022;
       border-radius: 2px;
       font-size: 20px;
-      color: #fff;
       text-align: center;
       line-height: 35px;
       margin-right: 3px;
@@ -80,12 +109,13 @@ body {
     display: inline-flex;
     align-items: center;
     margin-bottom: 40px; }
+    .footer-distributed .footer-company a {
+      display: inline-flex;
+      align-items: center; }
     .footer-distributed .footer-company .logo-img {
       width: 50px; }
     .footer-distributed .footer-company .logo-text {
       font-size: 32px;
-      color: #fff;
-      font-family: inherit;
       margin-left: 18px; }
 
 .footer-distributed ::-webkit-input-placeholder {
@@ -170,8 +200,7 @@ body {
   .login-buttons ul {
     font: 14px Arial, Helvetica, sans-serif;
     list-style: none;
-    line-height: 1;
-    float: right; }
+    margin: 0; }
     .login-buttons ul li {
       display: inline-block;
       margin-left: 15px;
@@ -185,23 +214,31 @@ body {
         border-radius: 3px; }
 
 .gift-list {
-  margin-top: -20px; }
-  .gift-list .search-input {
-    background: #e8e6e68c;
-    height: 220px;
-    margin-top: -60px;
-    display: flex;
-    align-items: center;
-    justify-content: center; }
-    .gift-list .search-input input[type=search] {
-      width: 80%;
-      height: 45px;
-      border: 1px solid lightgray;
-      border-radius: 6px;
-      padding: 10px;
-      margin-left: auto;
-      margin-right: auto;
-      display: flex; }
+  margin-top: -60px; }
+  .gift-list .gift-list-search {
+    background: #e8e6e68c; }
+    .gift-list .gift-list-search .gift-list-search-title {
+      text-align: center;
+      padding-top: 40px;
+      display: block; }
+      .gift-list .gift-list-search .gift-list-search-title p {
+        font-size: 1.7em;
+        padding-top: 15px; }
+    .gift-list .gift-list-search .search-input {
+      height: 220px;
+      margin-top: -60px;
+      display: flex;
+      align-items: center;
+      justify-content: center; }
+      .gift-list .gift-list-search .search-input input[type=search] {
+        width: 80%;
+        height: 45px;
+        border: 1px solid lightgray;
+        border-radius: 6px;
+        padding: 10px;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex; }
   .gift-list .gift-container {
     padding: 0;
     list-style: none;
@@ -215,16 +252,16 @@ body {
     display: -webkit-flex;
     display: flex;
     -webkit-flex-flow: row wrap;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: flex-start;
     flex-wrap: wrap; }
     .gift-list .gift-container .gift-item {
       background-image: url("https://t.rmncdn.com/blog/2015/11/Gift-Wrapping-Guide-1447196647.jpg");
       background-repeat: no-repeat;
-      background-size: 400px 180px;
+      background-size: 400px 220px;
       width: 400px;
-      height: 180px;
-      margin-top: 20px;
+      height: 220px;
+      margin: 10px 10px;
       color: white;
       text-align: center;
       display: flex;
@@ -232,5 +269,23 @@ body {
       .gift-list .gift-container .gift-item .gift-info {
         background-color: rgba(0, 0, 0, 0.35);
         width: 100%;
-        height: 80px;
-        display: flex; }
+        max-height: 120px; }
+        .gift-list .gift-container .gift-item .gift-info .title {
+          text-align: left;
+          font-size: 1.4em;
+          margin-left: 15px;
+          margin-top: 8px;
+          font-weight: 600;
+          margin-bottom: 5px;
+          color: #10abbf; }
+        .gift-list .gift-container .gift-item .gift-info .description {
+          text-align: left;
+          margin: 0 16px 10px;
+          display: flex;
+          align-self: flex-end;
+          font-size: 1.2em; }
+        .gift-list .gift-container .gift-item .gift-info .userinfo {
+          margin: 20px 0 10px 18px;
+          text-align: left; }
+          .gift-list .gift-container .gift-item .gift-info .userinfo .username {
+            font-weight: 600; }

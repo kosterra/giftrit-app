@@ -27,9 +27,33 @@
       }
     }
 
-    a {
-      color: #fff;
-      text-decoration: none;
+    .header-buttons {
+      display: flex;
+      align-items: center;
+
+      .dashboard-button, .create-gift-button, .discover-button {
+        display: flex;
+        margin-right: 20px;
+      }
+
+      .create-gift-button {
+        height: 45px;
+        width: 45px;
+        background-color: $primary-color;
+        border-radius: 6px;
+      }
+
+      .dashboard-button, .create-gift-button, .discover-button {
+        i {
+          font-size: 1.7em;
+          display: flex;
+          align-self: center;
+          margin-left: auto;
+          margin-right: auto;
+          color: #fff;
+          text-decoration: none;
+        }
+      }
     }
   }
 }

@@ -12,20 +12,46 @@ export default class Header extends React.Component {
     <header className="header-distributed">
 
         <div className="header-limiter">
-            <div className="company-logo">
-                <img alt="Giftr.it Logo" src={logo} className="logo-img" />
-                <span className="logo-text">Giftr.it</span>
-            </div>
+            <a href='/' >
+                <div className="company-logo">
+                    <img alt="Giftr.it Logo" src={logo} className="logo-img" />
+                    <span className="logo-text">Giftr.it</span>
+                </div>
+            </a>
+
+            <div className="header-buttons">
             {
-              !isAuthenticated() && (
+                isAuthenticated() && (
+                    <a className="dashboard-button" href={'dashboard'} title="Mein Dashboard">
+                        <i class="fa fa-th" aria-hidden="true"></i>
+                    </a>
+                )
+            }
+
+            <a className="discover-button" href={''} title="Wünsche entdecken">
+                <i class="fa fa-globe" aria-hidden="true"></i>
+            </a>
+
+            {
+                isAuthenticated() && (
+                    <a className="create-gift-button" href={'giftform'} title="Wunsch erfassen" >
+                        <i class="fa fa-plus" aria-hidden="true"></i>
+                    </a>
+                )
+            }
+
+            {
+                !isAuthenticated() && (
                     <LoginButtons />
                 )
             }
+
             {
               isAuthenticated() && (
                     <LogoutButtons />
                 )
             }
+            </div>
         </div>
     </header>
   )};

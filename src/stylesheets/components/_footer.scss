@@ -27,8 +27,6 @@
         a {
             display:inline-block;
             line-height: 1.8;
-            text-decoration: none;
-            color:  inherit;
             margin-right: 2em;
         }
     }
@@ -47,12 +45,10 @@
             display: inline-block;
             width: 35px;
             height: 35px;
-            cursor: pointer;
             background-color:  $third-color;
             border-radius: 2px;
 
             font-size: 20px;
-            color: #fff;
             text-align: center;
             line-height: 35px;
 
@@ -66,14 +62,17 @@
       align-items: center;
       margin-bottom: 40px;
 
+      a {
+        display: inline-flex;
+        align-items: center;
+      }
+
       .logo-img {
         width: 50px;
       }
 
       .logo-text {
         font-size: 32px;
-        color: #fff;
-        font-family: inherit;
         margin-left: 18px;
       }
     }
