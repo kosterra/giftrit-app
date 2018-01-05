@@ -48,9 +48,10 @@ export default class ContactForm extends React.Component {
     handleChange = e => this.setState({ [e.target.name]: e.target.value })
 
     render() {
+        let status = null;
         if (this.state.type && this.state.message) {
             let classString = 'alert alert-' + this.state.type;
-            var status = <div id="status" className={classString} ref="status">
+            status = <div id="status" className={classString} ref="status">
                 {this.state.message}
             </div>;
         }

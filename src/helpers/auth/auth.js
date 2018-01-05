@@ -7,7 +7,7 @@ export default class Auth {
     clientID: 'tOHfuMS83ZQZ5KNk1ENI4RK2PWYVUgAw',
     redirectUri: 'https://giftrit-app.herokuapp.com/callback',
     // redirectUri: 'http://localhost:3000/callback',
-    audience: 'https://innt.eu.auth0.com/userinfo',
+    audience: 'https://innt.eu.auth0.com/api/v2/',
     responseType: 'token id_token',
     scope: 'openid'
   });
