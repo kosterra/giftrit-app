@@ -55,7 +55,7 @@ export default class GiftDetail extends React.Component {
                 <div className="gift-detail">
                     <div className="gift-info-donation">
                         <div className="gift-images">
-                            <img src={this.state.giftItem.imageUrl} alt="the gift"/>
+                            <img src={this.state.giftItem.imageurl} alt="the gift"/>
                         </div>
                         <form className="gift-donate-form">
                             <div className="gift-details">
