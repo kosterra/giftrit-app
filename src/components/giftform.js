@@ -1,4 +1,7 @@
 import React from 'react'
+import Dropzone from 'react-dropzone'
+
+import '../stylesheets/components/_giftform.scss';
 
 import filestack from 'filestack-js';
 
@@ -20,9 +23,15 @@ export default class GiftForm extends React.Component {
             userId: 2,
             karma: 0,
             userKarma: 0,
-            imageUrl: 'https://cdn.filestackcontent.com/01rCYxa5RHyGSczD6t2V',
+            imageUrl: null,
             imageMetadata: null
         }
+    }
+
+    onDrop(files) {
+        this.setState({
+            files: files
+        });
     }
 
     handleSubmit = e => {
@@ -31,7 +40,7 @@ export default class GiftForm extends React.Component {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': 'application/json',
-                'Authorization': 'Bearer ' + JSON.parse(window.localStorage['access_token'])
+                'Authorization': 'Bearer ' + window.localStorage['access_token']
             },
             body: JSON.stringify({
                 title: this.state.title,
@@ -40,14 +49,28 @@ export default class GiftForm extends React.Component {
                 created: this.state.created,
                 modified: this.state.modified,
                 userId: 2,
-                karma: this.state.karma,
-                imageUrl: this.state.imageUrl
+                karma: 0,
+                userKarma: 0
             })
         }).then(response => {
             if (!response.ok) {
                 throw Error(response.statusText);
             }
-            window.app.Router.redirectTo('/');
+            return response;
+        }).then(response => {
+            this.setState({
+                title: '',
+                description: '',
+                amount: '',
+                created: this.state.created,
+                modified: this.state.modified,
+                userId: 0,
+                karma: 0,
+                userKarma: 0,
+                type: 'success',
+                message: 'Thank you for creating a new gift.'
+            });
+            console.log("Gift created successfully! " + response);
         }).catch(error => {
             this.setState({
                 title: this.state.title,
@@ -103,14 +126,25 @@ export default class GiftForm extends React.Component {
         return fsClient.pick(
             {
                 accept: 'image/*',
-                maxSize: 1024 * 1024 * 2
+                maxSize: 1024 * 1024 * 2,
+                transformOptions: {
+                    transformations: {
+                        rotate: true,
+                        circle: true,
+                        monochrome: true,
+                        sepia: true,
+                        crop: {
+                            aspectRatio: 16 / 9,
+                        },
+                    },
+                },
             }
         );
     };
 
     getMetadata = (handle) => {
         fsClient.metadata(handle)
-            .then(metadata => this.setState({ imageMetadata : metadata }))
+            .then(metadata => this.setState({ image;metadata }))
             .catch(err => console.log(err));
     };
 
@@ -126,29 +160,34 @@ export default class GiftForm extends React.Component {
     };
 
     render() {
-        const imageUrl = this.state.imageUrl;
-
         return (
             <div className="gift-form-container">
                 <form className="gift-form" onSubmit={this.handleSubmit}>
                     <div className="gift-form-inputs">
                         <div className="gift-form-images">
-                            <div className="thumbnail">
-                                <img
-                                    className="img-responsive"
-                                    src={imageUrl || 'http://www.85percent.co.uk/wp-content/uploads/2015/08/default-placeholder-1024x1024-570x321.png'}
-                                    alt="the gift"
-                                />
+                            <div className="dropzone">
+                                <Dropzone accept="image/jpeg, image/png"
+                                          onDrop={this.onDrop.bind(this)}>
+                                    {({ isDragActive, isDragReject, acceptedFiles, rejectedFiles }) => {
+                                        if (isDragActive) {
+                                            return "This file is authorized";
+                                        }
+                                        if (isDragReject) {
+                                            return "This file is not authorized";
+                                        }
+                                        return acceptedFiles.length || rejectedFiles.length
+                                            ? `Accepted ${acceptedFiles.length}, rejected ${rejectedFiles.length} files`
+                                            : "Drag images here to visualize your gift";
+                                    }}
+                                </Dropzone>
                             </div>
-                            <div className="text-center">
-                                <button
-                                    type="button"
-                                    className="btn btn-filestack"
-                                    onClick={this.setPicture}
-                                >
-                                    <i className="glyphicon glyphicon-upload" /> Upload
-                                </button>
-                            </div>
+                            <aside>
+                                <ul>
+                                    {
+                                        this.state.files.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
+                                    }
+                                </ul>
+                            </aside>
                         </div>
                         <div className="gift-form-data">
                             <h2>State your wish...</h2>
@@ -157,7 +196,7 @@ export default class GiftForm extends React.Component {
                                 <input type="text" name="title" value={this.state.title} onChange={this.handleChange} placeholder="Enter a name for your gift" required />
                             </div>
                             <div className="gift-amount">
-                                <input type="number" name="amount" min={0} max={10000} value={this.state.amount} onChange={this.handleChange} placeholder="CHF" required />
+                                <input type="number" name="amount" value={this.state.amount} onChange={this.handleChange} placeholder="CHF" required />
                                 <span>Enter the max amount of money you need to get this gift</span>
                             </div>
                             <div className="gift-description">
@@ -165,7 +204,7 @@ export default class GiftForm extends React.Component {
                         </div>
                     </div>
                     <div className="gift-form-submit">
-                        <div className="gift-gkp">This wish requires <span className="karma gkp">{this.state.karma > 0 ? this.state.karma : 0} gkp!</span></div>
+                        <div className="gift-gkp">This wish requires <span className="karma gkp">{this.state.karma} gkp!</span></div>
                         <div className="gift-gkp">After you stated your wish, you will have&nbsp;
                             <span className={"karma " + (100 > 0 ? 'gkp' : 'bkp')}>
                                 {100} {100 > 0 ? 'gkp!' : 'bkp!'}
