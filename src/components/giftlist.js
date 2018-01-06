@@ -35,7 +35,7 @@ export default class GiftList extends React.Component {
                             <div className="gift-item" key={gift.id} style={{backgroundImage: "url(" + gift.imageurl + ")"}} >
                                 <div className="gift-info">
                                     <div className="title">{gift.title}</div>
-                                    <div className="description" title={gift.description}>{GiftList.shorten(gift.description, 45)}</div>
+                                    <div className="description" title={gift.description}>{GiftList.shorten(gift.description, 40)}</div>
                                     <div className="userinfo">by <span className="username">username</span></div>
                                 </div>
                             </div>
