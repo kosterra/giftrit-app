@@ -55,7 +55,7 @@ export default class GiftDetail extends React.Component {
                 <div className="gift-detail">
                     <div className="gift-info-donation">
                         <div className="gift-images">
-                            <img src="https://www.urlaubsguru.de/wp-content/uploads/2016/03/urlaubsguru.de_bahamas-2.jpg" alt="Mountain View"/>
+                            <img src={this.state.giftItem.imageUrl} alt="the gift"/>
                         </div>
                         <form className="gift-donate-form">
                             <div className="gift-details">
@@ -76,7 +76,7 @@ export default class GiftDetail extends React.Component {
                 <div className="gift-user">
                     <div className="user-info">
                         <div className="user-image">
-                            <img src={this.state.giftItem.imageUrl} alt="the gift"/>
+                            <img src="https://cdn.filestackcontent.com/0yoR223ESPujrXJYx1Ae" alt="the profile"/>
                         </div>
                         <div className="user-details">
                             <h3 className="name">{this.state.giftUser.firstname + ' ' + this.state.giftUser.lastname}</h3>
