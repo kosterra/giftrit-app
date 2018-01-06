@@ -76,7 +76,7 @@ export default class GiftDetail extends React.Component {
                 <div className="gift-user">
                     <div className="user-info">
                         <div className="user-image">
-                            <img src="http://www.kodefork.com/static/users/images/user.png" alt="Mountain View"/>
+                            <img src={this.state.giftItem.imageUrl} alt="Mountain View"/>
                         </div>
                         <div className="user-details">
                             <h3 className="name">{this.state.giftUser.firstname + ' ' + this.state.giftUser.lastname}</h3>

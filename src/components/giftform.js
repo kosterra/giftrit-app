@@ -22,7 +22,7 @@ export default class GiftForm extends React.Component {
             userId: 2,
             karma: 0,
             userKarma: 0,
-            imageUrl: 'http://www.85percent.co.uk/wp-content/uploads/2015/08/default-placeholder-1024x1024-570x321.png',
+            imageUrl: 'https://cdn.filestackcontent.com/01rCYxa5RHyGSczD6t2V',
             imageMetadata: null
         }
     }
