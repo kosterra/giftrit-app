@@ -2,7 +2,7 @@ import React from 'react'
 
 import filestack from 'filestack-js';
 
-const fsClient = filestack.init(process.env.FILEPICKER_API_KEY);
+const fsClient = filestack.init('ARg8PICxRfosu5qSBr0lQz');
 
 const url = 'https://giftrit-service.herokuapp.com/api/gifts';
 
