@@ -5,8 +5,7 @@ import '../stylesheets/components/_giftform.scss';
 
 import filestack from 'filestack-js';
 
-/*const fsClient = filestack.init(process.env.FILEPICKER_API_KEY);*/
-const fsClient = filestack.init('ARg8PICxRfosu5qSBr0lQz');
+const fsClient = filestack.init(process.env.FILEPICKER_API_KEY);
 
 const url = 'https://giftrit-service.herokuapp.com/api/gifts';
 
@@ -40,7 +39,7 @@ export default class GiftForm extends React.Component {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': 'application/json',
-                'Authorization': 'Bearer ' + window.localStorage['access_token']
+                'Authorization': 'Bearer ' + JSON.parse(window.localStorage['access_token'])
             },
             body: JSON.stringify({
                 title: this.state.title,
