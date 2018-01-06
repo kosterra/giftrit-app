@@ -1,7 +1,5 @@
 import React from 'react'
 
-import '../stylesheets/components/_giftform.scss';
-
 import filestack from 'filestack-js';
 
 /*const fsClient = filestack.init(process.env.FILEPICKER_API_KEY);*/

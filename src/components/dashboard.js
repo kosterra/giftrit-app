@@ -1,5 +1,4 @@
 import React from 'react'
-import '../stylesheets/components/_dashboard.scss';
 
 const url = 'https://giftrit-service.herokuapp.com/api/gifts';
 
@@ -13,8 +12,20 @@ export default class UserDashboard extends React.Component {
 
     render () {
         return (
-            <div className="user-dashboard">
-                Dies ist das Dashboard wo der Benutzer seine Gifts verwalten kann
+            <div className="dashboard-container">
+                <div className="my-gifts">
+                    <h3>My Gifts</h3>
+                    <div className="gifts-container">
+                        Here are the gifts shown (filterable by status?)
+                    </div>
+                </div>
+
+                <div className="my-donations">
+                    <h3>My Donations</h3>
+                    <div className="donations-container">
+                        Here are the donations shown (in a timeline?)
+                    </div>
+                </div>
             </div>
         )
     }

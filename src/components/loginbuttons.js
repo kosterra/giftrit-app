@@ -1,5 +1,4 @@
 import React from 'react';
-import '../stylesheets/components/_loginbuttons.scss';
 
 const LoginButtons = () => (
     <div className="login-buttons">

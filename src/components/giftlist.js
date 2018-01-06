@@ -1,6 +1,5 @@
 import React from 'react'
 import SearchInput, {createFilter} from 'react-search-input'
-import '../stylesheets/components/_giftlist.scss';
 
 const url = 'https://giftrit-service.herokuapp.com/api/gifts';
 

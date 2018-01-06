@@ -1,5 +1,4 @@
 import React from 'react';
-import '../stylesheets/components/_contactform.scss';
 
 const url = 'https://giftrit-service.herokuapp.com/api/contact';
 
