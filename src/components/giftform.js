@@ -22,7 +22,7 @@ export default class GiftForm extends React.Component {
             userId: 2,
             karma: 0,
             userKarma: 0,
-            imageUrl: null,
+            imageUrl: 'http://www.85percent.co.uk/wp-content/uploads/2015/08/default-placeholder-1024x1024-570x321.png',
             imageMetadata: null
         }
     }
@@ -152,7 +152,7 @@ export default class GiftForm extends React.Component {
                             <div className="thumbnail">
                                 <img
                                     className="img-responsive"
-                                    src={imageUrl || 'http://placehold.it/800x600?text=Upload+a+Photo'}
+                                    src={imageUrl || 'http://www.85percent.co.uk/wp-content/uploads/2015/08/default-placeholder-1024x1024-570x321.png'}
                                     alt="the gift"
                                 />
                             </div>

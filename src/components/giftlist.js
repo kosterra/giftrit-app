@@ -25,7 +25,7 @@ export default class GiftList extends React.Component {
     }
 
     render () {
-        const filteredGifts = this.state.giftItems.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS))
+        const filteredGifts = this.state.giftItems.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
 
         let giftContainer = null;
         if (filteredGifts.length > 0) {
@@ -33,10 +33,10 @@ export default class GiftList extends React.Component {
                 {filteredGifts.map(gift => {
                     return (
                         <a href={"giftdetail/" + gift.id} >
-                            <div className="gift-item" key={gift.id}>
+                            <div className="gift-item" key={gift.id} style={{backgroundImage: "url(" + gift.imageurl + ")"}} >
                                 <div className="gift-info">
                                     <div className="title">{gift.title}</div>
-                                    <div className="description" title={gift.description}>{this.shorten(gift.description, 45)}</div>
+                                    <div className="description" title={gift.description}>{GiftList.shorten(gift.description, 45)}</div>
                                     <div className="userinfo">by <span className="username">username</span></div>
                                 </div>
                             </div>
@@ -64,7 +64,7 @@ export default class GiftList extends React.Component {
         this.setState({searchTerm: term})
     }
 
-    shorten(text, maxLength) {
+    static shorten(text, maxLength) {
         let ret = text;
         if (ret.length > maxLength) {
             ret = ret.substr(0,maxLength-3) + '…';
