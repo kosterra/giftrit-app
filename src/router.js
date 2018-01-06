@@ -18,7 +18,7 @@ export default Router.extend({
     'logout':'logout',
     'giftrs': 'giftrs',
     'callback': 'callback',
-    'giftdetail':'giftdetail',
+    'giftdetail/:id':'giftdetail',
     'giftform':'giftform',
     'dashboard':'dashboard'
   },
@@ -44,9 +44,9 @@ export default Router.extend({
     console.log("on login page");
   },
 
-  giftdetail() {
-      ReactDOM.render(<GiftDetailPage/>,  document.getElementById('root'));
-      console.log("on gift detail page");
+  giftdetail: function (id) {
+    ReactDOM.render(<GiftDetailPage giftId={id}/>,  document.getElementById('root'));
+    console.log("on gift detail page");
   },
 
   giftform() {

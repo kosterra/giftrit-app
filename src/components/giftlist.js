@@ -32,7 +32,7 @@ export default class GiftList extends React.Component {
             giftContainer = <div className="gift-container">
                 {filteredGifts.map(gift => {
                     return (
-                        <a href={"giftdetail?id=" + gift.id} >
+                        <a href={"giftdetail/" + gift.id} >
                             <div className="gift-item" key={gift.id}>
                                 <div className="gift-info">
                                     <div className="title">{gift.title}</div>

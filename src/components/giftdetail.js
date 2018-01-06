@@ -1,13 +1,52 @@
 import React from 'react'
 
-const url = 'https://giftrit-service.herokuapp.com/api/gifts';
+const url = 'https://giftrit-service.herokuapp.com/api/gifts/';
 
 export default class GiftDetail extends React.Component {
     constructor (props) {
         super(props);
+
+        let giftId = this.props.giftId;
+
         this.state = {
-            giftItem: ''
+            giftItem: '',
+            giftUser: '',
+            donation: '',
+            karmapoints: 0
         };
+
+        fetch(url + giftId)
+            .then(res => res.json())
+            .then(data => {
+                this.setState({ giftItem : data.data, giftUser : data.data.user });
+            });
+    }
+
+    handleChange = e => {
+        this.calculateKarma(e.target.value);
+
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    };
+
+    calculateKarma(amount) {
+        fetch('https://giftrit-service.herokuapp.com/api/karmas')
+            .then(res => res.json())
+            .then(data => {
+                let karmapoints = 0;
+                let karmas = data.data;
+
+                for (let i = 0; i < karmas.length; i++) {
+                    let karma = karmas[i];
+
+                    if (parseInt(karma.amount) <= amount) {
+                        karmapoints = karma.karmapoints;
+                    }
+                }
+
+                this.setState({ karmapoints : karmapoints });
+            });
     }
 
     render () {
@@ -20,18 +59,18 @@ export default class GiftDetail extends React.Component {
                         </div>
                         <form className="gift-donate-form">
                             <div className="gift-details">
-                                <h2 className="name">Ferien auf den Bahamas</h2>
+                                <h2 className="name">{this.state.giftItem.title}</h2>
                                 <div className="donation">
                                     <span>Donate now</span>
-                                    <input className="donate-input" type="number" placeholder="CHF"/>
+                                    <input type="number" name="donation" value={this.state.donation} onChange={this.handleChange} className="donate-input" placeholder="CHF"/>
                                     <button className="donate-button">Giftr it!</button>
                                 </div>
-                                <div className="karma">This gift will earn you <span className="karma gkp">150 gkp!</span></div>
+                                <div className="karma">This gift will earn you <span className="karma gkp">{this.state.karmapoints} gkp!</span></div>
                             </div>
                         </form>
                     </div>
                     <div className="gift-description">
-                        This is the gift description
+                        {this.state.giftItem.description}
                     </div>
                 </div>
                 <div className="gift-user">
@@ -40,16 +79,18 @@ export default class GiftDetail extends React.Component {
                             <img src="http://www.kodefork.com/static/users/images/user.png" alt="Mountain View"/>
                         </div>
                         <div className="user-details">
-                            <h3 className="name">Samuel Eggenberger</h3>
+                            <h3 className="name">{this.state.giftUser.firstname + ' ' + this.state.giftUser.lastname}</h3>
                             <div className="karma-history" >
-                                <div className="karma bkp">250 bkp!</div>
+                                <div className={"karma " + (this.state.giftUser.karma > 0 ? 'gkp' : 'bkp')}>
+                                    {this.state.giftUser.karma} {this.state.giftUser.karma > 0 ? 'gkp!' : 'bkp!'}
+                                </div>
 
                                 <div className="gift-history">Show gift history</div>
                             </div>
                         </div>
                     </div>
                     <div className="user-description">
-                        This is the user description
+                        {this.state.giftUser.description}
                     </div>
                 </div>
             </div>

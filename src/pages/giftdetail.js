@@ -9,7 +9,7 @@ export default class GiftDetailPage extends React.Component {
         return (
             <NavHelper>
                 <Header />
-                <GiftDetail />
+                <GiftDetail giftId={this.props.giftId} />
                 <Footer />
             </NavHelper>
         )
