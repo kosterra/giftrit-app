@@ -292,7 +292,8 @@ input {
     flex-wrap: wrap; }
     .gift-list .gift-container .gift-item {
       background-repeat: no-repeat;
-      background-size: 400px 220px;
+      background-size: cover;
+      border: 1px solid lightgray;
       width: 400px;
       height: 220px;
       margin: 10px 10px;
