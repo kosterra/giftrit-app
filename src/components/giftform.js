@@ -36,8 +36,8 @@ export default class GiftForm extends React.Component {
                 'Authorization': 'Bearer ' + JSON.parse(window.localStorage['access_token'])
             },
             body: JSON.stringify({
-                title: this.state.title,
-                description: this.state.description,
+                title: this.jsonEscape(this.state.title),
+                description: this.jsonEscape(this.state.description),
                 amount: this.state.amount,
                 created: this.state.created,
                 modified: this.state.modified,
@@ -49,21 +49,7 @@ export default class GiftForm extends React.Component {
             if (!response.ok) {
                 throw Error(response.statusText);
             }
-            return response;
-        }).then(response => {
-            this.setState({
-                title: '',
-                description: '',
-                amount: '',
-                created: this.state.created,
-                modified: this.state.modified,
-                userId: 0,
-                karma: 0,
-                userKarma: 0,
-                type: 'success',
-                message: 'Thank you for creating a new gift.'
-            });
-            console.log("Gift created successfully! " + response);
+            window.app.Router.redirectTo('/');
         }).catch(error => {
             this.setState({
                 title: this.state.title,
@@ -110,6 +96,10 @@ export default class GiftForm extends React.Component {
 
                 this.setState({ karma : karma, userKarma : userKarma });
             });
+    }
+
+    jsonEscape(str)  {
+        return str.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
     }
 
     /*
