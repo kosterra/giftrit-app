@@ -18,6 +18,12 @@ h2 {
   color: #292c2f;
   font-size: 2em; }
 
+h3 {
+  margin: 0;
+  text-transform: none;
+  color: #292c2f;
+  font-size: 1.6em; }
+
 p {
   font-size: 1em;
   color: #10abbf; }
@@ -44,6 +50,16 @@ input {
   border: 1px solid lightgray;
   border-radius: 6px;
   padding: 10px; }
+
+.karma.bkp {
+  color: #ce0000;
+  font-size: 1.1em;
+  font-weight: 600; }
+
+.karma.gkp {
+  color: #04c304;
+  font-size: 1.1em;
+  font-weight: 600; }
 
 .header-distributed {
   background-color: #292c2f;
@@ -407,6 +423,20 @@ input {
       width: 8%; }
       .gift-detail-container .gift-user .user-info .user-image img {
         width: 100%; }
+    .gift-detail-container .gift-user .user-info .user-details {
+      display: flex;
+      flex-flow: row wrap;
+      margin-left: 15px; }
+      .gift-detail-container .gift-user .user-info .user-details h3 {
+        width: 100%;
+        margin-top: 5px; }
+      .gift-detail-container .gift-user .user-info .user-details .karma-history {
+        align-self: flex-end;
+        margin-bottom: 5px; }
+        .gift-detail-container .gift-user .user-info .user-details .karma-history .gift-history {
+          font-size: 0.9em;
+          text-decoration: underline;
+          margin-top: 3px; }
   .gift-detail-container .gift-user .user-description {
     min-height: 80px;
     margin: 40px 4px 0;

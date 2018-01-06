@@ -22,19 +22,19 @@ export default class Header extends React.Component {
             <div className="header-buttons">
             {
                 isAuthenticated() && (
-                    <a className="dashboard-button" href={'dashboard'} title="Mein Dashboard">
+                    <a className="dashboard-button" href={'dashboard'} title="My Dashboard">
                         <i className="fa fa-th" aria-hidden="true"></i>
                     </a>
                 )
             }
 
-            <a className="discover-button" href='/' title="Wünsche entdecken">
+            <a className="discover-button" href='/' title="Discover the gifts">
                 <i className="fa fa-globe" aria-hidden="true"></i>
             </a>
 
             {
                 isAuthenticated() && (
-                    <a className="create-gift-button" href={'giftform'} title="Wunsch erfassen" >
+                    <a className="create-gift-button" href={'giftform'} title="Create a new gift" >
                         <i className="fa fa-plus" aria-hidden="true"></i>
                     </a>
                 )

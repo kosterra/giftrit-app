@@ -50,8 +50,8 @@ export default class GiftList extends React.Component {
             <div className="gift-list">
                 <div className="gift-list-search">
                     <div className="gift-list-search-title">
-                        <h1>Erfülle jetzt einen Wunsch</h1>
-                        <p>{this.state.numberOfGifts} unerfüllte Wünsche entdecken</p>
+                        <h1>Discover the gifts</h1>
+                        <p>{this.state.numberOfGifts} gifts to discover</p>
                     </div>
                     <SearchInput className="search-input" onChange={this.searchUpdated} />
                 </div>

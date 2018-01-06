@@ -1,5 +1,4 @@
 import React from 'react'
-import '../stylesheets/components/_giftdetail.scss';
 
 const url = 'https://giftrit-service.herokuapp.com/api/gifts';
 
@@ -24,10 +23,10 @@ export default class GiftDetail extends React.Component {
                                 <h2 className="name">Ferien auf den Bahamas</h2>
                                 <div className="donation">
                                     <span>Donate now</span>
-                                    <input className="donate-input" type="text" placeholder="CHF"/>
+                                    <input className="donate-input" type="number" placeholder="CHF"/>
                                     <button className="donate-button">Giftr it!</button>
                                 </div>
-                                <div className="karma">This gift will earn you <span>150 gkp!</span></div>
+                                <div className="karma">This gift will earn you <span className="karma gkp">150 gkp!</span></div>
                             </div>
                         </form>
                     </div>
@@ -41,10 +40,12 @@ export default class GiftDetail extends React.Component {
                             <img src="http://www.kodefork.com/static/users/images/user.png" alt="Mountain View"/>
                         </div>
                         <div className="user-details">
-                            <div className="username">Samuel Eggenberger</div>
-                            <div className="karma">250 bkp</div>
+                            <h3 className="name">Samuel Eggenberger</h3>
+                            <div className="karma-history" >
+                                <div className="karma bkp">250 bkp!</div>
 
-                            <div className="gift-history">Show gift history</div>
+                                <div className="gift-history">Show gift history</div>
+                            </div>
                         </div>
                     </div>
                     <div className="user-description">

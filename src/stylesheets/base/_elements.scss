@@ -17,6 +17,13 @@ h2 {
   font-size: 2em;
 }
 
+h3 {
+  margin: 0;
+  text-transform: none;
+  color: $secondary-color;
+  font-size: 1.6em;
+}
+
 p {
   font-size: 1em;
   color: $primary-color;

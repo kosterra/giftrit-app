@@ -31,7 +31,7 @@ export default class ContactForm extends React.Component {
                 from: "",
                 text: "",
                 type: 'success',
-                message: 'Vielen Dank für deine Kontaktanfrage.'
+                message: 'Thank you for the contact message.'
             });
             console.log("Message sent successfully! " + response);
         }).catch(error => {
@@ -39,7 +39,7 @@ export default class ContactForm extends React.Component {
                 from: this.state.from,
                 text: this.state.text,
                 type: 'danger',
-                message: 'Fehler beim Übermitteln der Kontaktanfrage. Bitte versuche es erneut.'
+                message: 'Failed to send contact message. Please try again.'
             });
             console.log("Failed to send message! " + error.message);
         });
@@ -63,13 +63,13 @@ export default class ContactForm extends React.Component {
 
                 {status}
 
-                <p>Kontaktiere uns</p>
+                <p>Contact us</p>
 
                 <form id="contactform" onSubmit={this.handleSubmit}>
 
                     <input type="email" name="from" value={this.state.from} onChange={this.handleChange} placeholder="E-Mail" />
-                    <textarea name="text" value={this.state.text} onChange={this.handleChange} placeholder="Mitteilung" />
-                    <button>Senden</button>
+                    <textarea name="text" value={this.state.text} onChange={this.handleChange} placeholder="Message" />
+                    <button>Send</button>
 
                 </form>
             </div>

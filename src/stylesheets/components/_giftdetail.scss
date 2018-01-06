@@ -73,6 +73,28 @@
           width: 100%;
         }
       }
+
+      .user-details {
+        display: flex;
+        flex-flow: row wrap;
+        margin-left: 15px;
+
+        h3 {
+          width: 100%;
+          margin-top: 5px;
+        }
+
+        .karma-history {
+          align-self: flex-end;
+          margin-bottom: 5px;
+
+          .gift-history {
+            font-size: 0.9em;
+            text-decoration: underline;
+            margin-top: 3px;
+          }
+        }
+      }
     }
 
     .user-description {
