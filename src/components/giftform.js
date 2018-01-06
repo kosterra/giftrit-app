@@ -30,7 +30,7 @@ export default class GiftForm extends React.Component {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': 'application/json',
-                'Authorization': 'Bearer ' + JSON.parse(window.localStorage['access_token'])
+                'Authorization': 'Bearer ' + window.localStorage['access_token']
             },
             body: JSON.stringify({
                 title: this.jsonEscape(this.state.title),
