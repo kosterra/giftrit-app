@@ -14,7 +14,7 @@ export default class ContactForm extends React.Component {
             headers: {
                 'Content-Type': 'application/json',
                 'accept': 'application/json',
-                'Authorization': 'Bearer ' + JSON.parse(window.localStorage['access_token'])
+                'Authorization': 'Bearer ' + window.localStorage['access_token']
             },
             body: JSON.stringify({
                 from: this.state.from,
