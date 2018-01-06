@@ -9,6 +9,7 @@
     "auth0-js": "^9.0.2",
     "bootstrap": "^3.3.7",
     "curlrequest": "^1.0.1",
+    "filestack-js": "^0.10.1",
     "link": "^0.1.5",
     "local-links": "^1.4.1",
     "material-ui": "^0.20.0",
