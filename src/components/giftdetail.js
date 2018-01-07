@@ -13,7 +13,8 @@ export default class GiftDetail extends React.Component {
             giftItem: '',
             giftUser: '',
             donation: '',
-            karmapoints: 0
+            karmapoints: 0,
+			created: new Date().toISOString().slice(0,10)
         };
 
         fetch(url + giftId)
