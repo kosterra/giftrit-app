@@ -96,7 +96,7 @@ export default class GiftDetail extends React.Component {
                         <form className="gift-donate-form" onSubmit={this.handleSubmit}>
                             <div className="gift-details">
                                 <h2 className="name">{this.state.giftItem.title}</h2>
-								<div className="donated-amount">Donated so far {this.state.donatedamount} CHF</div>
+								<div className="donated-amount">Donated so far {this.state.giftItem.donatedamount} CHF</div>
                                 <div className="donation">
                                     <span>Donate now</span>
                                     <input type="number" name="donation" value={this.state.donation} onChange={this.handleChange} className="donate-input" placeholder="CHF"/>
