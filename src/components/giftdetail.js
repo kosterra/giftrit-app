@@ -21,6 +21,40 @@ export default class GiftDetail extends React.Component {
                 this.setState({ giftItem : data.data, giftUser : data.data.user });
             });
     }
+	
+	handleSubmit = e => {
+        fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'accept': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage['access_token']
+            },
+            body: JSON.stringify({
+                giftId: this.jsonEscape(this.state.giftItem.id),                
+                amount: this.state.amount,
+                created: this.state.created,                
+                userId: 2
+            })
+        }).then(response => {
+            if (!response.ok) {
+                throw Error(response.statusText);
+            }
+            window.app.Router.redirectTo('/');
+        }).catch(error => {
+            this.setState({
+                giftId: this.jsonEscape(this.state.giftItem.id),                
+                amount: this.state.amount,
+                created: this.state.created,                
+                userId: 2,
+                type: 'danger',
+                message: 'Failed to donate. Please try again or contact us via contact form.'
+            });
+            console.log("Failed to donate! " + error.message);
+        });
+
+        e.preventDefault();
+    };
 
     handleChange = e => {
         this.calculateKarma(e.target.value);
@@ -57,7 +91,7 @@ export default class GiftDetail extends React.Component {
                         <div className="gift-images">
                             <img src={this.state.giftItem.imageurl} alt="the gift"/>
                         </div>
-                        <form className="gift-donate-form">
+                        <form className="gift-donate-form" onSubmit={this.handleSubmit}>
                             <div className="gift-details">
                                 <h2 className="name">{this.state.giftItem.title}</h2>
 								<div className="donated-amount">Donated so far {this.state.donatedAmount} CHF</div>
