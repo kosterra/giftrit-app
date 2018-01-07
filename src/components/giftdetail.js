@@ -1,6 +1,7 @@
 import React from 'react'
 
 const url = 'https://giftrit-service.herokuapp.com/api/gifts/';
+const donationUrl = 'https://giftrit-service.herokuapp.com/api/donations/';
 
 export default class GiftDetail extends React.Component {
     constructor (props) {
@@ -23,7 +24,7 @@ export default class GiftDetail extends React.Component {
     }
 	
 	handleSubmit = e => {
-        fetch(url, {
+        fetch(donationUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
