@@ -22,7 +22,7 @@ export default class Header extends React.Component {
             <div className="header-buttons">
             {
                 isAuthenticated() && (
-                    <a className="dashboard-button" href={'dashboard'} title="My Dashboard">
+                    <a className="dashboard-button" href='/dashboard' title="My Dashboard">
                         <i className="fa fa-th" aria-hidden="true"></i>
                     </a>
                 )
@@ -34,7 +34,7 @@ export default class Header extends React.Component {
 
             {
                 isAuthenticated() && (
-                    <a className="create-gift-button" href={'giftform'} title="Create a new gift" >
+                    <a className="create-gift-button" href='/giftform' title="Create a new gift" >
                         <i className="fa fa-plus" aria-hidden="true"></i>
                     </a>
                 )
@@ -47,7 +47,7 @@ export default class Header extends React.Component {
             }
 
             {
-              isAuthenticated() && (
+				isAuthenticated() && (
                     <LogoutButtons />
                 )
             }
