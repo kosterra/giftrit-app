@@ -35,7 +35,7 @@ export default class GiftDetail extends React.Component {
             },
             body: JSON.stringify({
                 giftId: this.state.giftItem.id,
-                amount: this.state.amount,
+                amount: this.state.donation,
                 created: this.state.created,
                 userId: 2, //TODO change when user-id is available -> this.state.giftUser.id
 				karma: 0 //TODO why?? which value?? 
@@ -48,7 +48,7 @@ export default class GiftDetail extends React.Component {
         }).catch(error => {
             this.setState({
                 giftId: this.state.giftItem.id,
-                amount: this.state.amount,
+                amount: this.state.donation,
                 created: this.state.created,
                 userId: 2, //TODO change when user-id is available -> this.state.giftUser.id,
 				karma: 0, //TODO why?? which value?? 
