@@ -85,7 +85,7 @@ export default class GiftForm extends React.Component {
                 for (let i = 0; i < karmas.length; i++) {
                     let karmaObj = karmas[i];
 
-                    if (parseInt(karmaObj.amount) <= amount) {
+                    if (parseInt(karmaObj.amount, 0) <= amount) {
                         karma = karmaObj.karmapoints;
                         userKarma = (userKarma - karmaObj.karmapoints);
                     }
