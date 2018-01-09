@@ -34,9 +34,9 @@ export default class GiftDetail extends React.Component {
                 'Authorization': 'Bearer ' + window.localStorage['access_token']
             },
             body: JSON.stringify({
-                giftId: this.jsonEscape(this.state.giftItem.id),                
+                giftId: this.state.giftItem.id,
                 amount: this.state.amount,
-                created: this.state.created,                
+                created: this.state.created,
                 userId: 2 //TODO change when user-id is available -> this.state.giftUser.id
             })
         }).then(response => {
@@ -46,9 +46,9 @@ export default class GiftDetail extends React.Component {
             window.app.Router.redirectTo('/');
         }).catch(error => {
             this.setState({
-                giftId: this.jsonEscape(this.state.giftItem.id),                
+                giftId: this.state.giftItem.id,
                 amount: this.state.amount,
-                created: this.state.created,                
+                created: this.state.created,
                 userId: 2, //TODO change when user-id is available -> this.state.giftUser.id,
                 type: 'danger',
                 message: 'Failed to donate. Please try again or contact us via contact form.'
