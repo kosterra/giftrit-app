@@ -88,7 +88,7 @@ export default class GiftDetail extends React.Component {
 
     render () {
 		let donatedAmount = (this.state != null && this.state.giftItem != null && this.state.giftItem.donatedamount != null) ? this.state.giftItem.donatedamount.toFixed(2) : '0.00';
-		let isLoggedIn = (this.state != null && this.state.user != null) ? true : false;
+		const { isAuthenticated } = window.app.auth;
         return (
             <div className="gift-detail-container">
                 <div className="gift-detail">
@@ -104,10 +104,10 @@ export default class GiftDetail extends React.Component {
                                     <span>Donate now</span>
                                     <input type="number" name="donation" value={this.state.donation} onChange={this.handleChange} className="donate-input" placeholder="CHF"/>
 									{
-										isLoggedIn && <button className="donate-button">Giftr it!</button>
+										isAuthenticated() && <button className="donate-button">Giftr it!</button>
 									}
 									{
-										!isLoggedIn && <a href="/login" className="login-link">Login to donate</a>
+										!isAuthenticated() && <a href="/login" className="login-button">Login to donate</a>
 									}                                    
                                 </div>
                                 <div className="karma">This gift will earn you <span className="karma gkp">{this.state.karmapoints} gkp!</span></div>
