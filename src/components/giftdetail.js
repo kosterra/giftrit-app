@@ -1,6 +1,6 @@
 import React from 'react'
 
-const url = 'https://giftrit-service.herokuapp.com/api/gifts/';
+const giftUrl = 'https://giftrit-service.herokuapp.com/api/gifts/';
 const donationUrl = 'https://giftrit-service.herokuapp.com/api/donations/';
 
 export default class GiftDetail extends React.Component {
@@ -14,10 +14,11 @@ export default class GiftDetail extends React.Component {
             giftUser: '',
             donation: '',
             karmapoints: 0,
+			user: null,
 			created: new Date().toISOString().slice(0,10)
         };
 
-        fetch(url + giftId)
+        fetch(giftUrl + giftId)
             .then(res => res.json())
             .then(data => {
                 this.setState({ giftItem : data.data, giftUser : data.data.user });
@@ -36,7 +37,7 @@ export default class GiftDetail extends React.Component {
                 giftId: this.jsonEscape(this.state.giftItem.id),                
                 amount: this.state.amount,
                 created: this.state.created,                
-                userId: 2
+                userId: 2 //TODO change when user-id is available -> this.state.giftUser.id
             })
         }).then(response => {
             if (!response.ok) {
@@ -48,7 +49,7 @@ export default class GiftDetail extends React.Component {
                 giftId: this.jsonEscape(this.state.giftItem.id),                
                 amount: this.state.amount,
                 created: this.state.created,                
-                userId: 2,
+                userId: 2, //TODO change when user-id is available -> this.state.giftUser.id,
                 type: 'danger',
                 message: 'Failed to donate. Please try again or contact us via contact form.'
             });
@@ -76,7 +77,7 @@ export default class GiftDetail extends React.Component {
                 for (let i = 0; i < karmas.length; i++) {
                     let karma = karmas[i];
 
-                    if (parseInt(karma.amount) <= amount) {
+                    if (parseInt(karma.amount, 0) <= amount) {
                         karmapoints = karma.karmapoints;
                     }
                 }
@@ -86,6 +87,8 @@ export default class GiftDetail extends React.Component {
     }
 
     render () {
+		let donatedAmount = (this.state != null && this.state.giftItem != null && this.state.giftItem.donatedamount != null) ? this.state.giftItem.donatedamount.toFixed(2) : '0.00';
+		let isLoggedIn = (this.state != null && this.state.user != null) ? true : false;
         return (
             <div className="gift-detail-container">
                 <div className="gift-detail">
@@ -96,11 +99,16 @@ export default class GiftDetail extends React.Component {
                         <form className="gift-donate-form" onSubmit={this.handleSubmit}>
                             <div className="gift-details">
                                 <h2 className="name">{this.state.giftItem.title}</h2>
-								<div className="donated-amount">Donated so far {this.state.giftItem.donatedamount} CHF</div>
+								<div className="donated-amount">Donated so far {donatedAmount} CHF</div>
                                 <div className="donation">
                                     <span>Donate now</span>
                                     <input type="number" name="donation" value={this.state.donation} onChange={this.handleChange} className="donate-input" placeholder="CHF"/>
-                                    <button className="donate-button">Giftr it!</button>
+									{
+										isLoggedIn && <button className="donate-button">Giftr it!</button>
+									}
+									{
+										!isLoggedIn && <a href="/login" className="login-link">Login to donate</a>
+									}                                    
                                 </div>
                                 <div className="karma">This gift will earn you <span className="karma gkp">{this.state.karmapoints} gkp!</span></div>
                             </div>
