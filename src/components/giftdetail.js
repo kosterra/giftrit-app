@@ -37,7 +37,8 @@ export default class GiftDetail extends React.Component {
                 giftId: this.state.giftItem.id,
                 amount: this.state.amount,
                 created: this.state.created,
-                userId: 2 //TODO change when user-id is available -> this.state.giftUser.id
+                userId: 2, //TODO change when user-id is available -> this.state.giftUser.id
+				karma: 0 //TODO why?? which value?? 
             })
         }).then(response => {
             if (!response.ok) {
@@ -50,6 +51,7 @@ export default class GiftDetail extends React.Component {
                 amount: this.state.amount,
                 created: this.state.created,
                 userId: 2, //TODO change when user-id is available -> this.state.giftUser.id,
+				karma: 0, //TODO why?? which value?? 
                 type: 'danger',
                 message: 'Failed to donate. Please try again or contact us via contact form.'
             });
