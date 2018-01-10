@@ -2,6 +2,7 @@ import React from 'react'
 
 const giftUrl = 'https://giftrit-service.herokuapp.com/api/gifts/';
 const donationUrl = 'https://giftrit-service.herokuapp.com/api/donations/';
+const userUrl = 'https://giftrit-service.herokuapp.com/api/users/';
 
 export default class GiftDetail extends React.Component {
     constructor (props) {
@@ -13,6 +14,7 @@ export default class GiftDetail extends React.Component {
             giftItem: '',
             giftUser: '',
             donation: '',
+			donationResult: '';
             karmapoints: 0,
 			user: null,
 			created: new Date().toISOString().slice(0,10)
@@ -23,6 +25,13 @@ export default class GiftDetail extends React.Component {
             .then(data => {
                 this.setState({ giftItem : data.data, giftUser : data.data.user });
             });
+		
+		//TODO enable when user-accounts are available
+		/*fetch(userUrl + window.localStorage['id_token'])
+            .then(res => res.json())
+            .then(data => {
+                this.setState({ user : data.data });
+            });*/
     }
 	
 	handleSubmit = e => {
@@ -37,21 +46,22 @@ export default class GiftDetail extends React.Component {
                 giftId: this.state.giftItem.id,
                 amount: this.state.donation,
                 created: this.state.created,
-                userId: 2, //TODO change when user-id is available -> this.state.giftUser.id
-				karma: 0 //TODO why?? which value?? 
+                userId: 2, //TODO change when user-id is available -> this.state.user.id
+				karma: this.calculateKarma(this.state.donation) //TODO why?? which value?? 
             })
         }).then(response => {
             if (!response.ok) {
                 throw Error(response.statusText);
-            }
-            window.app.Router.redirectTo('/');
+            }			
+			this.state.donationResult = 'Donation sent successfully. Thank you!';
+            //window.app.Router.redirectTo('/');
         }).catch(error => {
             this.setState({
                 giftId: this.state.giftItem.id,
                 amount: this.state.donation,
                 created: this.state.created,
-                userId: 2, //TODO change when user-id is available -> this.state.giftUser.id,
-				karma: 0, //TODO why?? which value?? 
+                userId: 2, //TODO change when user-id is available -> this.state.user.id,
+				karma: this.calculateKarma(this.state.donation), //TODO why?? which value?? 
                 type: 'danger',
                 message: 'Failed to donate. Please try again or contact us via contact form.'
             });
@@ -111,7 +121,8 @@ export default class GiftDetail extends React.Component {
 									{
 										!isAuthenticated() && <a href="/login" className="login-button">Login to donate</a>
 									}                                    
-                                </div>
+									<div className="result">{this.state.donationResult}</div>
+                                </div>								
                                 <div className="karma">This gift will earn you <span className="karma gkp">{this.state.karmapoints} gkp!</span></div>
                             </div>
                         </form>
