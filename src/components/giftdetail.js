@@ -14,7 +14,7 @@ export default class GiftDetail extends React.Component {
             giftItem: '',
             giftUser: '',
             donation: '',
-			donationResult: '';
+			donationResult: '',
             karmapoints: 0,
 			user: null,
 			created: new Date().toISOString().slice(0,10)
