@@ -401,6 +401,8 @@ input {
         flex-flow: row wrap; }
         .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .name {
           width: 100%; }
+        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount {
+          width: 100%; }
         .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation {
           width: 100%; }
           .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-input {
@@ -409,6 +411,14 @@ input {
             width: 35%; }
           .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-button {
             padding: 0 35px; }
+          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .login-button {
+            background-color: #10abbf;
+            color: #fff;
+            border: none;
+            height: 35px;
+            border-radius: 5px;
+            margin-top: 15px;
+            padding: 0 10px; }
         .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .karma {
           width: 100%;
           align-self: flex-end;
