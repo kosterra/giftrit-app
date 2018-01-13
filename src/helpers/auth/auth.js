@@ -5,8 +5,8 @@ export default class Auth {
   auth0 = new auth0.WebAuth({
     domain: 'innt.eu.auth0.com',
     clientID: 'tOHfuMS83ZQZ5KNk1ENI4RK2PWYVUgAw',
-    redirectUri: 'https://giftrit-app.herokuapp.com/callback',
-    // redirectUri: 'http://localhost:3000/callback',
+    //redirectUri: 'https://giftrit-app.herokuapp.com/callback',
+    redirectUri: 'http://localhost:3000/callback',
     audience: 'https://innt.eu.auth0.com/api/v2/',
     responseType: 'token id_token',
     scope: 'openid'
