@@ -9,55 +9,47 @@ export default class UserDashboard extends React.Component {
 		let userId = 2; //TODO change when the userId is available this.props.userId;
 		
         this.state = {
-            giftItems: [],
+            gifts: [],
 			donations: []			
         };
 		
 		fetch(userUrl + userId)
             .then(res => res.json())
             .then(data => {
-                this.setState({ giftItems : data.data.giftItems, donations : data.data.donations });
+                this.setState({ gifts : data.data.gifts, donations : data.data.donations });
             });						
     }
 
     render () {
-		const giftItems = this.state.giftItems;
+		const gifts = this.state.gifts;
 		const donations = this.state.donations;
 		
 		let giftContainer = null;
-		let donationsContainer = null;
+		let donationContainer = null;
 		       			
-		if (giftItems.length > 0) {
+		if (gifts.length > 0) {
 			giftContainer = <div className="gift-container">
-				{giftItems.map(gift => {
+				{gifts.map(gift => {
 					return (
 						<a href={"giftdetail/" + gift.id} >
-							<div className="gift-item" key={gift.id} style={{backgroundImage: "url(" + gift.imageurl + ")"}} >
-								<div className="gift-info">
-									<div className="title">{gift.title}</div>
-									<div className="description" title={gift.description}>{gift.shorten(gift.description, 40)}</div>
-									<div className="userinfo">by <span className="username">username</span></div>
-								</div>
-							</div>
+							<div className="title">{gift.title}</div>
 						</a>
 					)
 				})}
 			</div>;
 		}
 		if (donations.length > 0) {
-			donationsContainer = <div className="donation-container">
+			donationContainer = <div className="donation-container">
 				{donations.map(donation => {
-					return (
-						<a href={"giftdetail/" + donation.id} >
-							<div className="donation-item">
-								<div className="donation-info">
-									<div className="karma">You earned {donation.karma} kp</div>
-									<div className="amount">You spent {donation.amount} CHF</div>
-									<div className="date">Date {donation.created}</div>
-									<div className="gift"><a href={"giftdetail/" + donation.giftId} >Go to gift</a></div>
-								</div>
+					return (						
+						<div className="donation-item">
+							<div className="donation-info">
+								<div className="karma">You earned {donation.karma} kp</div>
+								<div className="amount">You spent {donation.amount} CHF</div>
+								<div className="date">Date {donation.created}</div>
+								<div className="gift"><a href={"giftdetail/" + donation.giftId} >Go to gift</a></div>
 							</div>
-						</a>
+						</div>					
 					)
 				})}
 			</div>;
@@ -73,7 +65,7 @@ export default class UserDashboard extends React.Component {
 				<div className="my-donations">
 					<h3>My Donations</h3>
 					<div className="donations-container">
-						{donationsContainer}
+						{donationContainer}
 					</div>
 				</div>
 			</div>
