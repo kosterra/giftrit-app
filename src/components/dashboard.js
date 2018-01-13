@@ -1,6 +1,6 @@
 import React from 'react'
 
-const userUrl = 'https://giftrit-service.herokuapp.com/api/users';
+const userUrl = 'https://giftrit-service.herokuapp.com/api/users/';
 
 export default class UserDashboard extends React.Component {
     constructor (props) {
