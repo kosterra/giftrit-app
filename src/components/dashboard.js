@@ -13,7 +13,12 @@ export default class UserDashboard extends React.Component {
 			donations: []			
         };
 		
-		fetch(userUrl + userId)
+		fetch(userUrl + userId, {
+			headers: {
+                'Content-Type': 'application/json',
+                'accept': 'application/json',
+                'Authorization': 'Bearer ' + window.localStorage['access_token']
+            })
             .then(res => res.json())
             .then(data => {
                 this.setState({ gifts : data.data.gifts, donations : data.data.donations });
