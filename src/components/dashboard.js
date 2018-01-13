@@ -18,11 +18,12 @@ export default class UserDashboard extends React.Component {
                 'Content-Type': 'application/json',
                 'accept': 'application/json',
                 'Authorization': 'Bearer ' + window.localStorage['access_token']
-            })
-            .then(res => res.json())
-            .then(data => {
-                this.setState({ gifts : data.data.gifts, donations : data.data.donations });
-            });						
+			}
+		})
+        .then(res => res.json())
+        .then(data => {
+			this.setState({ gifts : data.data.gifts, donations : data.data.donations });
+        });						
     }
 
     render () {
