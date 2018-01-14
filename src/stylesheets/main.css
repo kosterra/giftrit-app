@@ -1,4 +1,5 @@
 /* lightblue */
+/* lightblue */
 /* black */
 /* black 2*/
 /* gray */
@@ -252,6 +253,40 @@ input {
     .login-buttons ul .loginbutton {
       margin-right: 15px; }
 
+.profile-dropdown {
+  position: relative;
+  display: inline-block; }
+  .profile-dropdown img {
+    width: 53px; }
+  .profile-dropdown:hover .dropdown-content {
+    display: block; }
+  .profile-dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #5D5D5D;
+    min-width: 160px;
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    left: -106px;
+    top: 53px;
+    border-radius: 3px; }
+    .profile-dropdown .dropdown-content .user-menu {
+      list-style-type: none;
+      margin: 0;
+      padding: 0; }
+      .profile-dropdown .dropdown-content .user-menu a {
+        font-size: 1.1em;
+        width: 100%;
+        display: inline-block;
+        padding: 10px 15px; }
+        .profile-dropdown .dropdown-content .user-menu a:hover {
+          background-color: #10abbf;
+          color: #fff;
+          text-decoration: none; }
+        .profile-dropdown .dropdown-content .user-menu a:focus {
+          color: #fff;
+          text-decoration: none; }
+
 .gift-list {
   margin-top: -60px; }
   .gift-list .gift-list-search {
@@ -485,7 +520,7 @@ input {
         margin: 10px;
         width: 360px;
         height: 235px;
-        border: 1px solid #10abbf;
+        border: 1px solid rgba(16, 171, 191, 0.231373);
         padding: 5px;
         background-color: #fff;
         border-radius: 6px; }
@@ -512,17 +547,24 @@ input {
               display: inline-flex; }
             .dashboard-container .my-gifts .gift-container .gift-item .gift-info .amountinfo .amount .karma, .dashboard-container .my-gifts .gift-container .gift-item .gift-info .amountinfo .donated .karma {
               margin-left: 40px; }
-          .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions {
+          .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions-percent {
+            width: 100%;
             display: flex;
-            align-self: flex-end;
-            margin-bottom: 15px; }
-            .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions a {
-              padding: 8px;
-              border: 1px solid #10abbf;
-              background-color: #10abbf;
-              border-radius: 5px;
-              color: #fff;
-              margin-right: 10px; }
+            justify-content: space-between;
+            align-items: center; }
+            .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions-percent .actions {
+              display: flex; }
+              .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions-percent .actions a {
+                padding: 8px;
+                border: 1px solid #10abbf;
+                background-color: #10abbf;
+                border-radius: 5px;
+                color: #fff;
+                margin-right: 10px; }
+            .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions-percent .percent {
+              align-self: flex-end;
+              font-size: 2.8em;
+              color: #8F9296; }
     .dashboard-container .my-gifts .gifts-showmore {
       text-align: center;
       margin-top: 10px; }
@@ -538,7 +580,7 @@ input {
         position: relative;
         border-radius: 6px;
         margin: 20px;
-        border: 1px solid #10abbf; }
+        border: 1px solid rgba(16, 171, 191, 0.231373); }
         .dashboard-container .my-donations .donation-container .donation-item:before {
           content: " ";
           height: 0;
@@ -549,7 +591,7 @@ input {
           left: -10px;
           border: medium solid #fff;
           border-width: 10px 10px 10px 0;
-          border-color: transparent #10abbf transparent transparent; }
+          border-color: transparent rgba(16, 171, 191, 0.231373) transparent transparent; }
         .dashboard-container .my-donations .donation-container .donation-item:after {
           content: '';
           position: absolute;

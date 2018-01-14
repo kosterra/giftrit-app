@@ -73,6 +73,10 @@ export default class UserDashboard extends React.Component {
         );
     }
 
+    calculatePercent(amount, donated) {
+        return ((donated / amount) * 100).toFixed(0);
+    }
+
     render () {
 		const gifts = this.state.gifts;
 		const donations = this.state.donations;
@@ -99,9 +103,14 @@ export default class UserDashboard extends React.Component {
 											<span className="karma bkp">200 CHF</span>
                                         </div>
 									</div>
-                                    <div className="actions">
-										<a href={"../giftform/" + gift.id} className="fa fa-pencil" />
-                                        <a href={"../giftform/"} className="fa fa-trash" />
+                                    <div className="actions-percent">
+                                        <div className="actions">
+                                            <a href={"../giftform/" + gift.id} className="fa fa-pencil" />
+                                            <a href={"../giftform/"} className="fa fa-trash" />
+                                        </div>
+                                        <div className="percent">
+                                            <div>{this.calculatePercent(gift.amount, 200)}%</div>
+                                        </div>
                                     </div>
 								</div>
 							</a>

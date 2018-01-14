@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../images/logo.svg';
 import LoginButtons from './loginbuttons';
-import LogoutButtons from './logoutbuttons';
+import LogoutButtons from './profilebutton';
 
 export default class Header extends React.Component {
 
