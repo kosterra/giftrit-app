@@ -10,6 +10,7 @@
   .gift-detail {
     .gift-info-donation {
       display: flex;
+      min-height: 300px;
 
       .gift-images {
         width: 40%;
@@ -77,7 +78,7 @@
 
     .gift-description {
       min-height: 200px;
-      margin: 40px 4px;
+      margin: 40px 100px 40px 4px;
       font-size: 1.3em;
     }
   }
@@ -114,8 +115,8 @@
 
     .user-description {
       min-height: 80px;
-      margin: 40px 4px 0;
       font-size: 1.3em;
+      margin: 40px 100px 0 4px;
     }
   }
 }

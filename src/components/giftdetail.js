@@ -182,7 +182,7 @@ export default class GiftDetail extends React.Component {
                 })}
             </div>;
         } else {
-            donationContainer = <div className="alert-info">This gift is still not donated. Sorry!</div>
+            donationContainer = <div className="empty-donations-message">This gift is still not donated. Sorry!</div>
         }
 
         return (
