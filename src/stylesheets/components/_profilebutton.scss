@@ -1,9 +1,15 @@
 .profile-dropdown {
   position: relative;
   display: inline-block;
+  margin-left: 50px;
 
   img {
     width: 53px;
+  }
+
+  .profile-karma {
+    display: inline-flex;
+    margin-left: 20px;
   }
 
   &:hover {
@@ -19,7 +25,6 @@
     min-width: 160px;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     z-index: 1;
-    left: -106px;
     top: 53px;
     border-radius: 3px;
 

@@ -1,0 +1,83 @@
+.profile-form-container {
+  background-color: #f3f1f18c;
+  padding: 50px;
+  list-style: none;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  display: flex;
+  border-radius: 10px;
+
+  .profile-form {
+    width: 100%;
+
+    .profile-form-inputs {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 80px;
+
+      .profile-form-images {
+        margin-right: 50px;
+        margin-top: 50px;
+
+        .thumbnail {
+          padding: 0;
+          margin-bottom: 0;
+          border: none;
+          border-radius: 100%;
+
+          img {
+            width: 250px;
+            height: 200px;
+            border-radius: 50%;
+          }
+        }
+      }
+
+      .profile-form-data {
+        width: 100%;
+
+        h2 {
+          margin-bottom: 15px;
+        }
+
+        .user-firstname, .user-lastname, .user-username, .user-phone, .user-email {
+          input {
+            width: 50%;
+            height: 40px;
+            margin: 10px 0;
+          }
+        }
+
+        .user-description {
+          textarea {
+            width: 100%;
+            height: 300px;
+            padding: 10px;
+            border: 1px solid lightgray;
+            border-radius: 6px;
+            resize: none;
+            margin-top: 10px;
+          }
+        }
+      }
+    }
+
+    .profile-form-submit {
+      button {
+        padding: 0 30px;
+      }
+
+      .cancel {
+        background-color: #fff;
+        border: 1px solid $primary-color;
+        color: $primary-color;
+        margin-left: 10px;
+        border-radius: 5px;
+        margin-top: 15px;
+        padding: 9px 45px;
+      }
+    }
+  }
+}

@@ -100,18 +100,12 @@
 
         h3 {
           width: 100%;
-          margin-top: 5px;
+          margin: 0 0 5px 0;
         }
 
         .karma-history {
           align-self: flex-end;
           margin-bottom: 5px;
-
-          .gift-history {
-            font-size: 0.9em;
-            text-decoration: underline;
-            margin-top: 3px;
-          }
         }
       }
     }

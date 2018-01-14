@@ -5,6 +5,7 @@ import LogoutPage from './pages/logout'
 import GiftDetailPage from './pages/giftdetail'
 import GiftFormPage from './pages/giftform'
 import UserDashboard from './pages/dashboard'
+import ProfileEditPage from './pages/profile-edit'
 import React from 'react'
 import ReactDOM from 'react-dom'
 
@@ -20,7 +21,8 @@ export default Router.extend({
     'callback': 'callback',
     'giftdetail/:id':'giftdetail',
     'giftform':'giftform',
-    'dashboard':'dashboard'
+    'dashboard':'dashboard',
+    'profile-edit/:id':'profileEdit'
   },
 
   public() {
@@ -57,5 +59,10 @@ export default Router.extend({
   dashboard() {
       ReactDOM.render(<UserDashboard/>,  document.getElementById('root'));
       console.log("on user dashboard");
-  }
+  },
+
+  profileEdit() {
+      ReactDOM.render(<ProfileEditPage/>,  document.getElementById('root'));
+      console.log("on user profile edit");
+  },
 })

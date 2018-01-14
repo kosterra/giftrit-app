@@ -255,9 +255,13 @@ input {
 
 .profile-dropdown {
   position: relative;
-  display: inline-block; }
+  display: inline-block;
+  margin-left: 50px; }
   .profile-dropdown img {
     width: 53px; }
+  .profile-dropdown .profile-karma {
+    display: inline-flex;
+    margin-left: 20px; }
   .profile-dropdown:hover .dropdown-content {
     display: block; }
   .profile-dropdown .dropdown-content {
@@ -267,7 +271,6 @@ input {
     min-width: 160px;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 1;
-    left: -106px;
     top: 53px;
     border-radius: 3px; }
     .profile-dropdown .dropdown-content .user-menu {
@@ -380,12 +383,6 @@ input {
       .gift-form-container .gift-form .gift-form-inputs .gift-form-images {
         margin-right: 50px;
         width: 30%; }
-        .gift-form-container .gift-form .gift-form-inputs .gift-form-images .dropzone div {
-          width: 100% !important;
-          height: 115px !important;
-          border: 2px dashed lightgray !important;
-          text-align: center;
-          padding-top: 45px; }
       .gift-form-container .gift-form .gift-form-inputs .gift-form-data {
         width: 100%; }
         .gift-form-container .gift-form .gift-form-inputs .gift-form-data .gift-title input {
@@ -478,18 +475,21 @@ input {
       margin-left: 15px; }
       .gift-detail-container .gift-user .user-info .user-details h3 {
         width: 100%;
-        margin-top: 5px; }
+        margin: 0 0 5px 0; }
       .gift-detail-container .gift-user .user-info .user-details .karma-history {
         align-self: flex-end;
         margin-bottom: 5px; }
-        .gift-detail-container .gift-user .user-info .user-details .karma-history .gift-history {
-          font-size: 0.9em;
-          text-decoration: underline;
-          margin-top: 3px; }
   .gift-detail-container .gift-user .user-description {
     min-height: 80px;
     margin: 40px 4px 0;
     font-size: 1.3em; }
+
+.gift-history-container {
+  margin-top: 5px; }
+  .gift-history-container a {
+    font-size: 0.9em;
+    text-decoration: underline;
+    color: #292c2f; }
 
 .dashboard-container {
   width: 80%;
@@ -627,3 +627,58 @@ input {
 
 .donations-showmore {
   text-align: center; }
+
+.profile-form-container {
+  background-color: #f3f1f18c;
+  padding: 50px;
+  list-style: none;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 60px;
+  display: flex;
+  border-radius: 10px; }
+  .profile-form-container .profile-form {
+    width: 100%; }
+    .profile-form-container .profile-form .profile-form-inputs {
+      display: flex;
+      justify-content: flex-start;
+      margin-bottom: 80px; }
+      .profile-form-container .profile-form .profile-form-inputs .profile-form-images {
+        margin-right: 50px;
+        margin-top: 50px; }
+        .profile-form-container .profile-form .profile-form-inputs .profile-form-images .thumbnail {
+          padding: 0;
+          margin-bottom: 0;
+          border: none;
+          border-radius: 100%; }
+          .profile-form-container .profile-form .profile-form-inputs .profile-form-images .thumbnail img {
+            width: 250px;
+            height: 200px;
+            border-radius: 50%; }
+      .profile-form-container .profile-form .profile-form-inputs .profile-form-data {
+        width: 100%; }
+        .profile-form-container .profile-form .profile-form-inputs .profile-form-data h2 {
+          margin-bottom: 15px; }
+        .profile-form-container .profile-form .profile-form-inputs .profile-form-data .user-firstname input, .profile-form-container .profile-form .profile-form-inputs .profile-form-data .user-lastname input, .profile-form-container .profile-form .profile-form-inputs .profile-form-data .user-username input, .profile-form-container .profile-form .profile-form-inputs .profile-form-data .user-phone input, .profile-form-container .profile-form .profile-form-inputs .profile-form-data .user-email input {
+          width: 50%;
+          height: 40px;
+          margin: 10px 0; }
+        .profile-form-container .profile-form .profile-form-inputs .profile-form-data .user-description textarea {
+          width: 100%;
+          height: 300px;
+          padding: 10px;
+          border: 1px solid lightgray;
+          border-radius: 6px;
+          resize: none;
+          margin-top: 10px; }
+    .profile-form-container .profile-form .profile-form-submit button {
+      padding: 0 30px; }
+    .profile-form-container .profile-form .profile-form-submit .cancel {
+      background-color: #fff;
+      border: 1px solid #10abbf;
+      color: #10abbf;
+      margin-left: 10px;
+      border-radius: 5px;
+      margin-top: 15px;
+      padding: 9px 45px; }

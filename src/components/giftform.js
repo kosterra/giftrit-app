@@ -139,7 +139,7 @@ export default class GiftForm extends React.Component {
                             <div className="thumbnail">
                                 <img
                                     className="img-responsive"
-                                    src={imageUrl || 'http://www.85percent.co.uk/wp-content/uploads/2015/08/default-placeholder-1024x1024-570x321.png'}
+                                    src={imageUrl}
                                     alt="the gift"
                                 />
                             </div>

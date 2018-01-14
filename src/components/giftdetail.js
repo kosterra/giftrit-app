@@ -11,18 +11,21 @@ export default class GiftDetail extends React.Component {
         let giftId = this.props.giftId;
 
         this.showMoreDonations = this.showMoreDonations.bind(this);
+        this.showHideGiftHistory = this.showHideGiftHistory.bind(this);
 
         this.state = {
             giftItem: '',
             giftUser: '',
             giftDonations: [],
+            giftUserGifts: [],
             donation: '',
 			donationResult: '',
             karmapoints: 0,
 			user: null,
 			created: new Date().toISOString().slice(0,10),
             donationsLimit: 4,
-            showMoreDonations: true
+            showMoreDonations: true,
+            showGiftHistory: false
         };
 
         fetch(giftUrl + giftId)
@@ -125,6 +128,20 @@ export default class GiftDetail extends React.Component {
         );
     }
 
+    showHideGiftHistory() {
+        this.setState({
+            showGiftHistory : !this.state.showGiftHistory
+        });
+    }
+
+    renderGiftHistory() {
+        return 'users gifts'
+    }
+
+    renderEmptyGiftHistory() {
+        return <div className="gift-history-message">There is no gift history to show for this user</div>
+    }
+
     render () {
 		let donatedAmount = (this.state != null && this.state.giftItem != null && this.state.giftItem.donatedamount != null) ? this.state.giftItem.donatedamount.toFixed(2) : '0.00';
 		const { isAuthenticated } = window.app.auth;
@@ -204,7 +221,21 @@ export default class GiftDetail extends React.Component {
                                         {this.state.giftUser.karma} {this.state.giftUser.karma > 0 ? 'gkp!' : 'bkp!'}
                                     </div>
 
-                                    <div className="gift-history">Show gift history</div>
+                                    <div className="gift-history-container">
+                                        <div>
+                                            <a onClick={this.showHideGiftHistory}>Show gift history</a>
+                                            { this.state.showGiftHistory ?
+                                                <div className="gift-history">
+                                                    <div className="gift-user-gifts">
+                                                    { this.state.giftUserGifts && this.state.giftUserGifts.length > 0 ?
+                                                        this.renderGiftHistory() : this.renderEmptyGiftHistory()
+                                                    }
+                                                    </div>
+                                                </div>
+                                                : null
+                                            }
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
