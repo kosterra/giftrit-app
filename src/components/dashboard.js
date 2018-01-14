@@ -2,6 +2,7 @@ import React from 'react'
 import GiftList from "./giftlist";
 
 const userUrl = 'https://giftrit-service.herokuapp.com/api/users/';
+const giftDonationsUrl = 'https://giftrit-service.herokuapp.com/api/gift/1/donations';
 
 export default class UserDashboard extends React.Component {
     constructor (props) {
@@ -100,7 +101,7 @@ export default class UserDashboard extends React.Component {
 										</div>
                                         <div className="donated">
 											<span className="donated-label">donated so far</span>
-											<span className="karma bkp">200 CHF</span>
+											<span className="karma bkp">{gift.donatedamount && gift.donatedamount > 0 ? gift.donatedamount : 0} CHF</span>
                                         </div>
 									</div>
                                     <div className="actions-percent">
@@ -109,7 +110,7 @@ export default class UserDashboard extends React.Component {
                                             <a href={"../giftform/"} className="fa fa-trash" />
                                         </div>
                                         <div className="percent">
-                                            <div>{this.calculatePercent(gift.amount, 200)}%</div>
+                                            <div>{this.calculatePercent(gift.amount, gift.donatedamount)}%</div>
                                         </div>
                                     </div>
 								</div>
@@ -127,8 +128,14 @@ export default class UserDashboard extends React.Component {
 						<div className="donation-item">
 							<div className="donation-info">
 								<div className="date">{("0" + (new Date(donation.created).getDay() + 1)).slice(-2) + '.' + ("0" + (new Date(donation.created).getMonth() + 1)).slice(-2) + '.' + new Date(donation.created).getFullYear()}</div>
-								<div className="amount">You spent {donation.amount} CHF</div>
-								<div className="karma">You earned <span className="karma gkp">{donation.karma} gkp</span></div>
+                                <div className="amount">
+                                    <span className="amount-label">You spent</span>
+                                    <span className="karma gkp">{donation.amount} CHF</span>
+                                </div>
+								<div className="karma">
+                                    <span className="karma-label">You earned</span>
+                                    <span className="karma gkp">{donation.karma} gkp</span>
+                                </div>
 								<div className="gift"><a href={"giftdetail/" + donation.giftid} >Show this gift</a></div>
 							</div>
 						</div>

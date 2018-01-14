@@ -1,0 +1,75 @@
+.donation-container {
+  padding: 10px 0;
+  margin-top: 40px;
+  border-left: 4px solid $primary-color;
+
+  .donation-item {
+    padding: 20px 30px;
+    background-color: #fff;
+    position: relative;
+    border-radius: 6px;
+    margin: 20px;
+    border: 1px solid $primary-color-transparent;
+
+    &:before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      left: -10px;
+      border: medium solid #fff;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent $primary-color-transparent transparent transparent;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      left: -35px;
+      background-color: $primary-color;
+      border: 4px solid #FF9F55;
+      top: 19px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .donation-info {
+      width: 200px;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap;
+
+      .date {
+        font-size: 1.4em;
+        margin-bottom: 10px;
+      }
+
+      .amount, .karma {
+        .amount-label, .karma-label {
+          min-width: 100px;
+          display: inline-flex;
+        }
+      }
+
+      .karma {
+        width: 100%;
+      }
+
+      .gift {
+        margin-top: 10px;
+      }
+
+      .user {
+        margin-top: 10px;
+      }
+    }
+  }
+}
+
+.donations-showmore {
+  text-align: center;
+}

@@ -5,6 +5,7 @@
   background-color: #f3f1f18c;
   padding: 50px;
   border-radius: 10px;
+  display: flex;
 
   .gift-detail {
     .gift-info-donation {
@@ -33,6 +34,10 @@
 		  
 		  .donated-amount {
 			width: 100%;
+
+            .donated-amount-label {
+              margin-right: 10px;
+            }
 		  }
 
           .donation {
@@ -52,10 +57,10 @@
               background-color: #10abbf;
               color: #fff;
               border: none;
-              height: 35px;
               border-radius: 5px;
               margin-top: 15px;
-              padding: 0 10px;
+              padding: 8px 10px;
+              display: inline-block;
             }
           }
 

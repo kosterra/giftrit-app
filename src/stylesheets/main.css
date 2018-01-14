@@ -421,7 +421,8 @@ input {
   margin-right: auto;
   background-color: #f3f1f18c;
   padding: 50px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  display: flex; }
   .gift-detail-container .gift-detail .gift-info-donation {
     display: flex; }
     .gift-detail-container .gift-detail .gift-info-donation .gift-images {
@@ -439,6 +440,8 @@ input {
           width: 100%; }
         .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount {
           width: 100%; }
+          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount .donated-amount-label {
+            margin-right: 10px; }
         .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation {
           width: 100%; }
           .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-input {
@@ -451,10 +454,10 @@ input {
             background-color: #10abbf;
             color: #fff;
             border: none;
-            height: 35px;
             border-radius: 5px;
             margin-top: 15px;
-            padding: 0 10px; }
+            padding: 8px 10px;
+            display: inline-block; }
         .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .karma {
           width: 100%;
           align-self: flex-end;
@@ -570,45 +573,57 @@ input {
       margin-top: 10px; }
   .dashboard-container .my-donations {
     margin-left: 20px; }
-    .dashboard-container .my-donations .donation-container {
-      padding: 10px 0;
-      margin-top: 40px;
-      border-left: 4px solid #10abbf; }
-      .dashboard-container .my-donations .donation-container .donation-item {
-        padding: 20px 30px;
-        background-color: #fff;
-        position: relative;
-        border-radius: 6px;
-        margin: 20px;
-        border: 1px solid rgba(16, 171, 191, 0.231373); }
-        .dashboard-container .my-donations .donation-container .donation-item:before {
-          content: " ";
-          height: 0;
-          position: absolute;
-          top: 22px;
-          width: 0;
-          z-index: 1;
-          left: -10px;
-          border: medium solid #fff;
-          border-width: 10px 10px 10px 0;
-          border-color: transparent rgba(16, 171, 191, 0.231373) transparent transparent; }
-        .dashboard-container .my-donations .donation-container .donation-item:after {
-          content: '';
-          position: absolute;
-          width: 25px;
-          height: 25px;
-          left: -35px;
-          background-color: #10abbf;
-          border: 4px solid #FF9F55;
-          top: 19px;
-          border-radius: 50%;
-          z-index: 1; }
-        .dashboard-container .my-donations .donation-container .donation-item .donation-info {
-          width: 200px; }
-          .dashboard-container .my-donations .donation-container .donation-item .donation-info .date {
-            font-size: 1.4em;
-            margin-bottom: 10px; }
-          .dashboard-container .my-donations .donation-container .donation-item .donation-info .gift {
-            margin-top: 10px; }
-  .dashboard-container .donations-showmore {
-    text-align: center; }
+
+.donation-container {
+  padding: 10px 0;
+  margin-top: 40px;
+  border-left: 4px solid #10abbf; }
+  .donation-container .donation-item {
+    padding: 20px 30px;
+    background-color: #fff;
+    position: relative;
+    border-radius: 6px;
+    margin: 20px;
+    border: 1px solid rgba(16, 171, 191, 0.231373); }
+    .donation-container .donation-item:before {
+      content: " ";
+      height: 0;
+      position: absolute;
+      top: 22px;
+      width: 0;
+      z-index: 1;
+      left: -10px;
+      border: medium solid #fff;
+      border-width: 10px 10px 10px 0;
+      border-color: transparent rgba(16, 171, 191, 0.231373) transparent transparent; }
+    .donation-container .donation-item:after {
+      content: '';
+      position: absolute;
+      width: 25px;
+      height: 25px;
+      left: -35px;
+      background-color: #10abbf;
+      border: 4px solid #FF9F55;
+      top: 19px;
+      border-radius: 50%;
+      z-index: 1; }
+    .donation-container .donation-item .donation-info {
+      width: 200px;
+      display: flex;
+      justify-content: flex-start;
+      flex-wrap: wrap; }
+      .donation-container .donation-item .donation-info .date {
+        font-size: 1.4em;
+        margin-bottom: 10px; }
+      .donation-container .donation-item .donation-info .amount .amount-label, .donation-container .donation-item .donation-info .amount .karma-label, .donation-container .donation-item .donation-info .karma .amount-label, .donation-container .donation-item .donation-info .karma .karma-label {
+        min-width: 100px;
+        display: inline-flex; }
+      .donation-container .donation-item .donation-info .karma {
+        width: 100%; }
+      .donation-container .donation-item .donation-info .gift {
+        margin-top: 10px; }
+      .donation-container .donation-item .donation-info .user {
+        margin-top: 10px; }
+
+.donations-showmore {
+  text-align: center; }
