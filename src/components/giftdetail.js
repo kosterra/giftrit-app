@@ -143,6 +143,18 @@ export default class GiftDetail extends React.Component {
         });
     }
 
+    calculatePercent(amount, donated) {
+        return ((donated / amount) * 100).toFixed(0);
+    }
+
+    static replaceNewLine(text) {
+        if (text) {
+            return text.split('\\\\n').join('<br />');
+        } else {
+            return text;
+        }
+    }
+
     static renderGiftHistory() {
         return 'users gifts'
     }
@@ -196,14 +208,19 @@ export default class GiftDetail extends React.Component {
                             <form className="gift-donate-form" onSubmit={this.handleSubmit}>
                                 <div className="gift-details">
                                     <h2 className="name">{this.state.giftItem.title}</h2>
-                                    <div className="gift-amount-donated">
-                                        <div className="gift-amount">
-                                            <span className="gift-amount-label">Total amount for this gift</span>
-                                            <span className="amount high">{giftAmount} CHF</span>
+                                    <div className="gift-amount-donated-percent">
+                                        <div className="gift-amount-donated">
+                                            <div className="gift-amount">
+                                                <span className="gift-amount-label">Total amount for this gift</span>
+                                                <span className="amount high">{giftAmount} CHF</span>
+                                            </div>
+                                            <div className="donated-amount">
+                                                <span className="donated-amount-label">Donated so far</span>
+                                                <span className={"amount " + GiftDetail.calculateAmountCSSClass(this.state.giftItem.amount, donatedAmount)}>{donatedAmount} CHF</span>
+                                            </div>
                                         </div>
-                                        <div className="donated-amount">
-                                            <span className="donated-amount-label">Donated so far</span>
-                                            <span className={"amount " + GiftDetail.calculateAmountCSSClass(this.state.giftItem.amount, donatedAmount)}>{donatedAmount} CHF</span>
+                                        <div className="percent">
+                                            <div>{this.calculatePercent(this.state.giftItem.amount, donatedAmount)}%</div>
                                         </div>
                                     </div>
                                     { this.state.giftItem.amount - donatedAmount > 0 &&
@@ -232,7 +249,7 @@ export default class GiftDetail extends React.Component {
                             </form>
                         </div>
                         <div className="gift-description">
-                            {this.state.giftItem.description}
+                            {GiftDetail.replaceNewLine(this.state.giftItem.description)}
                         </div>
                     </div>
                     <div className="gift-user">
@@ -266,7 +283,7 @@ export default class GiftDetail extends React.Component {
                             </div>
                         </div>
                         <div className="user-description">
-                            {this.state.giftUser.description}
+                            {GiftDetail.replaceNewLine(this.state.giftUser.description)}
                         </div>
                     </div>
                 </div>

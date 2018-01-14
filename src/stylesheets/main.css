@@ -437,6 +437,16 @@ input {
         height: 100%;
         display: flex;
         flex-flow: row wrap; }
+        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount-donated-percent {
+          display: flex;
+          justify-content: space-between;
+          width: 100%;
+          margin-right: 66px;
+          align-items: center; }
+          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount-donated-percent .percent {
+            justify-self: flex-end;
+            font-size: 2.8em;
+            color: #8F9296; }
         .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .name {
           width: 100%; }
         .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount, .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount {

@@ -29,6 +29,20 @@
           display: flex;
           flex-flow: row wrap;
 
+          .gift-amount-donated-percent {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-right: 66px;
+            align-items: center;
+
+            .percent {
+              justify-self: flex-end;
+              font-size: 2.8em;
+              color: $fourth-color;
+            }
+          }
+
           .name {
             width: 100%;
           }
