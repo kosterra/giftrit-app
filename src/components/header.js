@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../images/logo.svg';
 import LoginButtons from './loginbuttons';
-import LogoutButtons from './profilebutton';
+import ProfileButtons from './profilebuttons';
 
 export default class Header extends React.Component {
 
@@ -48,7 +48,7 @@ export default class Header extends React.Component {
 
             {
 				isAuthenticated() && (
-                    <LogoutButtons />
+                    <ProfileButtons />
                 )
             }
             </div>

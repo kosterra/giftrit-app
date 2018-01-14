@@ -32,11 +32,13 @@
             width: 100%;
           }
 		  
-		  .donated-amount {
+		  .gift-amount, .donated-amount {
 			width: 100%;
 
-            .donated-amount-label {
+            .gift-amount-label, .donated-amount-label {
               margin-right: 10px;
+              width: 180px;
+              display: inline-flex;
             }
 		  }
 

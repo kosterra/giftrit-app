@@ -78,6 +78,11 @@ export default class UserDashboard extends React.Component {
         return ((donated / amount) * 100).toFixed(0);
     }
 
+    calculateAmountCSSClass(amount, donated) {
+        let percentage = this.calculatePercent(amount, donated);
+        return percentage < 33 ? 'low' : percentage < 66 ? 'middle' : 'high';
+    }
+
     render () {
 		const gifts = this.state.gifts;
 		const donations = this.state.donations;
@@ -90,31 +95,30 @@ export default class UserDashboard extends React.Component {
 				{gifts.slice(0, this.state.giftsLimit).map(gift => {
 					return (
 						<div className="gift-item" key={gift.id} >
-							<a href={"giftdetail/" + gift.id} >
-								<div className="gift-info">
-									<div className="title" title={gift.title}>{GiftList.shorten(gift.title, 30)}</div>
-									<div className="description" title={gift.description}>{GiftList.shorten(gift.description, 95)}</div>
-									<div className="amountinfo">
-										<div className="amount">
-											<span className="amount-label">full amount</span>
-											<span className="karma gkp">{gift.amount} CHF</span>
-										</div>
-                                        <div className="donated">
-											<span className="donated-label">donated so far</span>
-											<span className="karma bkp">{gift.donatedamount && gift.donatedamount > 0 ? gift.donatedamount : 0} CHF</span>
-                                        </div>
-									</div>
-                                    <div className="actions-percent">
-                                        <div className="actions">
-                                            <a href={"../giftform/" + gift.id} className="fa fa-pencil" />
-                                            <a href={"../giftform/"} className="fa fa-trash" />
-                                        </div>
-                                        <div className="percent">
-                                            <div>{this.calculatePercent(gift.amount, gift.donatedamount)}%</div>
-                                        </div>
+                            <div className="gift-info">
+                                <div className="title" title={gift.title}>{GiftList.shorten(gift.title, 30)}</div>
+                                <div className="description" title={gift.description}>{GiftList.shorten(gift.description, 95)}</div>
+                                <div className="amountinfo">
+                                    <div className="amount">
+                                        <span className="amount-label">full amount</span>
+                                        <span className="karma gkp">{gift.amount} CHF</span>
                                     </div>
-								</div>
-							</a>
+                                    <div className="donated">
+                                        <span className="donated-label">donated so far</span>
+                                        <span className={"amount " + this.calculateAmountCSSClass(gift.amount, gift.donatedamount)}>{gift.donatedamount && gift.donatedamount > 0 ? gift.donatedamount : 0} CHF</span>
+                                    </div>
+                                </div>
+                                <div className="actions-percent">
+                                    <div className="actions">
+                                        <a href={"giftdetail/" + gift.id} className="fa fa-eye" />
+                                        <a href={"../giftform/" + gift.id} className="fa fa-pencil" />
+                                        <a href={"../giftform/"} className="fa fa-trash" />
+                                    </div>
+                                    <div className="percent">
+                                        <div>{this.calculatePercent(gift.amount, gift.donatedamount)}%</div>
+                                    </div>
+                                </div>
+                            </div>
 						</div>
 					)
 				})}
@@ -125,7 +129,7 @@ export default class UserDashboard extends React.Component {
 			donationContainer = <div className="donation-container">
 				{donations.reverse().slice(0, this.state.donationsLimit).map(donation => {
 					return (						
-						<div className="donation-item">
+						<div className="donation-item" key={donation.id}>
 							<div className="donation-info">
 								<div className="date">{("0" + (new Date(donation.created).getDay() + 1)).slice(-2) + '.' + ("0" + (new Date(donation.created).getMonth() + 1)).slice(-2) + '.' + new Date(donation.created).getFullYear()}</div>
                                 <div className="amount">

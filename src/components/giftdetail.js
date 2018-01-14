@@ -60,21 +60,21 @@ export default class GiftDetail extends React.Component {
                 amount: this.state.donation,
                 created: this.state.created,
                 userId: 2, //TODO change when user-id is available -> this.state.user.id
-				karma: this.calculateKarma(this.state.donation) //TODO why?? which value?? 
+				karma: this.state.karmapoints
             })
         }).then(response => {
             if (!response.ok) {
                 throw Error(response.statusText);
             }			
 			this.state.donationResult = 'Donation sent successfully. Thank you!';
-            //window.app.Router.redirectTo('/');
+            window.location.reload();
         }).catch(error => {
             this.setState({
                 giftId: this.state.giftItem.id,
                 amount: this.state.donation,
                 created: this.state.created,
                 userId: 2, //TODO change when user-id is available -> this.state.user.id,
-				karma: this.calculateKarma(this.state.donation), //TODO why?? which value?? 
+				karma: this.state.karmapoints,
                 type: 'danger',
                 message: 'Failed to donate. Please try again or contact us via contact form.'
             });
@@ -111,6 +111,15 @@ export default class GiftDetail extends React.Component {
             });
     }
 
+    static calculatePercent(amount, donated) {
+        return ((donated / amount) * 100).toFixed(0);
+    }
+
+    static calculateAmountCSSClass(amount, donated) {
+        let percentage = GiftDetail.calculatePercent(amount, donated);
+        return percentage < 33 ? 'low' : percentage < 66 ? 'middle' : 'high';
+    }
+
     showMoreDonations() {
         this.setState({
             donationsLimit: this.state.donationsLimit + 3,
@@ -134,16 +143,17 @@ export default class GiftDetail extends React.Component {
         });
     }
 
-    renderGiftHistory() {
+    static renderGiftHistory() {
         return 'users gifts'
     }
 
-    renderEmptyGiftHistory() {
+    static renderEmptyGiftHistory() {
         return <div className="gift-history-message">There is no gift history to show for this user</div>
     }
 
     render () {
-		let donatedAmount = (this.state != null && this.state.giftItem != null && this.state.giftItem.donatedamount != null) ? this.state.giftItem.donatedamount.toFixed(2) : '0.00';
+		let giftAmount = (this.state && this.state.giftItem && this.state.giftItem.amount) ? this.state.giftItem.amount.toFixed(2) : '0.00';
+		let donatedAmount = (this.state && this.state.giftItem && this.state.giftItem.donatedamount) ? this.state.giftItem.donatedamount.toFixed(2) : '0.00';
 		const { isAuthenticated } = window.app.auth;
 
         let donationContainer = null;
@@ -152,12 +162,12 @@ export default class GiftDetail extends React.Component {
             donationContainer = <div className="donation-container">
                 {this.state.giftDonations.reverse().slice(0, this.state.donationsLimit).map(donation => {
                     return (
-                        <div className="donation-item">
+                        <div className="donation-item" key={donation.id}>
                             <div className="donation-info">
                                 <div className="date">{("0" + (new Date(donation.created).getDay() + 1)).slice(-2) + '.' + ("0" + (new Date(donation.created).getMonth() + 1)).slice(-2) + '.' + new Date(donation.created).getFullYear()}</div>
                                 <div className="amount">
                                     <span className="amount-label">User spent</span>
-                                    <span className="karma gkp">{donation.amount} CHF</span>
+                                    <span className="amount high">{donation.amount} CHF</span>
                                 </div>
                                 <div className="karma">
                                     <span className="karma-label">User earned</span>
@@ -186,22 +196,38 @@ export default class GiftDetail extends React.Component {
                             <form className="gift-donate-form" onSubmit={this.handleSubmit}>
                                 <div className="gift-details">
                                     <h2 className="name">{this.state.giftItem.title}</h2>
-                                    <div className="donated-amount">
-                                        <span className="donated-amount-label">Donated so far</span>
-                                        <span className="karma gkp">{donatedAmount} CHF</span>
+                                    <div className="gift-amount-donated">
+                                        <div className="gift-amount">
+                                            <span className="gift-amount-label">Total amount for this gift</span>
+                                            <span className="amount high">{giftAmount} CHF</span>
+                                        </div>
+                                        <div className="donated-amount">
+                                            <span className="donated-amount-label">Donated so far</span>
+                                            <span className={"amount " + GiftDetail.calculateAmountCSSClass(this.state.giftItem.amount, donatedAmount)}>{donatedAmount} CHF</span>
+                                        </div>
                                     </div>
-                                    <div className="donation">
-                                        <span>Donate now</span>
-                                        <input type="number" name="donation" value={this.state.donation} onChange={this.handleChange} className="donate-input" placeholder="CHF"/>
-                                        {
-                                            isAuthenticated() && <button className="donate-button">Giftr it!</button>
-                                        }
-                                        {
-                                            !isAuthenticated() && <a href="/login" className="login-button">Login to donate</a>
-                                        }
-                                        <div className="result">{this.state.donationResult}</div>
-                                    </div>
-                                    <div className="karma">This gift will earn you <span className="karma gkp">{this.state.karmapoints} gkp!</span></div>
+                                    { this.state.giftItem.amount - donatedAmount > 0 &&
+                                        <div className="donation">
+                                            <span>Donate now</span>
+                                            <input type="number" name="donation" value={this.state.donation}
+                                                   onChange={this.handleChange} className="donate-input"
+                                                   placeholder="CHF" min={1}
+                                                   max={this.state.giftItem.amount - donatedAmount}/>
+                                            {
+                                                isAuthenticated() &&
+                                                <button className="donate-button">Giftr it!</button>
+                                            }
+                                            {
+                                                !isAuthenticated() &&
+                                                <a href="/login" className="login-button">Login to donate</a>
+                                            }
+                                            <div className="result">{this.state.donationResult}</div>
+                                        </div>
+                                    }
+
+                                    { this.state.giftItem.amount - donatedAmount > 0 &&
+                                        <div className="karma">This gift will earn you <span className="karma gkp">{this.state.karmapoints} gkp!</span></div>
+                                    }
                                 </div>
                             </form>
                         </div>
@@ -228,7 +254,7 @@ export default class GiftDetail extends React.Component {
                                                 <div className="gift-history">
                                                     <div className="gift-user-gifts">
                                                     { this.state.giftUserGifts && this.state.giftUserGifts.length > 0 ?
-                                                        this.renderGiftHistory() : this.renderEmptyGiftHistory()
+                                                        GiftDetail.renderGiftHistory() : GiftDetail.renderEmptyGiftHistory()
                                                     }
                                                     </div>
                                                 </div>
