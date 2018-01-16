@@ -16,13 +16,17 @@ export default class GiftList extends React.Component {
             giftItems: [],
             numberOfGifts: 0,
             limit: 6,
-            showMore: true
+            showMore: false
         };
 
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                this.setState({ giftItems : data.data, numberOfGifts : data.data.length });
+                this.setState({
+                    giftItems : data.data,
+                    numberOfGifts : data.data.length,
+                    showMore : data.data.length > this.state.limit
+                });
             });
 
         this.searchUpdated = this.searchUpdated.bind(this)
@@ -30,8 +34,8 @@ export default class GiftList extends React.Component {
 
     showMore() {
         this.setState({
-            limit: this.state.limit + 3,
-            showMore: this.state.limit < this.state.numberOfGifts
+            showMore: this.state.limit < this.state.numberOfGifts,
+            limit: this.state.limit + 3
         });
     }
 
@@ -45,6 +49,15 @@ export default class GiftList extends React.Component {
         );
     }
 
+    calculatePercent(amount, donated) {
+        return ((donated / amount) * 100).toFixed(0);
+    }
+
+    calculateAmountCSSClass(amount, donated) {
+        let percentage = this.calculatePercent(amount, donated);
+        return percentage < 33 ? 'low' : percentage < 66 ? 'middle' : 'high';
+    }
+
     render () {
         const filteredGifts = this.state.giftItems.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
 
@@ -53,15 +66,22 @@ export default class GiftList extends React.Component {
             giftContainer = <div className="gift-container">
                 {filteredGifts.slice(0, this.state.limit).map(gift => {
                     return (
-                        <a href={"giftdetail/" + gift.id} >
-                            <div className="gift-item" key={gift.id} style={{backgroundImage: "url(" + gift.imageurl + ")"}} >
-                                <div className="gift-info">
-                                    <div className="title">{gift.title}</div>
-                                    <div className="description" title={gift.description}>{GiftList.shorten(gift.description, 40)}</div>
-                                    <div className="userinfo">by <span className="username">username</span></div>
+                        <div className="gift-item" key={gift.id} >
+                            <div className="gift-info">
+                                <img src={gift.imageurl} />
+                                <div className="title" title={gift.title}>{GiftList.shorten(gift.title, 30)}</div>
+                                <div className="description" title={gift.description}>{GiftList.shorten(gift.description, 95)}</div>
+                                <div className="username-label">by <span className="username">{gift.username}</span></div>
+                                <div className="actions-percent">
+                                    <div className="actions">
+                                        <a href={"/giftdetail/" + gift.id} className="fa fa-eye" />
+                                    </div>
+                                    <div className="percent">
+                                        <div>{this.calculatePercent(gift.amount, gift.donatedamount)}%</div>
+                                    </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     )
                 })}
             </div>;

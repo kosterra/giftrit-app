@@ -45,6 +45,10 @@ button {
   border-radius: 5px;
   margin-top: 15px;
   padding: 0 10px; }
+  button:hover {
+    background-color: #fff;
+    color: #10abbf;
+    border: 1px solid #10abbf; }
 
 input {
   height: 45px;
@@ -316,56 +320,97 @@ input {
         margin-right: auto;
         display: flex; }
   .gift-list .gift-container {
-    padding: 0;
-    list-style: none;
-    width: 80%;
+    width: 90%;
     margin-left: auto;
-    margin-right: auto;
-    margin-top: 60px;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    justify-content: center;
-    flex-wrap: wrap; }
+    margin-right: auto; }
     .gift-list .gift-container .gift-item {
-      background-repeat: no-repeat;
-      background-size: cover;
+      background-color: #f3f1f18c;
       border: 1px solid lightgray;
-      width: 400px;
-      height: 220px;
-      margin: 10px 10px;
-      color: white;
-      text-align: center;
-      display: flex;
-      align-items: flex-end; }
-      .gift-list .gift-container .gift-item .gift-info {
-        background-color: rgba(0, 0, 0, 0.35);
+      padding: 0; }
+      .gift-list .gift-container .gift-item img {
+        height: 100%;
         width: 100%;
-        max-height: 120px; }
-        .gift-list .gift-container .gift-item .gift-info .title {
-          text-align: left;
-          font-size: 1.4em;
-          margin-left: 15px;
-          margin-top: 8px;
-          font-weight: 600;
-          margin-bottom: 5px;
-          color: #10abbf; }
-        .gift-list .gift-container .gift-item .gift-info .description {
-          text-align: left;
-          margin: 0 16px 10px;
-          display: flex;
+        border-radius: 5px; }
+      .gift-list .gift-container .gift-item:hover {
+        padding: 5px; }
+        .gift-list .gift-container .gift-item:hover img {
+          display: none; }
+        .gift-list .gift-container .gift-item:hover .gift-info {
+          margin: 0px 12px; }
+          .gift-list .gift-container .gift-item:hover .gift-info .title, .gift-list .gift-container .gift-item:hover .gift-info .description, .gift-list .gift-container .gift-item:hover .gift-info .username-label, .gift-list .gift-container .gift-item:hover .gift-info .actions-percent {
+            display: flex; }
+      .gift-list .gift-container .gift-item .gift-info {
+        margin: 0; }
+        .gift-list .gift-container .gift-item .gift-info .title, .gift-list .gift-container .gift-item .gift-info .description, .gift-list .gift-container .gift-item .gift-info .username-label, .gift-list .gift-container .gift-item .gift-info .actions-percent {
+          display: none; }
+    .gift-list .gift-container .username-label {
+      align-self: flex-end; }
+      .gift-list .gift-container .username-label .username {
+        font-weight: 600;
+        margin-left: 5px; }
+    .gift-list .gift-container .actions-percent .actions {
+      align-self: flex-end;
+      margin-bottom: 10px; }
+
+.gift-container {
+  padding: 10px 0;
+  margin: 50px 0 0 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; }
+  .gift-container .gift-item {
+    margin: 10px;
+    width: 360px;
+    height: 235px;
+    border: 1px solid lightgray;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 6px; }
+    .gift-container .gift-item .gift-info {
+      margin: 0 12px;
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%; }
+      .gift-container .gift-item .gift-info .title {
+        font-size: 1.4em;
+        color: #292c2f;
+        margin: 15px 0 10px;
+        width: 100%; }
+      .gift-container .gift-item .gift-info .description {
+        color: #292c2f;
+        display: block;
+        width: 100%; }
+      .gift-container .gift-item .gift-info .amountinfo {
+        margin: 15px 0;
+        width: 100%; }
+        .gift-container .gift-item .gift-info .amountinfo .amount .amount-label, .gift-container .gift-item .gift-info .amountinfo .amount .donated-label, .gift-container .gift-item .gift-info .amountinfo .donated .amount-label, .gift-container .gift-item .gift-info .amountinfo .donated .donated-label {
+          color: #292c2f;
+          width: 115px;
+          display: inline-flex; }
+      .gift-container .gift-item .gift-info .actions-percent {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+        .gift-container .gift-item .gift-info .actions-percent .actions {
+          display: flex; }
+          .gift-container .gift-item .gift-info .actions-percent .actions a {
+            padding: 8px;
+            border: 1px solid #10abbf;
+            background-color: #10abbf;
+            border-radius: 5px;
+            color: #fff;
+            margin-right: 10px; }
+            .gift-container .gift-item .gift-info .actions-percent .actions a:hover {
+              background-color: #fff;
+              color: #10abbf; }
+        .gift-container .gift-item .gift-info .actions-percent .percent {
           align-self: flex-end;
-          font-size: 1.2em; }
-        .gift-list .gift-container .gift-item .gift-info .userinfo {
-          margin: 20px 0 10px 18px;
-          text-align: left; }
-          .gift-list .gift-container .gift-item .gift-info .userinfo .username {
-            font-weight: 600; }
-  .gift-list .gifts-showmore {
-    text-align: center; }
+          font-size: 2.8em;
+          color: #8F9296; }
+
+.gifts-showmore {
+  text-align: center; }
 
 .gift-form-container {
   background-color: #f3f1f18c;
@@ -529,62 +574,6 @@ input {
     text-transform: uppercase; }
   .dashboard-container .my-gifts {
     margin-right: 60px; }
-    .dashboard-container .my-gifts .gift-container {
-      padding: 10px 0;
-      margin: 50px 0 0 0;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap; }
-      .dashboard-container .my-gifts .gift-container .gift-item {
-        margin: 10px;
-        width: 360px;
-        height: 235px;
-        border: 1px solid rgba(16, 171, 191, 0.231373);
-        padding: 5px;
-        background-color: #fff;
-        border-radius: 6px; }
-        .dashboard-container .my-gifts .gift-container .gift-item .gift-info {
-          margin: 0 12px;
-          display: flex;
-          flex-wrap: wrap;
-          height: 100%; }
-          .dashboard-container .my-gifts .gift-container .gift-item .gift-info .title {
-            font-size: 1.4em;
-            color: #292c2f;
-            margin: 15px 0 10px;
-            width: 100%; }
-          .dashboard-container .my-gifts .gift-container .gift-item .gift-info .description {
-            color: #292c2f;
-            display: block;
-            width: 100%; }
-          .dashboard-container .my-gifts .gift-container .gift-item .gift-info .amountinfo {
-            margin: 15px 0;
-            width: 100%; }
-            .dashboard-container .my-gifts .gift-container .gift-item .gift-info .amountinfo .amount .amount-label, .dashboard-container .my-gifts .gift-container .gift-item .gift-info .amountinfo .amount .donated-label, .dashboard-container .my-gifts .gift-container .gift-item .gift-info .amountinfo .donated .amount-label, .dashboard-container .my-gifts .gift-container .gift-item .gift-info .amountinfo .donated .donated-label {
-              color: #292c2f;
-              width: 115px;
-              display: inline-flex; }
-          .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions-percent {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center; }
-            .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions-percent .actions {
-              display: flex; }
-              .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions-percent .actions a {
-                padding: 8px;
-                border: 1px solid #10abbf;
-                background-color: #10abbf;
-                border-radius: 5px;
-                color: #fff;
-                margin-right: 10px; }
-            .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions-percent .percent {
-              align-self: flex-end;
-              font-size: 2.8em;
-              color: #8F9296; }
-    .dashboard-container .my-gifts .gifts-showmore {
-      text-align: center;
-      margin-top: 10px; }
   .dashboard-container .my-donations {
     margin-left: 20px; }
 
@@ -598,7 +587,7 @@ input {
     position: relative;
     border-radius: 6px;
     margin: 20px;
-    border: 1px solid rgba(16, 171, 191, 0.231373); }
+    border: 1px solid lightgray; }
     .donation-container .donation-item:before {
       content: " ";
       height: 0;
