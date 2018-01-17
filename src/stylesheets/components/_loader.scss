@@ -1,0 +1,89 @@
+#loader {
+  height: 100%;
+  width: 100%;
+  background-color: #fff;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  display: flex;
+  justify-content: center;
+  margin-top: 80px;
+
+  .letter {
+    font-size: 4em;
+    color: $primary-color;
+  }
+
+  .box {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+  }
+
+  .loaderCircle, .loaderInner, .loaderCore {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+  }
+
+  .loader, .letter, .loaderCircle, .loaderInner, .loaderCore {
+    flex:none;
+    -webkit-flex:none;
+    -ms-flex:none;
+  }
+
+  .letter, .loaderCircle {
+    align-self: center;
+    -webkit-align-self: center;
+  }
+
+  .loaderCircle {
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 70px;
+    background-color: $primary-color;
+  }
+
+  .loaderInner {
+    align-self:center;
+    justify-content:center;
+    height:50%;
+    width:50%;
+    background-color: #f3f1f18c;
+    -webkit-animation-name:loaderAnimate;
+    -webkit-animation-duration:500ms;
+    -webkit-animation-direction:alternate;
+    -webkit-animation-timing-function:ease-in-out;
+    -webkit-animation-iteration-count:infinite;
+
+  }
+
+  .loaderCore {
+    align-self:center;
+    height:25%;
+    width:25%;
+    background-color: #f3f1f18c;
+    -webkit-animation-name:coreAnimate;
+    -webkit-animation-duration:1s;
+    -webkit-animation-direction:alternate;
+    -webkit-animation-timing-function:ease-in-out;
+    -webkit-animation-iteration-count:infinite;
+  }
+}
+
+@-webkit-keyframes loaderAnimate {
+  to{ height:90%; width:90%; }
+}
+@keyframes loaderAnimate {
+  to{ height:90%; width:90%; }
+}
+
+@-webkit-keyframes coreAnimate {
+  to{ height:90%; width:90%; }
+}
+@keyframes coreAnimate {
+  to{ height:90%; width:90%; }
+}

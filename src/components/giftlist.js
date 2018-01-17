@@ -1,5 +1,6 @@
 import React from 'react'
 import SearchInput, {createFilter} from 'react-search-input'
+import Loader from './loader'
 
 const url = 'https://giftrit-service.herokuapp.com/api/gifts';
 
@@ -12,21 +13,29 @@ export default class GiftList extends React.Component {
         this.showMore = this.showMore.bind(this);
 
         this.state = {
-            searchTerm: '',
-            giftItems: [],
-            numberOfGifts: 0,
-            limit: 6,
-            showMore: false
+            searchTerm : '',
+            giftItems : [],
+            numberOfGifts : 0,
+            limit : 6,
+            showMore : false
         };
 
         fetch(url)
             .then(res => res.json())
             .then(data => {
                 this.setState({
+                    loading : false,
                     giftItems : data.data,
                     numberOfGifts : data.data.length,
-                    showMore : data.data.length > this.state.limit
+                    showMore : data.data.length > this.state.limit,
                 });
+            }).catch(error => {
+                this.setState({
+                    showMore : false,
+                    type: 'danger',
+                    message: 'Sorry there was a problem loading the gifts. Please try again later or contact us via contact form.'
+                });
+                console.log("Failed to load gifts! " + error.message);
             });
 
         this.searchUpdated = this.searchUpdated.bind(this)
@@ -53,11 +62,6 @@ export default class GiftList extends React.Component {
         return ((donated / amount) * 100).toFixed(0);
     }
 
-    calculateAmountCSSClass(amount, donated) {
-        let percentage = this.calculatePercent(amount, donated);
-        return percentage < 33 ? 'low' : percentage < 66 ? 'middle' : 'high';
-    }
-
     render () {
         const filteredGifts = this.state.giftItems.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
 
@@ -66,15 +70,17 @@ export default class GiftList extends React.Component {
             giftContainer = <div className="gift-container">
                 {filteredGifts.slice(0, this.state.limit).map(gift => {
                     return (
-                        <div className="gift-item" key={gift.id} >
+                        <div className="gift-item" key={gift.id}>
                             <div className="gift-info">
-                                <img src={gift.imageurl} />
+                                <img src={gift.imageurl} alt="the gift"/>
                                 <div className="title" title={gift.title}>{GiftList.shorten(gift.title, 30)}</div>
-                                <div className="description" title={gift.description}>{GiftList.shorten(gift.description, 95)}</div>
-                                <div className="username-label">by <span className="username">{gift.username}</span></div>
+                                <div className="description"
+                                     title={gift.description}>{GiftList.shorten(gift.description, 95)}</div>
+                                <div className="username-label">by <span className="username">{gift.username}</span>
+                                </div>
                                 <div className="actions-percent">
                                     <div className="actions">
-                                        <a href={"/giftdetail/" + gift.id} className="fa fa-eye" />
+                                        <a href={"/giftdetail/" + gift.id} className="fa fa-eye"/>
                                     </div>
                                     <div className="percent">
                                         <div>{this.calculatePercent(gift.amount, gift.donatedamount)}%</div>
@@ -96,10 +102,15 @@ export default class GiftList extends React.Component {
                     </div>
                     <SearchInput className="search-input" onChange={this.searchUpdated} />
                 </div>
-                {giftContainer}
-                <div className="gifts-showmore">
-                    { this.renderButton() }
-                </div>
+                { this.state.giftItems.length > 0 ? giftContainer : <Loader /> }
+
+                { this.state.giftItems.length > 0 &&
+                    <div className="gifts-showmore">
+                        {this.renderButton()}
+                    </div>
+                }
+
+                { this.state.type && this.state.type === 'danger' && <div className="alert-message" >{this.state.message}</div> }
             </div>
         )
     }
