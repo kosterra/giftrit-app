@@ -1,0 +1,25 @@
+.banner-content {
+  display: inline-flex;
+  width: 100%;
+  padding: 100px 20px;
+  background-color: #f3f1f18c;
+  margin: 60px 0 -80px;
+
+  .banner-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+
+    .banner-item {
+      height: 120px;
+      width: 18%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $primary-color;
+      color: #fff;
+      font-size: 1.8em;
+    }
+  }
+}

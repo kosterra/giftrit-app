@@ -36,11 +36,22 @@ a {
   a:hover {
     color: #10abbf;
     text-decoration: none; }
+  a.cancel {
+    background-color: #fff;
+    border: 1px solid #10abbf;
+    color: #10abbf;
+    margin-left: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 9px 45px; }
+    a.cancel:hover {
+      background-color: #10abbf;
+      color: #fff; }
 
 button {
   background-color: #10abbf;
   color: #fff;
-  border: none;
+  border: 1px solid #10abbf;
   height: 35px;
   border-radius: 5px;
   margin-top: 15px;
@@ -68,6 +79,9 @@ input {
 
 .karma.gkp, .karma.high, .amount.gkp, .amount.high {
   color: #04c304; }
+
+.btn.btn-filestack:hover {
+  color: #10abbf; }
 
 .header-distributed {
   background-color: #292c2f;
@@ -460,14 +474,6 @@ input {
           border: 1px solid lightgray;
           border-radius: 6px;
           resize: none; }
-    .gift-form-container .gift-form .gift-form-submit .cancel {
-      background-color: #fff;
-      border: 1px solid #10abbf;
-      color: #10abbf;
-      margin-left: 10px;
-      border-radius: 5px;
-      margin-top: 15px;
-      padding: 9px 45px; }
 
 .gift-detail-container {
   width: 80%;
@@ -686,14 +692,6 @@ input {
           margin-top: 10px; }
     .profile-form-container .profile-form .profile-form-submit button {
       padding: 0 30px; }
-    .profile-form-container .profile-form .profile-form-submit .cancel {
-      background-color: #fff;
-      border: 1px solid #10abbf;
-      color: #10abbf;
-      margin-left: 10px;
-      border-radius: 5px;
-      margin-top: 15px;
-      padding: 9px 45px; }
 
 #loader {
   height: 100%;
@@ -772,3 +770,24 @@ input {
   to {
     height: 90%;
     width: 90%; } }
+
+.banner-content {
+  display: inline-flex;
+  width: 100%;
+  padding: 100px 20px;
+  background-color: #f3f1f18c;
+  margin: 60px 0 -80px; }
+  .banner-content .banner-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%; }
+    .banner-content .banner-row .banner-item {
+      height: 120px;
+      width: 18%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #10abbf;
+      color: #fff;
+      font-size: 1.8em; }

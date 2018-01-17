@@ -1,6 +1,7 @@
 import React from 'react'
 import SearchInput, {createFilter} from 'react-search-input'
 import Loader from './loader'
+import Banner from './banner'
 
 const url = 'https://giftrit-service.herokuapp.com/api/gifts';
 
@@ -111,6 +112,8 @@ export default class GiftList extends React.Component {
                 }
 
                 { this.state.type && this.state.type === 'danger' && <div className="alert-message" >{this.state.message}</div> }
+
+                <Banner />
             </div>
         )
     }
