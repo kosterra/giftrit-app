@@ -101,7 +101,7 @@ export default class GiftList extends React.Component {
                         <h1>Discover the gifts</h1>
                         <p>{this.state.numberOfGifts} gifts to discover</p>
                     </div>
-                    <SearchInput className="search-input" onChange={this.searchUpdated} />
+                    <SearchInput className="search-input" onChange={this.searchUpdated} placeholder="Search for your gift to donate..." />
                 </div>
                 { this.state.giftItems.length > 0 ? giftContainer : <Loader /> }
 
