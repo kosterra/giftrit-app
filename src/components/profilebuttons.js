@@ -1,6 +1,6 @@
 import React from 'react';
 
-const userUrl = 'https://giftrit-service.herokuapp.com/api/users/';
+const userUrl = 'https://giftrit-service.herokuapp.com/api/users?sessionId=';
 
 export default class ProfileButtons extends React.Component {
     constructor (props) {
@@ -11,7 +11,7 @@ export default class ProfileButtons extends React.Component {
         };
 
         // TODO replace with users id or id_token
-        fetch(userUrl + 2)
+        fetch(userUrl + window.app.me.sessionId)
             .then(res => res.json())
             .then(data => {
                 this.setState({
@@ -20,12 +20,13 @@ export default class ProfileButtons extends React.Component {
                 console.log('from data' + data.data);
                 console.log('from state' + this.state.user);
             });
+        
     }
 
     render () {
         return (
             <div className="profile-dropdown">
-                <img src={this.state.user.imageurl} alt="the profile"/>
+                <img src={this.state.user.imageurl ? this.state.user.imageurl : 'https://cdn.filestackcontent.com/ZlEfSsjtQJKlJRdguxqq'} alt="the profile"/>
                 <div className={"profile-karma karma " + (this.state.user.karma < 1 ? 'bkp' : 'gkp')}>{this.state.user.karma + (this.state.user.karma <= 0 ? ' bkp' : ' gkp')}</div>
                 <div className="dropdown-content">
                     <ul className="user-menu">

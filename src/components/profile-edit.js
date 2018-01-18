@@ -4,7 +4,7 @@ import filestack from 'filestack-js';
 
 const fsClient = filestack.init('ARg8PICxRfosu5qSBr0lQz');
 
-const url = 'https://giftrit-service.herokuapp.com/api/users/';
+const url = 'https://giftrit-service.herokuapp.com/api/users?sessionId=';
 
 export default class ProfileEdit extends React.Component {
     constructor(props) {
@@ -22,7 +22,7 @@ export default class ProfileEdit extends React.Component {
             imageUrl : 'https://cdn.filestackcontent.com/0yoR223ESPujrXJYx1Ae'
         }
 
-        fetch(url + 2)
+        fetch(url +  window.app.me.sessionId)
             .then(res => res.json())
             .then(data => {
                 this.setState({
@@ -40,7 +40,7 @@ export default class ProfileEdit extends React.Component {
     }
 
     handleSubmit = e => {
-        fetch(url + 2, {
+        fetch(url + window.app.me.sessionId, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',

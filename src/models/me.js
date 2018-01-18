@@ -3,7 +3,13 @@ import Model from 'ampersand-model';
 
 export default Model.extend({
 
-  url: 'https://giftrit-service.herokuapp.com/api/users',
+  url: function() {
+    var base = 'https://giftrit-service.herokuapp.com/api/users';
+    return base + '?sessionId=' + this.sessionId;
+  },
+  urlRoot: function() {
+    return 'https://giftrit-service.herokuapp.com/api/users'
+  },
 
   ajaxConfig () {
     return {
@@ -22,14 +28,14 @@ export default Model.extend({
   },
 
   props: {
-    id: 'number',
+    id: 'integer',
     firstname: 'string',
     lastname: 'string',
     phone: 'string',
     email: 'string',
     username: 'string',
     statusId: 'number',
-    karma: 'number',
+    karma: 'integer',
     description: 'string',
     imageUrl: 'string',
     authId : 'string',
@@ -55,7 +61,10 @@ export default Model.extend({
 
   fetchInitialData() {
     if(this.access_token) {
+      console.log("URL: "+this.url())
       this.fetch()
+      console.log("SessionId: "+this.sessionId);
+      console.log("Firstname: "+this.firstname);
       // this.repos.fetch()
     }
   },
