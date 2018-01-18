@@ -1,13 +1,11 @@
 #loader {
   height: 100%;
   width: 100%;
-  background-color: #fff;
   flex-direction: row;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   display: flex;
   justify-content: center;
-  margin-top: 80px;
 
   .letter {
     font-size: 4em;

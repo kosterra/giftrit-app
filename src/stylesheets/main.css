@@ -314,7 +314,8 @@ input {
 .gift-list {
   margin-top: 0; }
   .gift-list .gift-list-search {
-    background: #f3f1f18c; }
+    background: #f3f1f18c;
+    margin-bottom: 60px; }
     .gift-list .gift-list-search .gift-list-search-title {
       text-align: center;
       padding-top: 40px;
@@ -671,12 +672,11 @@ input {
   .dashboard-container h2 {
     margin: 20px 18px 0;
     color: #292c2f;
-    font-size: 1.5em;
+    font-size: 2em;
     text-align: center;
-    background-color: #d8d8d85c;
-    padding: 10px 0;
-    border-radius: 5px;
     text-transform: uppercase; }
+  .dashboard-container .gift-container {
+    margin: 50px 0 13px; }
   .dashboard-container .my-gifts {
     margin-right: 60px; }
   .dashboard-container .my-donations {
@@ -784,13 +784,11 @@ input {
 #loader {
   height: 100%;
   width: 100%;
-  background-color: #fff;
   flex-direction: row;
   -webkit-flex-direction: row;
   -ms-flex-direction: row;
   display: flex;
-  justify-content: center;
-  margin-top: 80px; }
+  justify-content: center; }
   #loader .letter {
     font-size: 4em;
     color: #10abbf; }
