@@ -111,7 +111,7 @@ export default class UserDashboard extends React.Component {
                                 <div className="actions-percent">
                                     <div className="actions">
                                         <a href={"/giftdetail/" + gift.id} className="fa fa-eye" />
-                                        <a href={"/giftform/" + gift.id} className="fa fa-pencil" />
+                                        <a href={"/giftform?giftId=" + gift.id} className="fa fa-pencil" />
                                         <a href={"/giftform/"} className="fa fa-trash" />
                                     </div>
                                     <div className="percent">
