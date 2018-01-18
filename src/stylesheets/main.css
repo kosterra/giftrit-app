@@ -89,7 +89,7 @@ input {
   padding: 20px 40px;
   color: #fff;
   box-sizing: border-box;
-  margin-bottom: 60px; }
+  margin-bottom: 0; }
   .header-distributed .header-limiter {
     width: 100%;
     display: flex;
@@ -132,7 +132,7 @@ input {
   font: bold 16px sans-serif;
   text-align: left;
   padding: 50px 60px 40px;
-  margin-top: 80px;
+  margin-top: 0;
   overflow: hidden; }
   .footer-distributed .footer-left {
     float: left; }
@@ -312,7 +312,7 @@ input {
           text-decoration: none; }
 
 .gift-list {
-  margin-top: -60px; }
+  margin-top: 0; }
   .gift-list .gift-list-search {
     background: #f3f1f18c; }
     .gift-list .gift-list-search .gift-list-search-title {
@@ -437,12 +437,11 @@ input {
 
 .gift-form-container {
   background-color: #f3f1f18c;
-  padding: 50px;
+  padding: 50px 100px;
   list-style: none;
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 60px;
   display: flex;
   border-radius: 10px; }
   .gift-form-container .gift-form {
@@ -476,89 +475,110 @@ input {
           resize: none; }
 
 .gift-detail-container {
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-color: #f3f1f18c;
-  padding: 50px;
-  border-radius: 10px;
-  display: flex; }
-  .gift-detail-container .gift-detail .gift-info-donation {
+  background-color: #fff;
+  padding: 0;
+  border-radius: 10px; }
+  .gift-detail-container .gift-donation-container {
     display: flex;
-    min-height: 300px; }
-    .gift-detail-container .gift-detail .gift-info-donation .gift-images {
-      width: 40%; }
-      .gift-detail-container .gift-detail .gift-info-donation .gift-images img {
-        width: 100%; }
-    .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form {
-      width: 60%;
-      padding-left: 40px; }
-      .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details {
-        height: 100%;
-        display: flex;
-        flex-flow: row wrap; }
-        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount-donated-percent {
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-          margin-right: 66px;
-          align-items: center; }
-          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount-donated-percent .percent {
-            justify-self: flex-end;
-            font-size: 2.8em;
-            color: #8F9296; }
-        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .name {
-          width: 100%; }
-        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount, .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount {
-          width: 100%; }
-          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount .gift-amount-label, .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount .donated-amount-label, .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount .gift-amount-label, .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount .donated-amount-label {
-            margin-right: 10px;
-            width: 180px;
-            display: inline-flex; }
-        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation {
-          width: 100%; }
-          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-input {
-            display: block;
-            margin-top: 15px;
-            width: 35%; }
-          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-button {
-            padding: 0 35px; }
-          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .login-button {
-            background-color: #10abbf;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            margin-top: 15px;
-            padding: 8px 10px;
-            display: inline-block; }
-        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .karma {
-          width: 100%;
-          align-self: flex-end;
-          margin-bottom: 10px; }
-  .gift-detail-container .gift-detail .gift-description {
-    min-height: 200px;
-    margin: 40px 100px 40px 4px;
-    font-size: 1.3em; }
-  .gift-detail-container .gift-user .user-info {
-    display: flex; }
-    .gift-detail-container .gift-user .user-info .user-image {
-      width: 8%; }
-      .gift-detail-container .gift-user .user-info .user-image img {
-        width: 100%; }
-    .gift-detail-container .gift-user .user-info .user-details {
+    margin: 0 auto 0 auto;
+    width: 80%;
+    padding: 60px 0;
+    background-color: #fff;
+    justify-content: center; }
+    .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation {
       display: flex;
-      flex-flow: row wrap;
-      margin-left: 15px; }
-      .gift-detail-container .gift-user .user-info .user-details h3 {
-        width: 100%;
-        margin: 0 0 5px 0; }
-      .gift-detail-container .gift-user .user-info .user-details .karma-history {
-        align-self: flex-end;
-        margin-bottom: 5px; }
-  .gift-detail-container .gift-user .user-description {
-    min-height: 80px;
-    font-size: 1.3em;
-    margin: 40px 100px 0 4px; }
+      min-height: 300px; }
+      .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-images {
+        width: 40%;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        padding: 20px;
+        display: -ms-flexbox;
+        display: flex;
+        height: 245px; }
+        .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-images img {
+          width: 100%; }
+      .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form {
+        width: 60%;
+        padding-left: 40px; }
+        .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details {
+          height: 100%;
+          display: flex;
+          flex-flow: row wrap; }
+          .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount-donated-percent {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-right: 66px;
+            align-items: center; }
+            .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount-donated-percent .percent {
+              justify-self: flex-end;
+              font-size: 2.8em;
+              color: #8F9296; }
+          .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .name {
+            width: 100%; }
+          .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount, .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount {
+            width: 100%; }
+            .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount .gift-amount-label, .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount .donated-amount-label, .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount .gift-amount-label, .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount .donated-amount-label {
+              margin-right: 10px;
+              width: 180px;
+              display: inline-flex; }
+          .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation {
+            width: 100%; }
+            .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-input {
+              display: block;
+              margin-top: 15px;
+              width: 35%; }
+            .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-button {
+              padding: 0 35px; }
+            .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .login-button {
+              background-color: #10abbf;
+              color: #fff;
+              border: none;
+              border-radius: 5px;
+              margin-top: 15px;
+              padding: 8px 10px;
+              display: inline-block; }
+          .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .karma {
+            width: 100%;
+            align-self: flex-end;
+            margin-bottom: 10px; }
+    .gift-detail-container .gift-donation-container .gift-detail .gift-description {
+      min-height: 40px;
+      margin: 40px 100px 40px 4px;
+      font-size: 1.3em; }
+  .gift-detail-container .gift-user {
+    margin: 30px 0 0;
+    background-color: #f3f1f18c; }
+    .gift-detail-container .gift-user .user-info {
+      display: flex;
+      margin: 0 auto;
+      width: 80%;
+      padding: 40px 0 20px; }
+      .gift-detail-container .gift-user .user-info .user-image {
+        width: 8%;
+        min-width: 75px; }
+        .gift-detail-container .gift-user .user-info .user-image img {
+          width: 100%; }
+      .gift-detail-container .gift-user .user-info .user-details {
+        display: flex;
+        flex-flow: row wrap;
+        margin-left: 15px; }
+        .gift-detail-container .gift-user .user-info .user-details h3 {
+          width: 100%;
+          margin: 0 0 5px 0; }
+        .gift-detail-container .gift-user .user-info .user-details .karma-history {
+          align-self: flex-end;
+          margin-bottom: 5px; }
+    .gift-detail-container .gift-user .user-description {
+      min-height: 80px;
+      font-size: 1.3em;
+      margin: 0 auto;
+      width: 80%;
+      padding: 40px 0; }
 
 .gift-history-container {
   margin-top: 5px; }
@@ -567,8 +587,81 @@ input {
     text-decoration: underline;
     color: #292c2f; }
 
+.gift-history {
+  padding: 10px 0;
+  margin: 20px 0 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #10abbf; }
+  .gift-history:before {
+    content: " ";
+    height: 0;
+    position: relative;
+    top: -30px;
+    width: 0;
+    z-index: 1;
+    left: -30%;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #10abbf; }
+  .gift-history .gift-history-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 20px; }
+    .gift-history .gift-history-items .gift-item {
+      margin: 10px;
+      width: 23%;
+      height: 165px;
+      padding: 5px;
+      background-color: #fff;
+      border-radius: 6px; }
+      .gift-history .gift-history-items .gift-item .gift-info {
+        margin: 0 12px;
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%; }
+        .gift-history .gift-history-items .gift-item .gift-info .title {
+          font-size: 1.4em;
+          color: #292c2f;
+          margin: 15px 0 10px;
+          width: 100%; }
+        .gift-history .gift-history-items .gift-item .gift-info .description {
+          color: #292c2f;
+          display: block;
+          width: 100%; }
+        .gift-history .gift-history-items .gift-item .gift-info .amountinfo {
+          margin: 15px 0;
+          width: 100%; }
+          .gift-history .gift-history-items .gift-item .gift-info .amountinfo .amount .amount-label, .gift-history .gift-history-items .gift-item .gift-info .amountinfo .amount .donated-label, .gift-history .gift-history-items .gift-item .gift-info .amountinfo .donated .amount-label, .gift-history .gift-history-items .gift-item .gift-info .amountinfo .donated .donated-label {
+            color: #292c2f;
+            width: 115px;
+            display: inline-flex; }
+        .gift-history .gift-history-items .gift-item .gift-info .actions-percent {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+          .gift-history .gift-history-items .gift-item .gift-info .actions-percent .actions {
+            display: flex; }
+            .gift-history .gift-history-items .gift-item .gift-info .actions-percent .actions a {
+              padding: 8px;
+              border: 1px solid #10abbf;
+              background-color: #10abbf;
+              border-radius: 5px;
+              color: #fff;
+              margin-right: 10px; }
+              .gift-history .gift-history-items .gift-item .gift-info .actions-percent .actions a:hover {
+                background-color: #fff;
+                color: #10abbf; }
+          .gift-history .gift-history-items .gift-item .gift-info .actions-percent .percent {
+            align-self: flex-end;
+            font-size: 2.8em;
+            color: #8F9296; }
+
 .dashboard-container {
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-color: #f3f1f18c;
@@ -648,12 +741,11 @@ input {
 
 .profile-form-container {
   background-color: #f3f1f18c;
-  padding: 50px;
+  padding: 50px 100px;
   list-style: none;
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 60px;
   display: flex;
   border-radius: 10px; }
   .profile-form-container .profile-form {
@@ -776,7 +868,7 @@ input {
   width: 100%;
   padding: 100px 20px;
   background-color: #f3f1f18c;
-  margin: 60px 0 -80px; }
+  margin: 60px 0 0; }
   .banner-content .banner-row {
     display: flex;
     justify-content: space-around;

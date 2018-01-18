@@ -1,4 +1,5 @@
 import React from 'react'
+import GiftList from "./giftlist";
 
 const giftUrl = 'https://giftrit-service.herokuapp.com/api/gifts/';
 const donationUrl = 'https://giftrit-service.herokuapp.com/api/donations/';
@@ -12,6 +13,8 @@ export default class GiftDetail extends React.Component {
 
         this.showMoreDonations = this.showMoreDonations.bind(this);
         this.showHideGiftHistory = this.showHideGiftHistory.bind(this);
+        this.renderGiftHistory = this.renderGiftHistory.bind(this);
+        this.calculateAmountCSSClass = this.calculateAmountCSSClass.bind(this);
 
         this.state = {
             giftItem: '',
@@ -37,8 +40,32 @@ export default class GiftDetail extends React.Component {
                     giftDonations : data.data.donations,
                     showMoreDonations: this.state.donationsLimit < data.data.donations.length
                 });
+
+                fetch(giftUrl + 'user/' + data.data.user.id)
+                    .then(res => res.json())
+                    .then(data => {
+                        this.setState({
+                            giftUserGifts : data.data
+                        });
+                    }).catch(error => {
+                    this.setState({
+                        giftUserGifts : [],
+                    });
+                    console.log("Failed to load users gifts! " + error.message);
+                });
             });
-		
+
+        fetch(giftUrl + giftId)
+            .then(res => res.json())
+            .then(data => {
+                this.setState({
+                    giftItem : data.data,
+                    giftUser : data.data.user,
+                    giftDonations : data.data.donations,
+                    showMoreDonations: this.state.donationsLimit < data.data.donations.length
+                });
+            });
+
 		//TODO enable when user-accounts are available
 		/*fetch(userUrl + window.localStorage['id_token'])
             .then(res => res.json())
@@ -115,7 +142,7 @@ export default class GiftDetail extends React.Component {
         return ((donated / amount) * 100).toFixed(0);
     }
 
-    static calculateAmountCSSClass(amount, donated) {
+    calculateAmountCSSClass(amount, donated) {
         let percentage = GiftDetail.calculatePercent(amount, donated);
         return percentage < 33 ? 'low' : percentage < 66 ? 'middle' : 'high';
     }
@@ -143,10 +170,6 @@ export default class GiftDetail extends React.Component {
         });
     }
 
-    calculatePercent(amount, donated) {
-        return ((donated / amount) * 100).toFixed(0);
-    }
-
     static replaceNewLine(text) {
         if (text) {
             return text.split('\\\\n').join('<br />');
@@ -155,12 +178,35 @@ export default class GiftDetail extends React.Component {
         }
     }
 
-    static renderGiftHistory() {
-        return 'users gifts'
-    }
-
-    static renderEmptyGiftHistory() {
-        return <div className="gift-history-message">There is no gift history to show for this user</div>
+    renderGiftHistory() {
+        if (this.state.giftUserGifts && this.state.giftUserGifts.length > 0) {
+            return <div className="gift-history">
+                <div className="gift-history-items">
+                {this.state.giftUserGifts.map(userGift => {
+                    return (
+                        <div className="gift-item" key={userGift.id}>
+                            <div className="gift-info">
+                                <div className="title"
+                                     title={userGift.title}>{GiftList.shorten(userGift.title, 30)}</div>
+                                <div className="description"
+                                     title={userGift.description}>{GiftList.shorten(userGift.description, 95)}</div>
+                                <div className="actions-percent">
+                                    <div className="actions">
+                                        <a href={"/giftdetail/" + userGift.id} className="fa fa-eye"/>
+                                    </div>
+                                    <div className="percent">
+                                        <div>{GiftDetail.calculatePercent(userGift.amount, userGift.donatedamount)}%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    )
+                })}
+                </div>
+            </div>;
+        } else {
+            return <div className="gift-history-message">There is no gift history to show for this user</div>
+        }
     }
 
     render () {
@@ -199,7 +245,7 @@ export default class GiftDetail extends React.Component {
 
         return (
             <div className="gift-detail-container">
-                <div className="gift-user-container">
+                <div className="gift-donation-container">
                     <div className="gift-detail">
                         <div className="gift-info-donation">
                             <div className="gift-images">
@@ -216,11 +262,11 @@ export default class GiftDetail extends React.Component {
                                             </div>
                                             <div className="donated-amount">
                                                 <span className="donated-amount-label">Donated so far</span>
-                                                <span className={"amount " + GiftDetail.calculateAmountCSSClass(this.state.giftItem.amount, donatedAmount)}>{donatedAmount} CHF</span>
+                                                <span className={"amount " + this.calculateAmountCSSClass(this.state.giftItem.amount, donatedAmount)}>{donatedAmount} CHF</span>
                                             </div>
                                         </div>
                                         <div className="percent">
-                                            <div>{this.calculatePercent(this.state.giftItem.amount, donatedAmount)}%</div>
+                                            <div>{GiftDetail.calculatePercent(this.state.giftItem.amount, donatedAmount)}%</div>
                                         </div>
                                     </div>
                                     { this.state.giftItem.amount - donatedAmount > 0 &&
@@ -252,46 +298,39 @@ export default class GiftDetail extends React.Component {
                             {GiftDetail.replaceNewLine(this.state.giftItem.description)}
                         </div>
                     </div>
-                    <div className="gift-user">
-                        <div className="user-info">
-                            <div className="user-image">
-                                <img src={this.state.giftUser.imageurl} alt="the profile"/>
-                            </div>
-                            <div className="user-details">
-                                <h3 className="name">{this.state.giftUser.firstname + ' ' + this.state.giftUser.lastname}</h3>
-                                <div className="karma-history" >
-                                    <div className={"karma " + (this.state.giftUser.karma > 0 ? 'gkp' : 'bkp')}>
-                                        {this.state.giftUser.karma} {this.state.giftUser.karma > 0 ? 'gkp!' : 'bkp!'}
-                                    </div>
+                    <div className="donations-container">
+                        <h2>Donation history</h2>
+                        {donationContainer}
+                        <div className="donations-showmore">
+                            { this.renderDonationsButton() }
+                        </div>
+                    </div>
+                </div>
+                <div className="gift-user">
+                    <div className="user-info">
+                        <div className="user-image">
+                            <img src={this.state.giftUser.imageurl} alt="the profile"/>
+                        </div>
+                        <div className="user-details">
+                            <h3 className="name">{this.state.giftUser.firstname + ' ' + this.state.giftUser.lastname}</h3>
+                            <div className="karma-history" >
+                                <div className={"karma " + (this.state.giftUser.karma > 0 ? 'gkp' : 'bkp')}>
+                                    {this.state.giftUser.karma} {this.state.giftUser.karma > 0 ? 'gkp!' : 'bkp!'}
+                                </div>
 
-                                    <div className="gift-history-container">
-                                        <div>
-                                            <a onClick={this.showHideGiftHistory}>Show gift history</a>
-                                            { this.state.showGiftHistory ?
-                                                <div className="gift-history">
-                                                    <div className="gift-user-gifts">
-                                                    { this.state.giftUserGifts && this.state.giftUserGifts.length > 0 ?
-                                                        GiftDetail.renderGiftHistory() : GiftDetail.renderEmptyGiftHistory()
-                                                    }
-                                                    </div>
-                                                </div>
-                                                : null
-                                            }
-                                        </div>
+                                <div className="gift-history-container">
+                                    <div>
+                                        <a onClick={this.showHideGiftHistory}>Show gift history</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div className="user-description">
-                            {GiftDetail.replaceNewLine(this.state.giftUser.description)}
-                        </div>
                     </div>
-                </div>
-                <div className="donations-container">
-                    <h2>Donation history</h2>
-                    {donationContainer}
-                    <div className="donations-showmore">
-                        { this.renderDonationsButton() }
+                    { this.state.showGiftHistory ?
+                        this.renderGiftHistory() : null
+                    }
+                    <div className="user-description">
+                        {GiftDetail.replaceNewLine(this.state.giftUser.description)}
                     </div>
                 </div>
             </div>

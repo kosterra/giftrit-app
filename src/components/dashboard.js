@@ -3,7 +3,6 @@ import GiftList from "./giftlist";
 import Loader from "./loader";
 
 const userUrl = 'https://giftrit-service.herokuapp.com/api/users/';
-const giftDonationsUrl = 'https://giftrit-service.herokuapp.com/api/gift/1/donations';
 
 export default class UserDashboard extends React.Component {
     constructor (props) {
