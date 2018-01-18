@@ -3,21 +3,43 @@ import Model from 'ampersand-model';
 
 export default Model.extend({
 
-  url: 'https://api.github.com/user',
+  url: 'https://giftrit-service.herokuapp.com/api/users',
+
+  ajaxConfig () {
+    return {
+      headers: {
+        'Authorization': 'Bearer ' + this.access_token
+      }
+    }
+  },
 
   initialize() {
-    this.token = window.localStorage.token;
-    this.on('change:token', this.onChangeToken)
+    this.access_token = window.localStorage.access_token || ""
+    this.authid_token = window.localStorage.authid_token || ""
+    this.expires_at = JSON.stringify(window.localStorage.expires_at) || JSON.stringify("")
+
+    this.on('change:access_token', this.onChangeToken)
   },
 
   props: {
     id: 'number',
-    login: 'string',
-    avatar_url: 'string'
+    firstname: 'string',
+    lastname: 'string',
+    phone: 'string',
+    email: 'string',
+    username: 'string',
+    statusId: 'number',
+    karma: 'number',
+    description: 'string',
+    imageUrl: 'string',
+    authId : 'string',
+    sessionId : 'string'
   },
 
   session: {
-    token: 'string'
+    access_token: 'string',
+    authid_token: 'string',
+    expires_at: 'string'
   },
 
   collections: {
@@ -25,12 +47,14 @@ export default Model.extend({
   },
 
   onChangeToken () {
-    window.localStorage.token = this.token
+    window.localStorage.access_token = this.access_token
+    window.localStorage.authid_token = this.authid_token
+    window.localStorage.expires_at = this.expires_at
     this.fetchInitialData()
   },
 
   fetchInitialData() {
-    if(this.token) {
+    if(this.access_token) {
       this.fetch()
       // this.repos.fetch()
     }
