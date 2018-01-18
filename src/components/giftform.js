@@ -21,8 +21,23 @@ export default class GiftForm extends React.Component {
             userKarma: 0,
             imageUrl: 'https://cdn.filestackcontent.com/01rCYxa5RHyGSczD6t2V',
             imageMetadata: null
-        }
-    }
+        }    	
+		fetch(url + this.props.params.giftId)
+			.then(res => res.json())
+			.then(data => {
+				this.setState({
+					id: this.state.id,
+					title: this.jsonEscape(this.state.title),
+					description: this.jsonEscape(this.state.description),
+					amount: this.state.amount,
+					created: this.state.created,
+					modified: this.state.modified,
+					userId: this.state.userId,
+					karma: this.state.karma,
+					imageUrl: this.state.imageUrl
+				});
+			});
+	}
 
     handleSubmit = e => {
         fetch(url, {
@@ -134,6 +149,7 @@ export default class GiftForm extends React.Component {
         return (
             <div className="gift-form-container">
                 <form className="gift-form" onSubmit={this.handleSubmit}>
+					<input type="hidden" name="id" value={this.state.id} />
                     <div className="gift-form-inputs">
                         <div className="gift-form-images">
                             <div className="thumbnail">
