@@ -1,5 +1,7 @@
 import React from 'react'
 import SearchInput, {createFilter} from 'react-search-input'
+import Loader from './loader'
+import Banner from './banner'
 
 const url = 'https://giftrit-service.herokuapp.com/api/gifts';
 
@@ -12,17 +14,29 @@ export default class GiftList extends React.Component {
         this.showMore = this.showMore.bind(this);
 
         this.state = {
-            searchTerm: '',
-            giftItems: [],
-            numberOfGifts: 0,
-            limit: 6,
-            showMore: true
+            searchTerm : '',
+            giftItems : [],
+            numberOfGifts : 0,
+            limit : 6,
+            showMore : false
         };
 
         fetch(url)
             .then(res => res.json())
             .then(data => {
-                this.setState({ giftItems : data.data, numberOfGifts : data.data.length });
+                this.setState({
+                    loading : false,
+                    giftItems : data.data,
+                    numberOfGifts : data.data.length,
+                    showMore : data.data.length > this.state.limit,
+                });
+            }).catch(error => {
+                this.setState({
+                    showMore : false,
+                    type: 'danger',
+                    message: 'Sorry there was a problem loading the gifts. Please try again later or contact us via contact form.'
+                });
+                console.log("Failed to load gifts! " + error.message);
             });
 
         this.searchUpdated = this.searchUpdated.bind(this)
@@ -30,8 +44,8 @@ export default class GiftList extends React.Component {
 
     showMore() {
         this.setState({
-            limit: this.state.limit + 3,
-            showMore: this.state.limit < this.state.numberOfGifts
+            showMore: this.state.limit < this.state.numberOfGifts,
+            limit: this.state.limit + 3
         });
     }
 
@@ -45,6 +59,10 @@ export default class GiftList extends React.Component {
         );
     }
 
+    calculatePercent(amount, donated) {
+        return ((donated / amount) * 100).toFixed(0);
+    }
+
     render () {
         const filteredGifts = this.state.giftItems.filter(createFilter(this.state.searchTerm, KEYS_TO_FILTERS));
 
@@ -53,15 +71,24 @@ export default class GiftList extends React.Component {
             giftContainer = <div className="gift-container">
                 {filteredGifts.slice(0, this.state.limit).map(gift => {
                     return (
-                        <a href={"giftdetail/" + gift.id} >
-                            <div className="gift-item" key={gift.id} style={{backgroundImage: "url(" + gift.imageurl + ")"}} >
-                                <div className="gift-info">
-                                    <div className="title">{gift.title}</div>
-                                    <div className="description" title={gift.description}>{GiftList.shorten(gift.description, 40)}</div>
-                                    <div className="userinfo">by <span className="username">username</span></div>
+                        <div className="gift-item" key={gift.id}>
+                            <div className="gift-info">
+                                <img src={gift.imageurl} alt="the gift"/>
+                                <div className="title" title={gift.title}>{GiftList.shorten(gift.title, 30)}</div>
+                                <div className="description"
+                                     title={gift.description}>{GiftList.shorten(gift.description, 95)}</div>
+                                <div className="username-label">by <span className="username">{gift.username}</span>
+                                </div>
+                                <div className="actions-percent">
+                                    <div className="actions">
+                                        <a href={"/giftdetail/" + gift.id} className="fa fa-eye"/>
+                                    </div>
+                                    <div className="percent">
+                                        <div>{this.calculatePercent(gift.amount, gift.donatedamount)}%</div>
+                                    </div>
                                 </div>
                             </div>
-                        </a>
+                        </div>
                     )
                 })}
             </div>;
@@ -74,12 +101,19 @@ export default class GiftList extends React.Component {
                         <h1>Discover the gifts</h1>
                         <p>{this.state.numberOfGifts} gifts to discover</p>
                     </div>
-                    <SearchInput className="search-input" onChange={this.searchUpdated} />
+                    <SearchInput className="search-input" onChange={this.searchUpdated} placeholder="Search for your gift to donate..." />
                 </div>
-                {giftContainer}
-                <div className="gifts-showmore">
-                    { this.renderButton() }
-                </div>
+                { this.state.giftItems.length > 0 ? giftContainer : <Loader /> }
+
+                { this.state.giftItems.length > 0 &&
+                    <div className="gifts-showmore">
+                        {this.renderButton()}
+                    </div>
+                }
+
+                { this.state.type && this.state.type === 'danger' && <div className="alert-message" >{this.state.message}</div> }
+
+                <Banner />
             </div>
         )
     }

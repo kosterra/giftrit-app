@@ -36,15 +36,30 @@ a {
   a:hover {
     color: #10abbf;
     text-decoration: none; }
+  a.cancel {
+    background-color: #fff;
+    border: 1px solid #10abbf;
+    color: #10abbf;
+    margin-left: 10px;
+    border-radius: 5px;
+    margin-top: 15px;
+    padding: 9px 45px; }
+    a.cancel:hover {
+      background-color: #10abbf;
+      color: #fff; }
 
 button {
   background-color: #10abbf;
   color: #fff;
-  border: none;
+  border: 1px solid #10abbf;
   height: 35px;
   border-radius: 5px;
   margin-top: 15px;
   padding: 0 10px; }
+  button:hover {
+    background-color: #fff;
+    color: #10abbf;
+    border: 1px solid #10abbf; }
 
 input {
   height: 45px;
@@ -65,13 +80,16 @@ input {
 .karma.gkp, .karma.high, .amount.gkp, .amount.high {
   color: #04c304; }
 
+.btn.btn-filestack:hover {
+  color: #10abbf; }
+
 .header-distributed {
   background-color: #292c2f;
   box-shadow: 0 1px 1px #ccc;
   padding: 20px 40px;
   color: #fff;
   box-sizing: border-box;
-  margin-bottom: 60px; }
+  margin-bottom: 0; }
   .header-distributed .header-limiter {
     width: 100%;
     display: flex;
@@ -114,7 +132,7 @@ input {
   font: bold 16px sans-serif;
   text-align: left;
   padding: 50px 60px 40px;
-  margin-top: 80px;
+  margin-top: 0;
   overflow: hidden; }
   .footer-distributed .footer-left {
     float: left; }
@@ -294,9 +312,10 @@ input {
           text-decoration: none; }
 
 .gift-list {
-  margin-top: -60px; }
+  margin-top: 0; }
   .gift-list .gift-list-search {
-    background: #f3f1f18c; }
+    background: #f3f1f18c;
+    margin-bottom: 60px; }
     .gift-list .gift-list-search .gift-list-search-title {
       text-align: center;
       padding-top: 40px;
@@ -316,67 +335,115 @@ input {
         margin-right: auto;
         display: flex; }
   .gift-list .gift-container {
-    padding: 0;
-    list-style: none;
-    width: 80%;
+    width: 90%;
     margin-left: auto;
-    margin-right: auto;
-    margin-top: 60px;
-    display: -webkit-box;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    justify-content: center;
-    flex-wrap: wrap; }
+    margin-right: auto; }
     .gift-list .gift-container .gift-item {
-      background-repeat: no-repeat;
-      background-size: cover;
+      background-color: #f3f1f18c;
       border: 1px solid lightgray;
-      width: 400px;
-      height: 220px;
-      margin: 10px 10px;
-      color: white;
-      text-align: center;
-      display: flex;
-      align-items: flex-end; }
-      .gift-list .gift-container .gift-item .gift-info {
-        background-color: rgba(0, 0, 0, 0.35);
+      padding: 0; }
+      .gift-list .gift-container .gift-item img {
+        height: 100%;
         width: 100%;
-        max-height: 120px; }
-        .gift-list .gift-container .gift-item .gift-info .title {
-          text-align: left;
-          font-size: 1.4em;
-          margin-left: 15px;
-          margin-top: 8px;
-          font-weight: 600;
-          margin-bottom: 5px;
-          color: #10abbf; }
-        .gift-list .gift-container .gift-item .gift-info .description {
-          text-align: left;
-          margin: 0 16px 10px;
-          display: flex;
+        border-radius: 5px; }
+      .gift-list .gift-container .gift-item:hover {
+        padding: 5px; }
+        .gift-list .gift-container .gift-item:hover img {
+          display: none; }
+        .gift-list .gift-container .gift-item:hover .gift-info {
+          margin: 0px 12px; }
+          .gift-list .gift-container .gift-item:hover .gift-info .title, .gift-list .gift-container .gift-item:hover .gift-info .description, .gift-list .gift-container .gift-item:hover .gift-info .username-label, .gift-list .gift-container .gift-item:hover .gift-info .actions-percent {
+            display: flex; }
+      .gift-list .gift-container .gift-item .gift-info {
+        margin: 0; }
+        .gift-list .gift-container .gift-item .gift-info .title, .gift-list .gift-container .gift-item .gift-info .description, .gift-list .gift-container .gift-item .gift-info .username-label, .gift-list .gift-container .gift-item .gift-info .actions-percent {
+          display: none; }
+    .gift-list .gift-container .username-label {
+      align-self: flex-end; }
+      .gift-list .gift-container .username-label .username {
+        font-weight: 600;
+        margin-left: 5px; }
+    .gift-list .gift-container .actions-percent .actions {
+      align-self: flex-end;
+      margin-bottom: 10px; }
+  .gift-list .alert-message {
+    width: 60%;
+    margin: 80px auto 0;
+    text-align: center;
+    font-size: 1.6em;
+    border: 1px solid #10abbf;
+    border-radius: 5px;
+    padding: 10px;
+    color: #10abbf; }
+
+.gift-container {
+  padding: 10px 0;
+  margin: 50px 0 0 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; }
+  .gift-container .gift-item {
+    margin: 10px;
+    width: 360px;
+    height: 235px;
+    border: 1px solid lightgray;
+    padding: 5px;
+    background-color: #fff;
+    border-radius: 6px; }
+    .gift-container .gift-item .gift-info {
+      margin: 0 12px;
+      display: flex;
+      flex-wrap: wrap;
+      height: 100%; }
+      .gift-container .gift-item .gift-info .title {
+        font-size: 1.4em;
+        color: #292c2f;
+        margin: 15px 0 10px;
+        width: 100%; }
+      .gift-container .gift-item .gift-info .description {
+        color: #292c2f;
+        display: block;
+        width: 100%; }
+      .gift-container .gift-item .gift-info .amountinfo {
+        margin: 15px 0;
+        width: 100%; }
+        .gift-container .gift-item .gift-info .amountinfo .amount .amount-label, .gift-container .gift-item .gift-info .amountinfo .amount .donated-label, .gift-container .gift-item .gift-info .amountinfo .donated .amount-label, .gift-container .gift-item .gift-info .amountinfo .donated .donated-label {
+          color: #292c2f;
+          width: 115px;
+          display: inline-flex; }
+      .gift-container .gift-item .gift-info .actions-percent {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+        .gift-container .gift-item .gift-info .actions-percent .actions {
+          display: flex; }
+          .gift-container .gift-item .gift-info .actions-percent .actions a {
+            padding: 8px;
+            border: 1px solid #10abbf;
+            background-color: #10abbf;
+            border-radius: 5px;
+            color: #fff;
+            margin-right: 10px; }
+            .gift-container .gift-item .gift-info .actions-percent .actions a:hover {
+              background-color: #fff;
+              color: #10abbf; }
+        .gift-container .gift-item .gift-info .actions-percent .percent {
           align-self: flex-end;
-          font-size: 1.2em; }
-        .gift-list .gift-container .gift-item .gift-info .userinfo {
-          margin: 20px 0 10px 18px;
-          text-align: left; }
-          .gift-list .gift-container .gift-item .gift-info .userinfo .username {
-            font-weight: 600; }
-  .gift-list .gifts-showmore {
-    text-align: center; }
+          font-size: 2.8em;
+          color: #8F9296; }
+
+.gifts-showmore {
+  text-align: center; }
 
 .gift-form-container {
   background-color: #f3f1f18c;
-  padding: 50px;
+  padding: 50px 100px;
   list-style: none;
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 60px;
-  display: flex;
-  border-radius: 10px; }
+  display: flex; }
   .gift-form-container .gift-form {
     width: 100%; }
     .gift-form-container .gift-form .gift-form-inputs {
@@ -406,99 +473,111 @@ input {
           border: 1px solid lightgray;
           border-radius: 6px;
           resize: none; }
-    .gift-form-container .gift-form .gift-form-submit .cancel {
-      background-color: #fff;
-      border: 1px solid #10abbf;
-      color: #10abbf;
-      margin-left: 10px;
-      border-radius: 5px;
-      margin-top: 15px;
-      padding: 9px 45px; }
 
 .gift-detail-container {
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-color: #f3f1f18c;
-  padding: 50px;
-  border-radius: 10px;
-  display: flex; }
-  .gift-detail-container .gift-detail .gift-info-donation {
+  background-color: #fff;
+  padding: 0; }
+  .gift-detail-container .gift-donation-container {
     display: flex;
-    min-height: 300px; }
-    .gift-detail-container .gift-detail .gift-info-donation .gift-images {
-      width: 40%; }
-      .gift-detail-container .gift-detail .gift-info-donation .gift-images img {
-        width: 100%; }
-    .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form {
-      width: 60%;
-      padding-left: 40px; }
-      .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details {
-        height: 100%;
-        display: flex;
-        flex-flow: row wrap; }
-        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount-donated-percent {
-          display: flex;
-          justify-content: space-between;
-          width: 100%;
-          margin-right: 66px;
-          align-items: center; }
-          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount-donated-percent .percent {
-            justify-self: flex-end;
-            font-size: 2.8em;
-            color: #8F9296; }
-        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .name {
-          width: 100%; }
-        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount, .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount {
-          width: 100%; }
-          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount .gift-amount-label, .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount .donated-amount-label, .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount .gift-amount-label, .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount .donated-amount-label {
-            margin-right: 10px;
-            width: 180px;
-            display: inline-flex; }
-        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation {
-          width: 100%; }
-          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-input {
-            display: block;
-            margin-top: 15px;
-            width: 35%; }
-          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-button {
-            padding: 0 35px; }
-          .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .login-button {
-            background-color: #10abbf;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            margin-top: 15px;
-            padding: 8px 10px;
-            display: inline-block; }
-        .gift-detail-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .karma {
-          width: 100%;
-          align-self: flex-end;
-          margin-bottom: 10px; }
-  .gift-detail-container .gift-detail .gift-description {
-    min-height: 200px;
-    margin: 40px 100px 40px 4px;
-    font-size: 1.3em; }
-  .gift-detail-container .gift-user .user-info {
-    display: flex; }
-    .gift-detail-container .gift-user .user-info .user-image {
-      width: 8%; }
-      .gift-detail-container .gift-user .user-info .user-image img {
-        width: 100%; }
-    .gift-detail-container .gift-user .user-info .user-details {
+    margin: 0 auto 0 auto;
+    width: 80%;
+    padding: 60px 0;
+    background-color: #fff;
+    justify-content: center; }
+    .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation {
       display: flex;
-      flex-flow: row wrap;
-      margin-left: 15px; }
-      .gift-detail-container .gift-user .user-info .user-details h3 {
-        width: 100%;
-        margin: 0 0 5px 0; }
-      .gift-detail-container .gift-user .user-info .user-details .karma-history {
-        align-self: flex-end;
-        margin-bottom: 5px; }
-  .gift-detail-container .gift-user .user-description {
-    min-height: 80px;
-    font-size: 1.3em;
-    margin: 40px 100px 0 4px; }
+      min-height: 300px; }
+      .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-images {
+        width: 40%;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+        padding: 20px;
+        display: -ms-flexbox;
+        display: flex;
+        height: 245px; }
+        .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-images img {
+          width: 100%; }
+      .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form {
+        width: 60%;
+        padding-left: 40px; }
+        .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details {
+          height: 100%;
+          display: flex;
+          flex-flow: row wrap; }
+          .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount-donated-percent {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-right: 66px;
+            align-items: center; }
+            .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount-donated-percent .percent {
+              justify-self: flex-end;
+              font-size: 2.8em;
+              color: #8F9296; }
+          .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .name {
+            width: 100%; }
+          .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount, .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount {
+            width: 100%; }
+            .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount .gift-amount-label, .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .gift-amount .donated-amount-label, .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount .gift-amount-label, .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donated-amount .donated-amount-label {
+              margin-right: 10px;
+              width: 180px;
+              display: inline-flex; }
+          .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation {
+            width: 100%; }
+            .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-input {
+              display: block;
+              margin-top: 15px;
+              width: 35%; }
+            .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .donate-button {
+              padding: 0 35px; }
+            .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .donation .login-button {
+              background-color: #10abbf;
+              color: #fff;
+              border: none;
+              border-radius: 5px;
+              margin-top: 15px;
+              padding: 8px 10px;
+              display: inline-block; }
+          .gift-detail-container .gift-donation-container .gift-detail .gift-info-donation .gift-donate-form .gift-details .karma {
+            width: 100%;
+            align-self: flex-end;
+            margin-bottom: 10px; }
+    .gift-detail-container .gift-donation-container .gift-detail .gift-description {
+      min-height: 40px;
+      margin: 40px 100px 40px 4px;
+      font-size: 1.3em; }
+  .gift-detail-container .gift-user {
+    margin: 30px 0 0;
+    background-color: #f3f1f18c; }
+    .gift-detail-container .gift-user .user-info {
+      display: flex;
+      margin: 0 auto;
+      width: 80%;
+      padding: 40px 0 20px; }
+      .gift-detail-container .gift-user .user-info .user-image {
+        width: 8%;
+        min-width: 75px; }
+        .gift-detail-container .gift-user .user-info .user-image img {
+          width: 100%; }
+      .gift-detail-container .gift-user .user-info .user-details {
+        display: flex;
+        flex-flow: row wrap;
+        margin-left: 15px; }
+        .gift-detail-container .gift-user .user-info .user-details h3 {
+          width: 100%;
+          margin: 0 0 5px 0; }
+        .gift-detail-container .gift-user .user-info .user-details .karma-history {
+          align-self: flex-end;
+          margin-bottom: 5px; }
+    .gift-detail-container .gift-user .user-description {
+      min-height: 80px;
+      font-size: 1.3em;
+      margin: 0 auto;
+      width: 80%;
+      padding: 40px 0; }
 
 .gift-history-container {
   margin-top: 5px; }
@@ -507,13 +586,85 @@ input {
     text-decoration: underline;
     color: #292c2f; }
 
+.gift-history {
+  padding: 10px 0;
+  margin: 20px 0 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #10abbf; }
+  .gift-history:before {
+    content: " ";
+    height: 0;
+    position: relative;
+    top: -30px;
+    width: 0;
+    z-index: 1;
+    left: -30%;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid #10abbf; }
+  .gift-history .gift-history-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 20px; }
+    .gift-history .gift-history-items .gift-item {
+      margin: 10px;
+      width: 23%;
+      height: 165px;
+      padding: 5px;
+      background-color: #fff;
+      border-radius: 6px; }
+      .gift-history .gift-history-items .gift-item .gift-info {
+        margin: 0 12px;
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%; }
+        .gift-history .gift-history-items .gift-item .gift-info .title {
+          font-size: 1.4em;
+          color: #292c2f;
+          margin: 15px 0 10px;
+          width: 100%; }
+        .gift-history .gift-history-items .gift-item .gift-info .description {
+          color: #292c2f;
+          display: block;
+          width: 100%; }
+        .gift-history .gift-history-items .gift-item .gift-info .amountinfo {
+          margin: 15px 0;
+          width: 100%; }
+          .gift-history .gift-history-items .gift-item .gift-info .amountinfo .amount .amount-label, .gift-history .gift-history-items .gift-item .gift-info .amountinfo .amount .donated-label, .gift-history .gift-history-items .gift-item .gift-info .amountinfo .donated .amount-label, .gift-history .gift-history-items .gift-item .gift-info .amountinfo .donated .donated-label {
+            color: #292c2f;
+            width: 115px;
+            display: inline-flex; }
+        .gift-history .gift-history-items .gift-item .gift-info .actions-percent {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center; }
+          .gift-history .gift-history-items .gift-item .gift-info .actions-percent .actions {
+            display: flex; }
+            .gift-history .gift-history-items .gift-item .gift-info .actions-percent .actions a {
+              padding: 8px;
+              border: 1px solid #10abbf;
+              background-color: #10abbf;
+              border-radius: 5px;
+              color: #fff;
+              margin-right: 10px; }
+              .gift-history .gift-history-items .gift-item .gift-info .actions-percent .actions a:hover {
+                background-color: #fff;
+                color: #10abbf; }
+          .gift-history .gift-history-items .gift-item .gift-info .actions-percent .percent {
+            align-self: flex-end;
+            font-size: 2.8em;
+            color: #8F9296; }
+
 .dashboard-container {
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-color: #f3f1f18c;
   padding: 50px;
-  border-radius: 10px;
   display: flex;
   justify-content: space-around; }
   .dashboard-container a {
@@ -521,70 +672,13 @@ input {
   .dashboard-container h2 {
     margin: 20px 18px 0;
     color: #292c2f;
-    font-size: 1.5em;
+    font-size: 2em;
     text-align: center;
-    background-color: #d8d8d85c;
-    padding: 10px 0;
-    border-radius: 5px;
     text-transform: uppercase; }
+  .dashboard-container .gift-container {
+    margin: 50px 0 13px; }
   .dashboard-container .my-gifts {
     margin-right: 60px; }
-    .dashboard-container .my-gifts .gift-container {
-      padding: 10px 0;
-      margin: 50px 0 0 0;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap; }
-      .dashboard-container .my-gifts .gift-container .gift-item {
-        margin: 10px;
-        width: 360px;
-        height: 235px;
-        border: 1px solid rgba(16, 171, 191, 0.231373);
-        padding: 5px;
-        background-color: #fff;
-        border-radius: 6px; }
-        .dashboard-container .my-gifts .gift-container .gift-item .gift-info {
-          margin: 0 12px;
-          display: flex;
-          flex-wrap: wrap;
-          height: 100%; }
-          .dashboard-container .my-gifts .gift-container .gift-item .gift-info .title {
-            font-size: 1.4em;
-            color: #292c2f;
-            margin: 15px 0 10px;
-            width: 100%; }
-          .dashboard-container .my-gifts .gift-container .gift-item .gift-info .description {
-            color: #292c2f;
-            display: block;
-            width: 100%; }
-          .dashboard-container .my-gifts .gift-container .gift-item .gift-info .amountinfo {
-            margin: 15px 0;
-            width: 100%; }
-            .dashboard-container .my-gifts .gift-container .gift-item .gift-info .amountinfo .amount .amount-label, .dashboard-container .my-gifts .gift-container .gift-item .gift-info .amountinfo .amount .donated-label, .dashboard-container .my-gifts .gift-container .gift-item .gift-info .amountinfo .donated .amount-label, .dashboard-container .my-gifts .gift-container .gift-item .gift-info .amountinfo .donated .donated-label {
-              color: #292c2f;
-              width: 115px;
-              display: inline-flex; }
-          .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions-percent {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center; }
-            .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions-percent .actions {
-              display: flex; }
-              .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions-percent .actions a {
-                padding: 8px;
-                border: 1px solid #10abbf;
-                background-color: #10abbf;
-                border-radius: 5px;
-                color: #fff;
-                margin-right: 10px; }
-            .dashboard-container .my-gifts .gift-container .gift-item .gift-info .actions-percent .percent {
-              align-self: flex-end;
-              font-size: 2.8em;
-              color: #8F9296; }
-    .dashboard-container .my-gifts .gifts-showmore {
-      text-align: center;
-      margin-top: 10px; }
   .dashboard-container .my-donations {
     margin-left: 20px; }
 
@@ -598,7 +692,7 @@ input {
     position: relative;
     border-radius: 6px;
     margin: 20px;
-    border: 1px solid rgba(16, 171, 191, 0.231373); }
+    border: 1px solid lightgray; }
     .donation-container .donation-item:before {
       content: " ";
       height: 0;
@@ -644,14 +738,12 @@ input {
 
 .profile-form-container {
   background-color: #f3f1f18c;
-  padding: 50px;
+  padding: 50px 100px;
   list-style: none;
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 60px;
-  display: flex;
-  border-radius: 10px; }
+  display: flex; }
   .profile-form-container .profile-form {
     width: 100%; }
     .profile-form-container .profile-form .profile-form-inputs {
@@ -688,11 +780,100 @@ input {
           margin-top: 10px; }
     .profile-form-container .profile-form .profile-form-submit button {
       padding: 0 30px; }
-    .profile-form-container .profile-form .profile-form-submit .cancel {
-      background-color: #fff;
-      border: 1px solid #10abbf;
-      color: #10abbf;
-      margin-left: 10px;
-      border-radius: 5px;
-      margin-top: 15px;
-      padding: 9px 45px; }
+
+#loader {
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  display: flex;
+  justify-content: center; }
+  #loader .letter {
+    font-size: 4em;
+    color: #10abbf; }
+  #loader .box {
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex; }
+  #loader .loaderCircle, #loader .loaderInner, #loader .loaderCore {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%; }
+  #loader .loader, #loader .letter, #loader .loaderCircle, #loader .loaderInner, #loader .loaderCore {
+    flex: none;
+    -webkit-flex: none;
+    -ms-flex: none; }
+  #loader .letter, #loader .loaderCircle {
+    align-self: center;
+    -webkit-align-self: center; }
+  #loader .loaderCircle {
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+    width: 70px;
+    background-color: #10abbf; }
+  #loader .loaderInner {
+    align-self: center;
+    justify-content: center;
+    height: 50%;
+    width: 50%;
+    background-color: #f3f1f18c;
+    -webkit-animation-name: loaderAnimate;
+    -webkit-animation-duration: 500ms;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite; }
+  #loader .loaderCore {
+    align-self: center;
+    height: 25%;
+    width: 25%;
+    background-color: #f3f1f18c;
+    -webkit-animation-name: coreAnimate;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-direction: alternate;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-iteration-count: infinite; }
+
+@-webkit-keyframes loaderAnimate {
+  to {
+    height: 90%;
+    width: 90%; } }
+
+@keyframes loaderAnimate {
+  to {
+    height: 90%;
+    width: 90%; } }
+
+@-webkit-keyframes coreAnimate {
+  to {
+    height: 90%;
+    width: 90%; } }
+
+@keyframes coreAnimate {
+  to {
+    height: 90%;
+    width: 90%; } }
+
+.banner-content {
+  display: inline-flex;
+  width: 100%;
+  padding: 100px 20px;
+  background-color: #f3f1f18c;
+  margin: 60px 0 0; }
+  .banner-content .banner-row {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%; }
+    .banner-content .banner-row .banner-item {
+      height: 120px;
+      width: 18%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #10abbf;
+      color: #fff;
+      font-size: 1.8em; }

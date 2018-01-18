@@ -1,8 +1,8 @@
 import React from 'react'
 import GiftList from "./giftlist";
+import Loader from "./loader";
 
 const userUrl = 'https://giftrit-service.herokuapp.com/api/users/';
-const giftDonationsUrl = 'https://giftrit-service.herokuapp.com/api/gift/1/donations';
 
 export default class UserDashboard extends React.Component {
     constructor (props) {
@@ -149,24 +149,33 @@ export default class UserDashboard extends React.Component {
 		}	
 		return (			
 			<div className="dashboard-container">
-				<div className="my-gifts">
-					<h2>My Gifts</h2>
-					<div className="gifts-container">
-						{giftContainer}
-					</div>
-                    <div className="gifts-showmore">
-                        { this.renderGiftsButton() }
+                { this.state.gifts.length > 0 && this.state.donations.length > 0 &&
+                    <div className="my-gifts">
+                        <h2>My Gifts</h2>
+                        <div className="gifts-container">
+                            {giftContainer}
+                        </div>
+                        <div className="gifts-showmore">
+                            { this.renderGiftsButton() }
+                        </div>
                     </div>
-				</div>
-				<div className="my-donations">
-					<h2>My Donations</h2>
-					<div className="donations-container">
-						{donationContainer}
-					</div>
-                    <div className="donations-showmore">
-                    	{ this.renderDonationsButton() }
-					</div>
-				</div>
+                }
+
+                { this.state.gifts.length > 0 && this.state.donations.length > 0 &&
+                    <div className="my-donations">
+                        <h2>My Donations</h2>
+                        <div className="donations-container">
+                            {donationContainer}
+                        </div>
+                        <div className="donations-showmore">
+                            { this.renderDonationsButton() }
+                        </div>
+                    </div>
+                }
+
+                { this.state.gifts.length === 0 && this.state.donations.length === 0 &&
+                    <Loader />
+                }
 			</div>
 		)
     }

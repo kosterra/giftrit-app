@@ -16,3 +16,9 @@
     color: #04c304;
   }
 }
+
+.btn.btn-filestack {
+  &:hover {
+    color: $primary-color;
+  }
+}

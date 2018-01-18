@@ -1,109 +1,128 @@
 .gift-detail-container {
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-color: #f3f1f18c;
-  padding: 50px;
-  border-radius: 10px;
-  display: flex;
+  background-color: #fff;
+  padding: 0;
 
-  .gift-detail {
-    .gift-info-donation {
-      display: flex;
-      min-height: 300px;
+  .gift-donation-container {
+    display: flex;
+    margin: 0 auto 0 auto;
+    width: 80%;
+    padding: 60px 0;
+    background-color: #fff;
+    justify-content: center;
 
-      .gift-images {
-        width: 40%;
+    .gift-detail {
+      .gift-info-donation {
+        display: flex;
+        min-height: 300px;
 
-        img {
-          width: 100%;
-        }
-      }
-
-      .gift-donate-form {
-        width: 60%;
-        padding-left: 40px;
-
-        .gift-details {
-          height: 100%;
+        .gift-images {
+          width: 40%;
+          border: 1px solid lightgray;
+          border-radius: 5px;
+          padding: 20px;
+          display: -ms-flexbox;
           display: flex;
-          flex-flow: row wrap;
+          height: 245px;
 
-          .gift-amount-donated-percent {
+          img {
+            width: 100%;
+          }
+        }
+
+        .gift-donate-form {
+          width: 60%;
+          padding-left: 40px;
+
+          .gift-details {
+            height: 100%;
             display: flex;
-            justify-content: space-between;
-            width: 100%;
-            margin-right: 66px;
-            align-items: center;
+            flex-flow: row wrap;
 
-            .percent {
-              justify-self: flex-end;
-              font-size: 2.8em;
-              color: $fourth-color;
-            }
-          }
+            .gift-amount-donated-percent {
+              display: flex;
+              justify-content: space-between;
+              width: 100%;
+              margin-right: 66px;
+              align-items: center;
 
-          .name {
-            width: 100%;
-          }
-		  
-		  .gift-amount, .donated-amount {
-			width: 100%;
-
-            .gift-amount-label, .donated-amount-label {
-              margin-right: 10px;
-              width: 180px;
-              display: inline-flex;
-            }
-		  }
-
-          .donation {
-            width: 100%;
-
-            .donate-input {
-              display: block;
-              margin-top: 15px;
-              width: 35%;
+              .percent {
+                justify-self: flex-end;
+                font-size: 2.8em;
+                color: $fourth-color;
+              }
             }
 
-            .donate-button {
-              padding: 0 35px;
+            .name {
+              width: 100%;
             }
-			
-			.login-button {
-              background-color: #10abbf;
-              color: #fff;
-              border: none;
-              border-radius: 5px;
-              margin-top: 15px;
-              padding: 8px 10px;
-              display: inline-block;
-            }
-          }
 
-          .karma {
-            width: 100%;
-            align-self: flex-end;
-            margin-bottom: 10px;
+            .gift-amount, .donated-amount {
+              width: 100%;
+
+              .gift-amount-label, .donated-amount-label {
+                margin-right: 10px;
+                width: 180px;
+                display: inline-flex;
+              }
+            }
+
+            .donation {
+              width: 100%;
+
+              .donate-input {
+                display: block;
+                margin-top: 15px;
+                width: 35%;
+              }
+
+              .donate-button {
+                padding: 0 35px;
+              }
+
+              .login-button {
+                background-color: #10abbf;
+                color: #fff;
+                border: none;
+                border-radius: 5px;
+                margin-top: 15px;
+                padding: 8px 10px;
+                display: inline-block;
+              }
+            }
+
+            .karma {
+              width: 100%;
+              align-self: flex-end;
+              margin-bottom: 10px;
+            }
           }
         }
       }
-    }
 
-    .gift-description {
-      min-height: 200px;
-      margin: 40px 100px 40px 4px;
-      font-size: 1.3em;
+      .gift-description {
+        min-height: 40px;
+        margin: 40px 100px 40px 4px;
+        font-size: 1.3em;
+      }
     }
   }
 
   .gift-user {
+    margin: 30px 0 0;
+    background-color: #f3f1f18c;
 
     .user-info {
       display: flex;
+      margin: 0 auto;
+      width: 80%;
+      padding: 40px 0 20px;
 
       .user-image {
         width: 8%;
+        min-width: 75px;
 
         img {
           width: 100%;
@@ -130,7 +149,9 @@
     .user-description {
       min-height: 80px;
       font-size: 1.3em;
-      margin: 40px 100px 0 4px;
+      margin: 0 auto;
+      width: 80%;
+      padding: 40px 0;
     }
   }
 }

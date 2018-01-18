@@ -1,10 +1,9 @@
 .dashboard-container {
-  width: 80%;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
   background-color: #f3f1f18c;
   padding: 50px;
-  border-radius: 10px;
   display: flex;
   justify-content: space-around;
 
@@ -15,99 +14,17 @@
   h2 {
     margin: 20px 18px 0;
     color: #292c2f;
-    font-size: 1.5em;
+    font-size: 2em;
     text-align: center;
-    background-color: #d8d8d85c;
-    padding: 10px 0;
-    border-radius: 5px;
     text-transform: uppercase;
+  }
+
+  .gift-container {
+    margin: 50px 0 13px;
   }
 
   .my-gifts {
     margin-right: 60px;
-
-    .gift-container {
-      padding: 10px 0;
-      margin: 50px 0 0 0;
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-
-      .gift-item {
-        margin: 10px;
-        width: 360px;
-        height: 235px;
-        border: 1px solid $primary-color-transparent;
-        padding: 5px;
-        background-color: #fff;
-        border-radius: 6px;
-
-        .gift-info {
-          margin: 0 12px;
-          display: flex;
-          flex-wrap: wrap;
-          height: 100%;
-
-          .title {
-            font-size: 1.4em;
-            color: $secondary-color;
-            margin: 15px 0 10px;
-            width: 100%;
-          }
-
-          .description {
-            color: $secondary-color;
-            display: block;
-            width: 100%;
-          }
-
-          .amountinfo {
-            margin: 15px 0;
-            width: 100%;
-
-            .amount, .donated {
-
-              .amount-label, .donated-label {
-                color: $secondary-color;
-                width: 115px;
-                display: inline-flex;
-              }
-            }
-          }
-
-          .actions-percent {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            .actions {
-              display: flex;
-
-              a {
-                padding: 8px;
-                border: 1px solid $primary-color;
-                background-color: $primary-color;
-                border-radius: 5px;
-                color: #fff;
-                margin-right: 10px;
-              }
-            }
-
-            .percent {
-              align-self: flex-end;
-              font-size: 2.8em;
-              color: $fourth-color;
-            }
-          }
-        }
-      }
-    }
-
-    .gifts-showmore {
-      text-align: center;
-      margin-top: 10px;
-    }
   }
 
   .my-donations {

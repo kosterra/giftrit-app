@@ -6,8 +6,107 @@
     text-decoration: underline;
     color: $secondary-color;
   }
+}
 
-  .gift-history {
+.gift-history {
+  padding: 10px 0;
+  margin: 20px 0 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: $primary-color;
 
+  &:before {
+    content: " ";
+    height: 0;
+    position: relative;
+    top: -30px;
+    width: 0;
+    z-index: 1;
+    left: -30%;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 20px solid $primary-color;
+  }
+
+  .gift-history-items {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-bottom: 20px;
+
+    .gift-item {
+      margin: 10px;
+      width: 23%;
+      height: 165px;
+      padding: 5px;
+      background-color: #fff;
+      border-radius: 6px;
+
+      .gift-info {
+        margin: 0 12px;
+        display: flex;
+        flex-wrap: wrap;
+        height: 100%;
+
+        .title {
+          font-size: 1.4em;
+          color: $secondary-color;
+          margin: 15px 0 10px;
+          width: 100%;
+        }
+
+        .description {
+          color: $secondary-color;
+          display: block;
+          width: 100%;
+        }
+
+        .amountinfo {
+          margin: 15px 0;
+          width: 100%;
+
+          .amount, .donated {
+
+            .amount-label, .donated-label {
+              color: $secondary-color;
+              width: 115px;
+              display: inline-flex;
+            }
+          }
+        }
+
+        .actions-percent {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .actions {
+            display: flex;
+
+            a {
+              padding: 8px;
+              border: 1px solid $primary-color;
+              background-color: $primary-color;
+              border-radius: 5px;
+              color: #fff;
+              margin-right: 10px;
+
+              &:hover {
+                background-color: #fff;
+                color: $primary-color;
+              }
+            }
+          }
+
+          .percent {
+            align-self: flex-end;
+            font-size: 2.8em;
+            color: $fourth-color;
+          }
+        }
+      }
+    }
   }
 }
