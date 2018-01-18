@@ -146,21 +146,27 @@ export default class ProfileEdit extends React.Component {
                             <h2>Edit your profile</h2>
 
                             <div className="user-firstname">
+								<span>Firstname</span>
                                 <input type="text" name="firstname" value={this.state.firstname} onChange={this.handleChange} placeholder="Enter your firstname" required />
                             </div>
                             <div className="user-lastname">
+								<span>Lastname</span>
                                 <input type="text" name="lastname" value={this.state.lastname} onChange={this.handleChange} placeholder="Enter your lastname" required />
                             </div>
                             <div className="user-username">
+								<span>Username</span>
                                 <input type="text" name="username" value={this.state.username} onChange={this.handleChange} placeholder="Enter your username" required />
                             </div>
                             <div className="user-phone">
+								<span>Phone</span>
                                 <input type="text" name="phone" value={this.state.phone} onChange={this.handleChange} placeholder="Enter your phone number" required />
                             </div>
                             <div className="user-email">
+								<span>E-Mail</span>
                                 <input type="text" name="email" value={this.state.email} onChange={this.handleChange} placeholder="Enter your email address" required />
                             </div>
                             <div className="user-description">
+								<span>About me</span>
                                 <textarea name="description" value={this.state.description} onChange={this.handleChange} placeholder="Enter a description which describes you as a person" required /></div>
                         </div>
                     </div>
