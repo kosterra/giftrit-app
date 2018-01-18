@@ -9,6 +9,9 @@ const url = 'https://giftrit-service.herokuapp.com/api/gifts';
 export default class GiftForm extends React.Component {
     constructor(props) {
         super(props);
+		
+		let giftId = this.props.giftId;
+		
         this.state = {
             files: [],
             title:'',
@@ -22,7 +25,7 @@ export default class GiftForm extends React.Component {
             imageUrl: 'https://cdn.filestackcontent.com/01rCYxa5RHyGSczD6t2V',
             imageMetadata: null
         }    	
-		fetch(url + this.props.params.giftId)
+		fetch(url + giftId)
 			.then(res => res.json())
 			.then(data => {
 				this.setState({
