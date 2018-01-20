@@ -7,7 +7,7 @@
     "ampersand-model": "^8.0.1",
     "ampersand-router": "^5.0.0",
     "auth0-js": "^9.0.2",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.0.0",
     "curlrequest": "^1.0.1",
     "filestack-js": "^0.10.1",
     "link": "^0.1.5",
